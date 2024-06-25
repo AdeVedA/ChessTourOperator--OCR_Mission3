@@ -1,0 +1,20 @@
+{
+    "name": "Battle Royale",
+    "location": "Tombouctou",
+    "description": "Yéééah !!! first",
+    "start_date": "12/06/2024",
+    "end_date": "13/06/2024",
+    "current_round": 1,
+    "rounds_nbr": "6",
+    "tournament_id": 1,
+    "players_tour": [
+        "MM71777",
+        "AS95159",
+        "AI13579",
+        "GR00800",
+        "AD87778",
+        "AM42315"
+    ],
+    "rounds_tour": [],
+    "finished_tour": false
+}

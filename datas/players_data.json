@@ -1,0 +1,114 @@
+[
+    {
+        "player_id": 1,
+        "lastname": "MARTIN",
+        "firstname": "Rémi",
+        "birth_date": "25/12/2001",
+        "chess_id": "MM71777",
+        "points": "0"
+    },
+    {
+        "player_id": 2,
+        "lastname": "BAAL",
+        "firstname": "Iktindi",
+        "birth_date": "09/05/1972",
+        "chess_id": "PM66100",
+        "points": "0"
+    },
+    {
+        "player_id": 3,
+        "lastname": "DANK",
+        "firstname": "Boruk",
+        "birth_date": "19/10/2003",
+        "chess_id": "DB61100",
+        "points": "0"
+    },
+    {
+        "player_id": 4,
+        "lastname": "SAIZ",
+        "firstname": "Arthur",
+        "birth_date": "01/01/1986",
+        "chess_id": "AS95159",
+        "points": "0"
+    },
+    {
+        "player_id": 5,
+        "lastname": "ISKER",
+        "firstname": "Alim",
+        "birth_date": "10/02/1986",
+        "chess_id": "AI13579",
+        "points": "0"
+    },
+    {
+        "player_id": 6,
+        "lastname": "RUELLAND",
+        "firstname": "Guillaume",
+        "birth_date": "10/01/1977",
+        "chess_id": "GR00800",
+        "points": "0"
+    },
+    {
+        "player_id": 7,
+        "lastname": "KOUYATÉ",
+        "firstname": "Mariama",
+        "birth_date": "21/06/1986",
+        "chess_id": "MK12000",
+        "points": "0"
+    },
+    {
+        "player_id": 8,
+        "lastname": "KASPAROV",
+        "firstname": "Garry",
+        "birth_date": "13/04/1963",
+        "chess_id": "GK88888",
+        "points": "0"
+    },
+    {
+        "player_id": 9,
+        "lastname": "CARLSEN",
+        "firstname": "Magnüs",
+        "birth_date": "30/11/1990",
+        "chess_id": "EL02830",
+        "points": "0"
+    },
+    {
+        "player_id": 10,
+        "lastname": "VISWANATHAN",
+        "firstname": "Anand",
+        "birth_date": "11/12/1969",
+        "chess_id": "AV13579",
+        "points": "0"
+    },
+    {
+        "player_id": 11,
+        "lastname": "DIMAGGIO",
+        "firstname": "Nana",
+        "birth_date": "11/01/1981",
+        "chess_id": "AD87778",
+        "points": "0"
+    },
+    {
+        "player_id": 12,
+        "lastname": "KOUYATÉ",
+        "firstname": "Mélanie",
+        "birth_date": "22/06/1999",
+        "chess_id": "MK88888",
+        "points": "0"
+    },
+    {
+        "player_id": 13,
+        "lastname": "MARIANI",
+        "firstname": "Alain-georges",
+        "birth_date": "11/02/1945",
+        "chess_id": "AM42315",
+        "points": "0"
+    },
+    {
+        "player_id": 14,
+        "lastname": "SERIAL-CHESSER",
+        "firstname": "Ganesh",
+        "birth_date": "00/00/0000",
+        "chess_id": "AA00000",
+        "points": "0"
+    }
+]
