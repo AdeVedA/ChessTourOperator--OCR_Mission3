@@ -6,7 +6,7 @@ import re
 class PlayerView:
     
     @classmethod
-    def display():
+    def display(cls):
         header = "Gestion de la liste de joueurs d'échecs"
         menu_options = [
             "1. Inscrire un nouveau joueur",
@@ -21,7 +21,7 @@ class PlayerView:
         return choice
 
     @classmethod
-    def player_infos():
+    def player_infos(cls):
         """suite d'inputs-utilisateur fournissant les données d'un joueur"""
         player_infos = {}
         header = "@  INSCRIPTION D'UN JOUEUR  @"

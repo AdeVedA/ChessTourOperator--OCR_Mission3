@@ -8,7 +8,7 @@ class ReportController:
     '''Contrôleur pour gérer les rapports accessibles à l'utilisateur.'''
 
     @classmethod
-    def report_menu():
+    def report_menu(cls):
         '''Permet à l'utilisateur d'afficher un des rapports sur joueurs et tournois'''
         while True:
             choice = ReportView.display()
@@ -29,7 +29,7 @@ class ReportController:
                     UtilsView.input_return_prints("choice_error")
 
     @classmethod
-    def display_players():
+    def display_players(cls):
         '''permet l'affichage de tous les joueurs inscrits dans le fichier json
         classés par nom de famille
         '''
@@ -42,13 +42,13 @@ class ReportController:
         UtilsView.input_return_prints("continue")
 
     @classmethod
-    def display_tour_players(tournament):
+    def display_tour_players(cls, tournament):
         '''permet l'affichage des joueurs inscrits à un tournoi donné'''
         print("implémentation en cours")
         pass
 
     @classmethod
-    def display_alltournaments():
+    def display_alltournaments(cls):
         '''permet l'affichage de tous les joueurs inscrits dans le fichier json'''
         tournaments_list_dict = TournamentCrud().get_all_tournaments()
         tournaments_list = []
@@ -62,13 +62,13 @@ class ReportController:
         ReportView.display_tournaments_list(rows, header)
 
     @classmethod
-    def display_tournament_name_dates():
+    def display_tournament_name_dates(cls):
         '''permet l'affichage du nom et des dates d'un tournoi donné'''
         print("implémentation en cours")
         pass
 
     @classmethod
-    def display_tournament_rounds_matches():
+    def display_tournament_rounds_matches(cls):
         '''permet l'affichage des rounds et matches d'un tournoi donné'''
         print("implémentation en cours")
         pass

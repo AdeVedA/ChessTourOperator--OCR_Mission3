@@ -9,10 +9,10 @@ from colorama import Fore
 class MainController:
 
     @classmethod
-    def run():
-        MainMenuView().firstscreen()
+    def run(cls):
+        MainMenuView.firstscreen()
         while True:
-            choice = MainMenuView().display()
+            choice = MainMenuView.display()
             match choice:
                 case "1":
                     PlayerController.player_menu()

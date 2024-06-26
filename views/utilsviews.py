@@ -6,8 +6,9 @@ from colorama import Fore, Style
 
 spc = ' '
 class UtilsView:
+
     @classmethod
-    def menu(header, menu_options):
+    def menu(cls,header, menu_options):
         """Affiche un menu type avec infos en paramètres"""
         UtilsView.clear_screen()
         echec1 = f"███   ███   ███   ███   ███"
@@ -33,12 +34,12 @@ class UtilsView:
             return
 
     @classmethod
-    def clear_screen():
+    def clear_screen(cls):
         """vide l'écran avant affichage de menu ou d'informations"""
         os.system('cls' if os.name == 'nt' else 'clear')
 
     @classmethod
-    def style_print(content, color=Fore.GREEN):
+    def style_print(cls, content, color=Fore.GREEN):
         """styliser l'impression des contenus"""
         # WARNING = Fore.YELLOW
         BOLD = Style.BRIGHT
@@ -49,7 +50,7 @@ class UtilsView:
             time.sleep(0.00000001)
 
     @classmethod
-    def valid_input(question, valid_format, *args):
+    def valid_input(cls, question, valid_format, *args):
         """valide le format de la réponse utilisateur pour assurer la qualité
            de la base de données et prévenir les erreurs de saisie
 
@@ -126,7 +127,7 @@ class UtilsView:
                         return rep"""
 
     @classmethod
-    def input_return_prints(message, **kwargs):
+    def input_return_prints(cls, message, **kwargs):
         while True:
             match message:
                 case "continue":

@@ -6,7 +6,7 @@ tabulate.MIN_PADDING = 0
 class ReportView:
 
     @classmethod
-    def display():
+    def display(cls):
         "affiche le dit menu en utilisant une methode d'UtilsView pour mise en page"
         header = "Rapports sur les joueurs et les tournois"
         menu_options = [
@@ -30,7 +30,7 @@ class ReportView:
         return choice
 
     @classmethod
-    def display_players_list(rows, header):
+    def display_players_list(cls, rows, header):
         "affiche le un tableau des joueurs en utilisant une methode d'UtilsView pour mise en page"
         UtilsView.clear_screen()
         UtilsView.style_print(content=f"{tabulate(rows, header,
@@ -38,7 +38,7 @@ class ReportView:
                               tablefmt='rounded_outline', numalign="left")}")
 
     @classmethod    
-    def display_tournaments_list(rows, header):
+    def display_tournaments_list(cls, rows, header):
         "affiche le un tableau des tournois en utilisant une methode d'UtilsView pour mise en page"
         UtilsView.clear_screen()
         UtilsView.style_print(content=f"{tabulate(rows, header, 

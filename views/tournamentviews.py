@@ -3,7 +3,7 @@ from views.utilsviews import UtilsView
 
 class TournamentView:
     @classmethod
-    def display():
+    def display(cls):
         header = "Gestion des tournois d'échecs"
         menu_options = ["1. Créer la matrice d'un tournoi",
                         "",
@@ -18,7 +18,7 @@ class TournamentView:
         return choice
 
     @classmethod
-    def tournament_infos():
+    def tournament_infos(cls):
         '''suite d'inputs-utilisateur fournissant les données d'un tournoi'''
         tournament_infos = {}
         header = "@  Création d'un Tournoi d'Échecs @"
@@ -40,7 +40,7 @@ class TournamentView:
         return tournament_infos
 
     @classmethod
-    def tournament_choice():
+    def tournament_choice(cls):
         '''choix du tournoi que l'on souhaite démarrer
         '''
         tournoi = UtilsView.valid_input("inscrivez le numéro du tournoi que "
@@ -50,7 +50,7 @@ class TournamentView:
         return tournoi
 
     @classmethod
-    def players_choice(max_player_id):
+    def players_choice(cls, max_player_id):
         '''choix des joueurs que l'on souhaite inscire à un tournoi
         '''
         while True:
@@ -62,7 +62,7 @@ class TournamentView:
             return players_tourn
         
     @classmethod
-    def display_round(pairs):
+    def display_round(cls, pairs):
         header = "Round actuel de votre tournoi d'échecs"
         menu_options = ["1.",
                         "",

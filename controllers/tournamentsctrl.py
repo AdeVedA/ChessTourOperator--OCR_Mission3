@@ -13,7 +13,7 @@ class TournamentController:
     #    '''Contrôleur pour gérer les tournois.'''
 
     @classmethod
-    def tournament_menu():
+    def tournament_menu(cls):
         '''Permet à l'utilisateur de lancer une des fonctions de gestion de tournois'''
         while True:
             choice = TournamentView.display()
@@ -30,7 +30,7 @@ class TournamentController:
                     UtilsView.input_return_prints("choice_error")
 
     @classmethod
-    def create_tournament():
+    def create_tournament(cls):
         '''Permet de créer un tournoi'''
         tour_infos = TournamentView.tournament_infos()
         tournament = TournamentModel(**tour_infos)
@@ -39,7 +39,8 @@ class TournamentController:
         UtilsView.input_return_prints("tournament_reg")
         return
 
-    def start_tournament_menu():
+    @classmethod
+    def start_tournament_menu(cls):
         #
         #BORDEL: scinder en fonctions réutilisables, déplacer vers tournamentviews ou  ce qui touche à la vue
         #
@@ -79,7 +80,7 @@ class TournamentController:
         TournamentCrud.update_tournament(my_tournament)
                 
     @classmethod    
-    def tournament_add_players(selected_tournament):
+    def tournament_add_players(cls, selected_tournament):
         '''permet d'inscrire des joueurs (enregistrés dans le fichier 
         players.json) à un tournoi
         '''
@@ -102,7 +103,7 @@ class TournamentController:
                 UtilsView.input_return_prints("choice_error")
 
     @classmethod
-    def instantiate_tournament_players(tour_players_list):
+    def instantiate_tournament_players(cls, tour_players_list):
         '''permet d'instancier tous les joueurs d'un tournoi
         args : tour_players_list = la liste de joueurs de l'instance "my_tournament" (attribut .players_tour)
         '''

@@ -8,7 +8,7 @@ class RoundController:
     '''Contrôleur pour gérer les rounds d'un tournoi.'''
 
     @classmethod   
-    def make_round_one_pairs():
+    def make_round_one_pairs(cls):
         """Permet d'appairer les joueurs au hasard lors du premier round
         """
         

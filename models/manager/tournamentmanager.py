@@ -8,7 +8,7 @@ class TournamentCrud:
     #def __init__(self):
     #    os.makedirs(tourdatas_path, exist_ok=True)
     @classmethod
-    def get_all_tournaments():
+    def get_all_tournaments(cls):
         tournaments_files = []
         tournaments_infos = []
         if os.path.isfile(os.path.join(tourdatas_path, "tournament_1.json")):
@@ -41,7 +41,7 @@ class TournamentCrud:
         """
 
     @classmethod
-    def save_new_tournament(tournament):
+    def save_new_tournament(cls, tournament):
         """_summary_
 
         Args:
@@ -55,7 +55,7 @@ class TournamentCrud:
              json.dump(tournament.__dict__, file, ensure_ascii=False, indent=4)
 
     @classmethod
-    def update_tournament(my_tournament):
+    def update_tournament(cls, my_tournament):
         """
         """
         i = my_tournament.tournament_id

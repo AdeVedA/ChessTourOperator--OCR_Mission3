@@ -9,7 +9,7 @@ class PlayerCrud:
     #    self.datas_path = os.path.join(os.getcwd(),"datas", "players_data.json")
     
     @classmethod
-    def get_all_players():
+    def get_all_players(cls):
         """_summary_
 
         Returns:
@@ -28,17 +28,17 @@ class PlayerCrud:
         return players_list
 
     @classmethod
-    def save_new_player(players_list, player):
+    def save_new_player(cls, players_list, player):
         players_list.append(player.__dict__)
         with open(datas_path, 'w', encoding='utf8') as file:
              json.dump(players_list, file, ensure_ascii=False, indent=4)
 
     @classmethod
-    def add(player_dict_inf):
+    def add(cls, player_dict_inf):
         players.append(PlayerModel(player_dict_inf))
 
     @classmethod
-    def get_by_name(lastname, players_list):
+    def get_by_name(cls, lastname, players_list):
         players = []
         for player in players_list.get_all_players():
             if player.lastname == lastname:
@@ -46,7 +46,7 @@ class PlayerCrud:
         return None
 
     @classmethod
-    def get_max_player_id():
+    def get_max_player_id(cls):
         players_list = get_all_players()
         max_player_id = max([int(player["player_id"]) for player in players_list], default=0)
         return max_player_id
