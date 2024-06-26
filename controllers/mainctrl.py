@@ -8,7 +8,7 @@ from colorama import Fore
 
 class MainController:
 
-    @staticmethod
+    @classmethod
     def run():
         MainMenuView().firstscreen()
         while True:

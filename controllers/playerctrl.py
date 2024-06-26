@@ -10,7 +10,7 @@ class PlayerController:
     #def __init__(self):
     #    '''Contrôleur pour gérer les joueurs.'''
     
-    @staticmethod
+    @classmethod
     def player_menu():
         '''Permet à l'utilisateur de lancer une des fonctions de gestion des joueurs'''
         while True:
@@ -25,7 +25,7 @@ class PlayerController:
                 case _:
                     UtilsView.input_return_prints("choice_error")
 
-    @staticmethod
+    @classmethod
     def register_player():
         '''inscription d'un joueur dans la base de données'''
         player_infos = PlayerView.player_infos()
@@ -38,7 +38,7 @@ class PlayerController:
         return
         
         #self.players.append(PlayerCrud().get_all_players())
-    @staticmethod
+    @classmethod
     def display_players():
         '''permet l'affichage de la liste des joueurs déjà inscrits'''
         print("implémentation en cours")

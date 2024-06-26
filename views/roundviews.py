@@ -3,7 +3,7 @@ from views.utilsviews import UtilsView
 
 class RoundView:
 
-    @staticmethod
+    @classmethod
     def display():
         header = "Gestion des rounds d'échecs"
         menu_options = ["1. Inscrire les résultats d'un round d'un tournoi",

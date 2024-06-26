@@ -5,7 +5,7 @@ import re
 
 class PlayerView:
     
-    @staticmethod
+    @classmethod
     def display():
         header = "Gestion de la liste de joueurs d'échecs"
         menu_options = [
@@ -20,7 +20,7 @@ class PlayerView:
         choice = input()
         return choice
 
-    @staticmethod
+    @classmethod
     def player_infos():
         """suite d'inputs-utilisateur fournissant les données d'un joueur"""
         player_infos = {}

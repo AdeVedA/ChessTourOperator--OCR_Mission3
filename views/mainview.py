@@ -4,7 +4,7 @@ from colorama import Fore
 
 class MainMenuView:
 
-    @staticmethod
+    @classmethod
     def display():
         header = "Logiciel de Gestion de Tournois d'Échecs"
         menu_options = [
@@ -22,7 +22,7 @@ class MainMenuView:
         choice = input()
         return choice
 
-    @staticmethod
+    @classmethod
     def firstscreen():
         UtilsView.clear_screen()
         Chesscreen =r"""                                          _/\_   

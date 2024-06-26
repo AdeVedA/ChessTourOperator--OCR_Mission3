@@ -7,7 +7,7 @@ from models.manager.tournamentmanager import TournamentCrud
 class ReportController:
     '''Contrôleur pour gérer les rapports accessibles à l'utilisateur.'''
 
-    @staticmethod
+    @classmethod
     def report_menu():
         '''Permet à l'utilisateur d'afficher un des rapports sur joueurs et tournois'''
         while True:
@@ -28,7 +28,7 @@ class ReportController:
                 case _:
                     UtilsView.input_return_prints("choice_error")
 
-    @staticmethod
+    @classmethod
     def display_players():
         '''permet l'affichage de tous les joueurs inscrits dans le fichier json
         classés par nom de famille
@@ -41,13 +41,13 @@ class ReportController:
         ReportView.display_players_list(rows, header)
         UtilsView.input_return_prints("continue")
 
-    @staticmethod
+    @classmethod
     def display_tour_players(tournament):
         '''permet l'affichage des joueurs inscrits à un tournoi donné'''
         print("implémentation en cours")
         pass
 
-    @staticmethod
+    @classmethod
     def display_alltournaments():
         '''permet l'affichage de tous les joueurs inscrits dans le fichier json'''
         tournaments_list_dict = TournamentCrud().get_all_tournaments()
@@ -61,13 +61,13 @@ class ReportController:
         rows = [infos.values() for infos in sorted_tournaments_list]
         ReportView.display_tournaments_list(rows, header)
 
-    @staticmethod
+    @classmethod
     def display_tournament_name_dates():
         '''permet l'affichage du nom et des dates d'un tournoi donné'''
         print("implémentation en cours")
         pass
 
-    @staticmethod
+    @classmethod
     def display_tournament_rounds_matches():
         '''permet l'affichage des rounds et matches d'un tournoi donné'''
         print("implémentation en cours")

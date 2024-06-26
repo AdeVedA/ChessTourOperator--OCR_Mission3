@@ -8,7 +8,7 @@ class PlayerCrud:
     #def __init__(datas_path):
     #    self.datas_path = os.path.join(os.getcwd(),"datas", "players_data.json")
     
-    @staticmethod
+    @classmethod
     def get_all_players():
         """_summary_
 
@@ -27,17 +27,17 @@ class PlayerCrud:
             UtilsView.input_return_prints("noplayer")
         return players_list
 
-    @staticmethod
+    @classmethod
     def save_new_player(players_list, player):
         players_list.append(player.__dict__)
         with open(datas_path, 'w', encoding='utf8') as file:
              json.dump(players_list, file, ensure_ascii=False, indent=4)
 
-    @staticmethod
+    @classmethod
     def add(player_dict_inf):
         players.append(PlayerModel(player_dict_inf))
 
-    @staticmethod
+    @classmethod
     def get_by_name(lastname, players_list):
         players = []
         for player in players_list.get_all_players():
@@ -45,13 +45,13 @@ class PlayerCrud:
                 return player
         return None
 
-    @staticmethod
+    @classmethod
     def get_max_player_id():
         players_list = get_all_players()
         max_player_id = max([int(player["player_id"]) for player in players_list], default=0)
         return max_player_id
 
-    @staticmethod
+    @classmethod
     def get_player_id(chess_id):
         players_list = get_all_players()
         for player in players_list:

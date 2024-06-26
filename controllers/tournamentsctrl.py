@@ -12,7 +12,7 @@ class TournamentController:
     #def __init__(self):
     #    '''Contrôleur pour gérer les tournois.'''
 
-    @staticmethod
+    @classmethod
     def tournament_menu():
         '''Permet à l'utilisateur de lancer une des fonctions de gestion de tournois'''
         while True:
@@ -29,7 +29,7 @@ class TournamentController:
                 case _:
                     UtilsView.input_return_prints("choice_error")
 
-    @staticmethod
+    @classmethod
     def create_tournament():
         '''Permet de créer un tournoi'''
         tour_infos = TournamentView.tournament_infos()
@@ -78,7 +78,7 @@ class TournamentController:
         my_tournament.rounds_tour.append([round1.round_number, [round1.matches]]) #FOIREUX !!!! à revoir !!!
         TournamentCrud.update_tournament(my_tournament)
                 
-    @staticmethod    
+    @classmethod    
     def tournament_add_players(selected_tournament):
         '''permet d'inscrire des joueurs (enregistrés dans le fichier 
         players.json) à un tournoi
@@ -101,7 +101,7 @@ class TournamentController:
             except (ValueError, TypeError):
                 UtilsView.input_return_prints("choice_error")
 
-    @staticmethod
+    @classmethod
     def instantiate_tournament_players(tour_players_list):
         '''permet d'instancier tous les joueurs d'un tournoi
         args : tour_players_list = la liste de joueurs de l'instance "my_tournament" (attribut .players_tour)

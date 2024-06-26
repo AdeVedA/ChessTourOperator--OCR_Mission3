@@ -7,7 +7,7 @@ tourdatas_path = os.path.join(os.getcwd(), "datas", "tournaments")
 class TournamentCrud:
     #def __init__(self):
     #    os.makedirs(tourdatas_path, exist_ok=True)
-    @staticmethod
+    @classmethod
     def get_all_tournaments():
         tournaments_files = []
         tournaments_infos = []
@@ -40,7 +40,7 @@ class TournamentCrud:
         return max_nbr_tournament
         """
 
-    @staticmethod
+    @classmethod
     def save_new_tournament(tournament):
         """_summary_
 
@@ -54,7 +54,7 @@ class TournamentCrud:
         with open(os.path.join(tourdatas_path, f"tournament_{i}.json"), 'w', encoding='utf8') as file:
              json.dump(tournament.__dict__, file, ensure_ascii=False, indent=4)
 
-    @staticmethod
+    @classmethod
     def update_tournament(my_tournament):
         """
         """
