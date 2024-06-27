@@ -32,9 +32,9 @@ class TournamentView:
         tournament_infos["start_date"] = UtilsView.valid_input("Veuillez "
                     "saisir la date de début du tournoi au format "
                     "JJ/MM/AAAA : ", "date")
-        tournament_infos["end_date"] = UtilsView.valid_input("Veuillez "
-                    "saisir la date de fin du tournoi au format "
-                    "JJ/MM/AAAA : ", "date")
+        #tournament_infos["end_date"] = UtilsView.valid_input("Veuillez "
+        #            "saisir la date de fin du tournoi au format "
+        #            "JJ/MM/AAAA : ", "date")
         tournament_infos["rounds_nbr"] = UtilsView.valid_input("Veuillez "
                     "saisir le nombre de rounds du tournoi : ", "integer")
         return tournament_infos
