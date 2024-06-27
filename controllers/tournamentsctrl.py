@@ -50,7 +50,7 @@ class TournamentController:
         header = "@  Démarrage d'un Tournoi  @"
         menu_options = []
         UtilsView.menu(header, menu_options)
-        selected_tournament = choose_tournament()
+        selected_tournament = TournamentController.choose_tournament()
         if selected_tournament['players_tour'] == []:
             UtilsView.input_return_prints("tournament_select", 
                                           **selected_tournament)
@@ -62,10 +62,10 @@ class TournamentController:
             my_tournament = TournamentModel(**selected_tournament)
             UtilsView.input_return_prints("tournament_select", 
                                           **selected_tournament)
-        TournamentCrud.update_tournament(my_tournament)
         tour_players_list = my_tournament.players_tour
         instantiated_players = TournamentController.instantiate_tournament_players(tour_players_list)
-        round1 = TournamentModel(my_tournament.current_round).make_round_one(my_tournament, instantiated_players)
+        
+        round1 = TournamentModel().make_round_one(my_tournament, instantiated_players)
         
         #my_tournament.rounds_tour.append([round1.round_number, [round1.matches]]) #FOIREUX !!!! à revoir !!!
         TournamentCrud.update_tournament(my_tournament)
