@@ -7,6 +7,7 @@ class Round:
     def __init__(self, round_number, matches=[]):
         self.round_number = round_number
         self.matches = matches
+        
 
     def make_round_one(self, my_tournament, instantiated_players):
         #
@@ -27,7 +28,7 @@ class Round:
                     # Si le nombre de joueurs est impair, on peut ajouter un joueur sans partenaire (faudra gérer ensuite...et +1point)
                     pairs.append([players[i]])
             tour_matches = []
-            print(f"Les matchs de ce round {self.round_number} opposeront :\n")
+            print(f"\nLes matchs de ce round {self.round_number} :\n")
             for pair in pairs :
                 player_id1 = f"{pair[0].firstname} {pair[0].lastname} (chessID {pair[0].chess_id})"
                 player_id2 = f"{pair[1].firstname} {pair[1].lastname} (chessID {pair[1].chess_id})"
@@ -56,6 +57,13 @@ class Round:
         flake8...
         readme...
         powerp
-        '''          
+        '''
+class Round_next(Round):
+
+    def __init__(self, round_number, matches=[]):
+        self.round_number = round_number
+        self.matches = matches
+
+
     def make_next_round(self, my_tournament, instantiated_players):
         '''permet de créer les rounds (n+1) avec classement par points'''

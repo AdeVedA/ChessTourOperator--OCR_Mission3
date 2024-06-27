@@ -12,13 +12,15 @@ class PlayerModel:
         self.chess_id = chess_id
         #self.elo_rank = elo_rank
         self.points = points
-        
 
     def win_point(self):
         self.points += 1
 
     def tie_point(self):
         self.points += 0.5
+
+    def __str__(self):
+        return f"{self.firstname} {self.lastname} ({self.chess_id})"
 
     #def get_dico(self):
     #    player_dic = self...

@@ -50,22 +50,13 @@ class TournamentController:
         UtilsView.menu(header, menu_options)
         ReportController.display_alltournaments()
         tournaments_list = TournamentCrud.get_all_tournaments()
-        selected_tournament = None
-        while not selected_tournament:
-            try:
-                tournament_id_inpt = int(TournamentView.tournament_choice()) - 1
-                if 0 <= tournament_id_inpt < len(tournaments_list):
-                    selected_tournament = tournaments_list[tournament_id_inpt]
-                else:
-                    raise ValueError("Invalid selection")
-            except (ValueError, TypeError):
-                UtilsView.input_return_prints("choice_error")
-        
+        selected_tournament = TournamentController.select_tournament(tournaments_list)
         if selected_tournament['players_tour'] == []:
             UtilsView.input_return_prints("tournament_select", 
                                           **selected_tournament)
-            tournament_add_players(selected_tournament)
+            TournamentController.tournament_add_players(selected_tournament)
             my_tournament = TournamentModel(**selected_tournament)
+            TournamentCrud.update_tournament(my_tournament)
             # maintenant il faut sauvegarder l'état du tournoi et passer à la suite (round.robin)etc
         else :
             my_tournament = TournamentModel(**selected_tournament)
@@ -78,7 +69,21 @@ class TournamentController:
         
         my_tournament.rounds_tour.append([round1.round_number, [round1.matches]]) #FOIREUX !!!! à revoir !!!
         TournamentCrud.update_tournament(my_tournament)
-                
+
+    @classmethod
+    def select_tournament(cls, tournaments_list):
+        selected_tournament = None
+        while not selected_tournament:
+            try:
+                tournament_id_inpt = int(TournamentView.tournament_choice()) - 1
+                if 0 <= tournament_id_inpt < len(tournaments_list):
+                    selected_tournament = tournaments_list[tournament_id_inpt]
+                else:
+                    raise ValueError("Invalid selection")
+            except (ValueError, TypeError):
+                UtilsView.input_return_prints("choice_error")
+        return selected_tournament
+
     @classmethod    
     def tournament_add_players(cls, selected_tournament):
         '''permet d'inscrire des joueurs (enregistrés dans le fichier 

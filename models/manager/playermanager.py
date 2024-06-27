@@ -47,7 +47,7 @@ class PlayerCrud:
 
     @classmethod
     def get_max_player_id(cls):
-        players_list = get_all_players()
+        players_list = PlayerCrud.get_all_players()
         max_player_id = max([int(player["player_id"]) for player in players_list], default=0)
         return max_player_id
 

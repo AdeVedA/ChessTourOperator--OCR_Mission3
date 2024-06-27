@@ -29,7 +29,7 @@ class UtilsView:
             UtilsView.style_print(content="Menu :\n\n")
             options = "\n".join(f"{spc*21}{option}" for option in menu_options)
             UtilsView.style_print(content=options, color=Fore.YELLOW)
-            UtilsView.style_print(content="\n\nChoisissez une option: ")
+            UtilsView.style_print(content="\n\nChoisissez une option : ")
         else:
             return
 
