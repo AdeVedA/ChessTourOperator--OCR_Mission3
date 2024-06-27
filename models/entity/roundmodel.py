@@ -1,6 +1,4 @@
 import datetime
-import random
-from .matchesmodel import MatchModel
 
 class Round:
 

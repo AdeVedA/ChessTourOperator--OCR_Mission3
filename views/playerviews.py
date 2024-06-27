@@ -36,8 +36,8 @@ class PlayerView:
                      "date")
         player_infos["chess_id"] = UtilsView.valid_input("Veuillez rentrer "
                     "l'identité nationale d'échec du joueur : ", "id_chess")
-        '''player_infos["elo_rank"] = UtilsView.valid_input("Veuillez rentrer "
-                    "le classement Elo du joueur : ", "elo_rank")'''
-        player_infos["points"] = UtilsView.valid_input("Veuillez rentrer "
-                    "le score du joueur : ", "integer")
+        #player_infos["elo_rank"] = UtilsView.valid_input("Veuillez rentrer "
+        #            "le classement Elo du joueur : ", "elo_rank")
+        #player_infos["points"] = UtilsView.valid_input("Veuillez rentrer "
+        #            "le score du joueur : ", "integer")
         return player_infos

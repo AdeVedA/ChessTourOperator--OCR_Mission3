@@ -35,7 +35,7 @@ class UtilsView:
 
     @classmethod
     def clear_screen(cls):
-        """vide l'écran avant affichage de menu ou d'informations"""
+        """vide l'écran avant affichage de pages de menu ou d'informations"""
         os.system('cls' if os.name == 'nt' else 'clear')
 
     @classmethod
@@ -127,7 +127,7 @@ class UtilsView:
                         return rep"""
 
     @classmethod
-    def input_return_prints(cls, message, **kwargs):
+    def input_return_prints(cls, message, *args, **kwargs):
         while True:
             match message:
                 case "continue":
@@ -140,8 +140,8 @@ class UtilsView:
                           f"Appuyez sur la touche entrée")
                     return
                 case "player_reg":
-                    print(f"\n{Fore.YELLOW}{spc*19}le joueur a bien été "
-                          "enregistré")
+                    print(f"\n{Fore.YELLOW}{spc*19}{args[0]} "
+                          f"{args[1]} a bien été enregistré")
                     time.sleep(3)
                     return
                 case "tournament_reg":
@@ -152,7 +152,7 @@ class UtilsView:
                 case "tournament_select":
                     print(f"\n{Fore.YELLOW}{spc*26}le tournoi '{kwargs['name']}'"
                           " a bien été sélectionné")
-                    time.sleep(1)
+                    time.sleep(3)
                     return
                 case "bienvenue":
                     input(f"\n\n{Fore.YELLOW}{spc*10}Bienvenue dans le centre "

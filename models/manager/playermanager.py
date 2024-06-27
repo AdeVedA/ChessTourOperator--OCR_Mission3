@@ -52,10 +52,10 @@ class PlayerCrud:
         return max_player_id
 
     @classmethod
-    def get_player_id(chess_id):
-        players_list = get_all_players()
+    def get_player_id(cls, chess_id):
+        players_list = PlayerCrud.get_all_players()
         for player in players_list:
             if player["chess_id"] == chess_id:
                 return int(player["player_id"])
-        max_player_id = get_max_player_id()
+        max_player_id = PlayerCrud.get_max_player_id()
         return max_player_id + 1 

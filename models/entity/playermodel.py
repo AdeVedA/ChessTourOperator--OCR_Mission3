@@ -4,7 +4,7 @@ from models.manager.playermanager import PlayerCrud
 class PlayerModel:
 
     def __init__(self, player_id, lastname, firstname, birth_date,
-                 chess_id, points, *args, **kwargs):
+                 chess_id, points=0, *args, **kwargs):
         self.player_id = player_id
         self.lastname = lastname
         self.firstname = firstname
