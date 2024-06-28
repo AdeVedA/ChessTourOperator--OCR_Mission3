@@ -61,5 +61,6 @@ class TournamentCrud:
         i = my_tournament.tournament_id
         with open(os.path.join(tourdatas_path, f"tournament_{i}.json"), 'w', encoding='utf8') as file:
              json.dump(my_tournament.__dict__, file, ensure_ascii=False, indent=4)
+        UtilsView.input_return_prints("tournament_save", my_tournament.name)
         pass
         

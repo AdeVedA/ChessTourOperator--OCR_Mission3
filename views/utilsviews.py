@@ -149,6 +149,11 @@ class UtilsView:
                           "enregistré")
                     time.sleep(3)
                     return
+                case "tournament_save":
+                    print(f"\n{Fore.YELLOW}{spc*26}le tournoi '{args[0]}'"
+                          " vient d'être sauvegardé")
+                    time.sleep(3)
+                    return
                 case "tournament_select":
                     print(f"\n{Fore.YELLOW}{spc*26}le tournoi '{kwargs['name']}'"
                           " a bien été sélectionné")

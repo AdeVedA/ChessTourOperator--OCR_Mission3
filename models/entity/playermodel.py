@@ -13,6 +13,9 @@ class PlayerModel:
         #self.elo_rank = elo_rank
         self.points = points
 
+    def __repr__(self):
+        return f"Player{self.player_id} : {self.firstname} {self.lastname}"
+
     def win_point(self):
         self.points += 1
 

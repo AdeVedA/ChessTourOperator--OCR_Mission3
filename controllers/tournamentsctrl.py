@@ -4,13 +4,11 @@ from models.entity.tournamentmodel import TournamentModel
 from models.manager.tournamentmanager import TournamentCrud
 from models.entity.playermodel import PlayerModel
 from models.manager.playermanager import PlayerCrud
-from models.entity.roundmodel import Round
+from .roundctrl import RoundController
 from .reportsctrl import ReportController
 
 class TournamentController:
-
-    #def __init__(self):
-    #    '''Contrôleur pour gérer les tournois.'''
+    '''Contrôleur pour gérer les tournois.'''
 
     @classmethod
     def tournament_menu(cls):
@@ -35,21 +33,16 @@ class TournamentController:
         tour_infos = TournamentView.tournament_infos()
         tournament = TournamentModel(**tour_infos)
         tournaments_list = TournamentCrud.get_all_tournaments()
-        TournamentCrud().save_new_tournament(tournament)
+        TournamentCrud.save_new_tournament(tournament)
         UtilsView.input_return_prints("tournament_reg")
         return
 
     @classmethod
     def start_tournament_menu(cls):
-        #
-        #BORDEL: scinder en fonctions réutilisables, déplacer vers tournamentviews ou ce qui touche à la vue
-        #
         '''Permet de démarrer un tournoi en choisissant le tournoi et en sélectionnant les joueurs
         instancie le tournoi et le sauvegarde en l'état.
         '''
-        header = "@  Démarrage d'un Tournoi  @"
-        menu_options = []
-        UtilsView.menu(header, menu_options)
+        TournamentView.start_tournament_view()
         selected_tournament = TournamentController.choose_tournament()
         if selected_tournament['players_tour'] == []:
             UtilsView.input_return_prints("tournament_select", 
@@ -57,17 +50,14 @@ class TournamentController:
             TournamentController.tournament_add_players(selected_tournament)
             my_tournament = TournamentModel(**selected_tournament)
             TournamentCrud.update_tournament(my_tournament)
-            # maintenant il faut sauvegarder l'état du tournoi et passer à la suite (round.robin)etc
         else :
             my_tournament = TournamentModel(**selected_tournament)
             UtilsView.input_return_prints("tournament_select", 
                                           **selected_tournament)
         tour_players_list = my_tournament.players_tour
         instantiated_players = TournamentController.instantiate_tournament_players(tour_players_list)
-        
-        round1 = TournamentModel().make_round_one(my_tournament, instantiated_players)
-        
-        #my_tournament.rounds_tour.append([round1.round_number, [round1.matches]]) #FOIREUX !!!! à revoir !!!
+        round1 = RoundController.round_progress(my_tournament, instantiated_players)
+        my_tournament.rounds_tour = list(round1)
         TournamentCrud.update_tournament(my_tournament)
 
     @classmethod

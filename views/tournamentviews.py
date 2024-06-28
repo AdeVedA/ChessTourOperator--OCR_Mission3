@@ -21,7 +21,7 @@ class TournamentView:
     def tournament_infos(cls):
         '''suite d'inputs-utilisateur fournissant les données d'un tournoi'''
         tournament_infos = {}
-        header = "@  Création d'un Tournoi d'Échecs @"
+        header = "@ Création d'un Tournoi d'Échecs @"
         menu_options = []
         tournament_infos["name"] = UtilsView.valid_input("Veuillez saisir "
                     "le nom du tournoi : ", "anything")
@@ -46,7 +46,6 @@ class TournamentView:
         tournoi = UtilsView.valid_input("inscrivez le numéro du tournoi que "
                         "vous souhaitez démarrer (et appuyez sur 'entrée'): ",
                         "integer")
-        #input("inscrivez le numéro du tournoi que vous souhaitez démarrer (et appuyez sur 'entrée'): ")
         return tournoi
 
     @classmethod
@@ -60,7 +59,20 @@ class TournamentView:
                 "13,15) et appuyez sur 'entrée'): ", 
                 "comma_integer_list", max_player_id)
             return players_tourn
-        
+
+    @classmethod
+    def start_tournament_view(cls):
+        #
+        #BORDEL: scinder en fonctions réutilisables, déplacer vers tournamentviews ou ce qui touche à la vue
+        #
+        '''Permet de démarrer un tournoi en choisissant le tournoi et en sélectionnant les joueurs
+        instancie le tournoi et le sauvegarde en l'état.
+        '''
+        header = "@ Sélection du Tournoi et des Joueurs @"
+        menu_options = []
+        UtilsView.menu(header, menu_options)
+        pass
+    '''        
     @classmethod
     def display_round(cls, pairs):
         header = "Round actuel de votre tournoi d'échecs"
@@ -75,3 +87,4 @@ class TournamentView:
         UtilsView.menu(header, menu_options)
         choice = input()
         return choice
+    '''
