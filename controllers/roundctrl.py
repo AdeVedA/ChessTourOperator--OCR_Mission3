@@ -10,10 +10,18 @@ class RoundController:
 
     @classmethod
     def round_progress(cls, my_tournament, instantiated_players):
+        """permet de faire avancer le 1er round du tournoi et de retourner
+        soit uniquement ses matchs, soit ses résultats
+        """
         RoundView.roundheader()
         round1 = RoundController.make_round_one(my_tournament, instantiated_players)
-        RoundView.roundprint(round1)
-        return round1
+        round_dict = round1.to_dict()
+        RoundView.roundprint(my_tournament,round_dict)
+        return_results = (f"{RoundView.round_winners_input(round_dict)}")
+        if return_results!=None:
+            RoundController.round_results(round1, return_results)
+        else:
+            return round1
         
     @classmethod
     def make_round_one(cls, my_tournament, instantiated_players):
@@ -40,6 +48,28 @@ class RoundController:
             #ReportView.display_matches_list(rows, header)
         else:
             round_next = RoundController.make_next_round(my_tournament, instantiated_players)
+
+    @classmethod
+    def round_results(cls, round1, return_results):
+        #en cours d'implémentation
+        """permet de recueillir et traduire les résultats des matchs pour
+        finaliser un round (avec calcul des points)
+        """
+        selected_winners = []
+        while not selected_winners:
+            try:
+                numbers = [int(n) for n in return_results.split(',')]
+                winners_sel = []
+                for number in numbers:
+                    #à préciser/indexer
+                    player_chess_id = players_list[number]['chess_id']
+                    winners_sel.append(player_chess_id)
+                
+                selected_winners = sdf
+                print(selected_winners) 
+            except (ValueError, TypeError):
+                UtilsView.input_return_prints("choice_error")
+        return round1
 
     @classmethod
     def make_next_round(cls, my_tournament, instantiated_players):

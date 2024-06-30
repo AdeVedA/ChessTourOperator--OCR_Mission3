@@ -38,4 +38,4 @@ class MatchModel:
     def to_tuple(self):
         """créer un tuple à partir des attributs de la class match
         """ 
-        return tuple([self.player_id1, self.score_p1],[self.player_id2, self.score_p2])
+        return tuple(f"[{self.player_id1}, {self.score_p1}], [{self.player_id2}, {self.score_p2}]")

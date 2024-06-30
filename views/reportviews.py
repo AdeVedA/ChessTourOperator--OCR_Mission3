@@ -49,15 +49,15 @@ class ReportView:
         UtilsView.input_return_prints("continue")
 
     @classmethod    
-    def display_matches_list(cls, rows, header):
+    def display_matches_list(cls, rows, header, round_nbr, tournament_name):
         "affiche le un tableau des tournois en utilisant une methode d'UtilsView pour mise en page"
-        UtilsView.clear_screen()
+        UtilsView.style_print(content=f'le round{round_nbr} du tournoi "{tournament_name}" '
+        f"sera composé des matchs suivants : \n")
         UtilsView.style_print(content=f"{tabulate(rows, header, 
             #maxheadercolwidths=[10, 30, 26, 35, 10, 10, 7, 6, 12, 8],
             #maxcolwidths=[10, 30, 26, 35, 10, 10, 5, 6, 11, 8],
             tablefmt='rounded_grid', numalign="left")}")
         print('\n')
-        UtilsView.input_return_prints("continue")
     """
     @classmethod
     def display_tournament(tournament):

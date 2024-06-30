@@ -7,7 +7,7 @@ class Round:
         self.matches = matches if matches else []
     
     def __str__(self):
-        return f"Voici le {self.name}, commencé le {self.start_date}, {self.end_date if self.end_date != None else None}, {self.matches}"
+        return f'le tournoi "{self.name}", commencé le {self.start_date}, {self.end_date if self.end_date != None else None}, {self.matches}'
 
     def __repr__(self):
         return f"{self.name}, {self.start_date}, {self.end_date}, {self.matches}"
@@ -27,7 +27,11 @@ class Round:
                 one_match['winner']=_match.player_id2
             else:
                 one_match['winner']="match nul"
-            one_match['joueur 2']=_match.player_id2
+            if _match.player_id2!=None:
+                one_match['joueur 2']=_match.player_id2
+            else:
+                one_match['winner']=_match.player_id1
+                one_match['joueur 2']:"joueur1 sans adversaire"
             matches_list_dict.append(one_match)
         return matches_list_dict
     
