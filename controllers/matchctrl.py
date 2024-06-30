@@ -9,7 +9,7 @@ class MatchController:
 
     @classmethod
     def make_round_one_matchs(cls, instantiated_players):
-        '''permet de créer les matchs du premier round
+        '''permet de créer les matchs du premier round et les renvoyer au RoundCtrl
         '''
         random.shuffle(instantiated_players)
         players = list(instantiated_players)
@@ -26,16 +26,12 @@ class MatchController:
         for pair in pairs :
             #player_id1 = f"{pair[0].firstname} {pair[0].lastname} (chessID {pair[0].chess_id})"
             #player_id2 = f"{pair[1].firstname} {pair[1].lastname} (chessID {pair[1].chess_id})"
-            # à fourrer dans la vue
             #print(f"\nLes matchs de ce premier round :\n")
             #print(f"           {player_id1}     à     {player_id2}\n")
-            match_instance = MatchModel(pair[0],pair[1],"None","None")
-            round_matches.append(match_instance)
+            match_instance = MatchModel(pair[0],"None",pair[1],"None")
+            round_matches.append(match_instance.to_tuple)
             #str(round for round in round_matches)
-        matches_list_dict = MatchModel.to_dict(round_matches)
-        header = matches_list_dict[0].keys()
-        rows = [game.values() for game in matches_list_dict]
-        ReportView.display_matches_list(rows, header)
+        return round_matches
 
     @classmethod
     def make_next_round_matchs(cls, instantiated_players):

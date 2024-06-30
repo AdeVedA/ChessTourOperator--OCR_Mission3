@@ -57,7 +57,7 @@ class TournamentController:
         tour_players_list = my_tournament.players_tour
         instantiated_players = TournamentController.instantiate_tournament_players(tour_players_list)
         round1 = RoundController.round_progress(my_tournament, instantiated_players)
-        my_tournament.rounds_tour = list(round1)
+        my_tournament.rounds_tour = round1
         TournamentCrud.update_tournament(my_tournament)
 
     @classmethod
@@ -92,10 +92,10 @@ class TournamentController:
         selected_players = []
         while not selected_players:
             try:
-                max_player_id = PlayerCrud().get_max_player_id()
+                max_player_id = PlayerCrud.get_max_player_id()
                 players_id_tour_inpt = (f"{TournamentView.players_choice(max_player_id)}")
                 numbers = [int(n) - 1 for n in players_id_tour_inpt.split(',')]
-                players_list = PlayerCrud().get_all_players()
+                players_list = PlayerCrud.get_all_players()
                 players_sel = []
                 for number in numbers:
                     player_chess_id = players_list[number]['chess_id']
@@ -112,7 +112,7 @@ class TournamentController:
         args : tour_players_list = la liste de joueurs de l'instance "my_tournament" (attribut .players_tour)
         '''
         instantiated_players = []
-        players_list = PlayerCrud().get_all_players() 
+        players_list = PlayerCrud.get_all_players() 
         for chess_id in tour_players_list:
             player = next((player for player in players_list if player['chess_id'] == chess_id), None)
             if player:

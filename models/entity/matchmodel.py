@@ -1,10 +1,10 @@
 
 
 class MatchModel:
-    def __init__(self, player_id1, player_id2, score_p1=None, score_p2=None):
+    def __init__(self, player_id1, score_p1, player_id2, score_p2):
         self.player_id1 = player_id1
-        self.player_id2 = player_id2
         self.score_p1 = None
+        self.player_id2 = player_id2
         self.score_p2 = None
 
     def __str__(self):
@@ -18,27 +18,7 @@ class MatchModel:
             return f"Match : {self.player_id1} et {self.player_id2} ont fait match nul"
 
     def __repr__(self):
-        return f"Match : {self.player_id1} contre {self.player_id2}"
-
-    @classmethod
-    def to_dict(cls, matches):
-        matches_list_dict = []
-        for _match in matches:
-            one_match = {}
-            one_match['joueur 1']=_match.player_id1
-            if _match.score_p1==None:
-                one_match['winner']="en cours"
-            elif _match.score_p1==1:
-                one_match['winner']=_match.player_id1
-            elif _match.score_p2==1:
-                one_match['winner']=_match.player_id2
-            else:
-                one_match['winner']="match nul"
-            one_match['joueur 2']=_match.player_id2
-            matches_list_dict.append(one_match)
-            #matches_list_dict.setdefault(_match.player_id1, _match.player_id2, _match.score_p1, 
-            #_match.score_p2, []).append(_match)
-        return matches_list_dict
+        return f"([{self.player_id1}, {self.score_p1}],[{self.player_id2}, {self.score_p2}])"
 
     def set_result(self, winner):
         """établir le résultat du match et mettre à jour les points des joueurs.
@@ -55,3 +35,7 @@ class MatchModel:
             self.score_p1 = 0.5
             self.score_p2 = 0.5
             
+    def to_tuple(self):
+        """créer un tuple à partir des attributs de la class match
+        """ 
+        return tuple([self.player_id1, self.score_p1],[self.player_id2, self.score_p2])

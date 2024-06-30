@@ -8,5 +8,6 @@
     "rounds_nbr": "6",
     "tournament_id": 4,
     "players_tour": [],
+    "rounds_tour": [],
     "finished_tour": false
 }
