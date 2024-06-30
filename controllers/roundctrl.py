@@ -1,6 +1,7 @@
 from views.utilsviews import UtilsView
 from views.roundviews import RoundView
 from .matchctrl import MatchController
+from models.entity.matchmodel import MatchModel
 from models.entity.roundmodel import Round
 
 
@@ -58,14 +59,17 @@ class RoundController:
         selected_winners = []
         while not selected_winners:
             try:
-                numbers = [int(n) for n in return_results.split(',')]
-                winners_sel = []
-                for number in numbers:
+                for index, _match in enumerate(round1['matches']):
+                    winner = [int(index) for index in return_results.split(',')]
+                    score_p1, score_p2 = _match.set_result(winner)
+                    
+
+                #for number in numbers:
                     #à préciser/indexer
-                    player_chess_id = players_list[number]['chess_id']
-                    winners_sel.append(player_chess_id)
-                
-                selected_winners = sdf
+                #    winner_chess_id = round1['matches'][number]
+                #    winners_sel.append
+                #append dans already_played_players ou questionner à la volée dans make_next_round?
+                #selected_winners = sdf
                 print(selected_winners) 
             except (ValueError, TypeError):
                 UtilsView.input_return_prints("choice_error")

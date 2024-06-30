@@ -34,6 +34,7 @@ class MatchModel:
         elif winner == 0:
             self.score_p1 = 0.5
             self.score_p2 = 0.5
+            return self.score_p1, self.score_p2
             
     def to_tuple(self):
         """créer un tuple à partir des attributs de la class match
