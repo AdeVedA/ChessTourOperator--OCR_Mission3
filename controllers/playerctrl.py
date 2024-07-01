@@ -35,11 +35,4 @@ class PlayerController:
         players_list = PlayerCrud.get_all_players()
         PlayerCrud.save_new_player(players_list, player)
         UtilsView.input_return_prints("player_reg", player_infos["firstname"], player_infos["lastname"])
-        return
-        
-        #self.players.append(PlayerCrud.get_all_players())
-    @classmethod
-    def display_players(cls):
-        '''permet l'affichage de la liste des joueurs déjà inscrits'''
-        print("implémentation en cours")
-        pass        
+        return  

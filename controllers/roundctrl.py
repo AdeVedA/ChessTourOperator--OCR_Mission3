@@ -18,11 +18,14 @@ class RoundController:
         round1 = RoundController.make_round_one(my_tournament, instantiated_players)
         round_dict = round1.to_dict()
         RoundView.roundprint(my_tournament,round_dict)
-        return_results = (f"{RoundView.round_winners_input(round_dict)}")
+        return round1
+        ######### enlever les """""" pour continuer
+        """return_results = (f"{RoundView.round_winners_input(round_dict)}")
         if return_results!=None:
             RoundController.round_results(round1, return_results)
         else:
             return round1
+        """
         
     @classmethod
     def make_round_one(cls, my_tournament, instantiated_players):

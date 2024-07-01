@@ -142,22 +142,22 @@ class UtilsView:
                 case "player_reg":
                     print(f"\n{Fore.YELLOW}{spc*19}{args[0]} "
                           f"{args[1]} a bien été enregistré")
-                    time.sleep(3)
+                    time.sleep(1)
                     return
                 case "tournament_reg":
                     print(f"\n{Fore.YELLOW}{spc*18}le tournoi a bien été "
                           "enregistré")
-                    time.sleep(3)
+                    time.sleep(1)
                     return
                 case "tournament_save":
-                    print(f"\n{Fore.YELLOW}{spc*26}le tournoi '{args[0]}'"
+                    print(f"\n{Fore.YELLOW}{spc*18}le tournoi '{args[0]}'"
                           " vient d'être sauvegardé")
-                    time.sleep(3)
+                    time.sleep(1)
                     return
                 case "tournament_select":
                     print(f"\n{Fore.YELLOW}{spc*26}le tournoi '{kwargs['name']}'"
                           " a bien été sélectionné")
-                    time.sleep(3)
+                    time.sleep(1)
                     return
                 case "bienvenue":
                     input(f"\n\n{Fore.YELLOW}{spc*10}Bienvenue dans le centre "
@@ -172,7 +172,7 @@ class UtilsView:
                 case "invalid_tournament":
                     print(f"{Fore.RED}Il semble que le fichier soit corrompu."
                           " Veuillez recréer un tournoi d'abord")
-                    time.sleep(3)
+                    time.sleep(1)
                     return
                 case "notournament":
                     print(f"{Fore.RED}Veuillez d'abord inscrire un premier "

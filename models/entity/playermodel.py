@@ -14,7 +14,7 @@ class PlayerModel:
         self.points = points
 
     def __repr__(self):
-        return f"Player{self.player_id} : {self.firstname} {self.lastname}"
+        return f"{self.chess_id}"
 
     def win_point(self):
         self.points += 1

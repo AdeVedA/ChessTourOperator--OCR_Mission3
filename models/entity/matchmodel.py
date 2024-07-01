@@ -7,6 +7,11 @@ class MatchModel:
         self.player_id2 = player_id2
         self.score_p2 = None
 
+    def to_json(self):
+        _match =  [[f"{self.player_id1}", f"{self.score_p1 if self.score_p1 is not None else 0}"],
+        [f"{self.player_id2}", f"{self.score_p2 if self.score_p2 is not None else 0}"]]
+        return _match
+
     def __str__(self):
         if score_p1 == None:
             return f"Match : {self.player_id1} contre {self.player_id2} - en cours"
@@ -35,8 +40,8 @@ class MatchModel:
             self.score_p1 = 0.5
             self.score_p2 = 0.5
             return self.score_p1, self.score_p2
-            
+                
     def to_tuple(self):
         """créer un tuple à partir des attributs de la class match
         """ 
-        return tuple(f"[{self.player_id1}, {self.score_p1}], [{self.player_id2}, {self.score_p2}]")
+        return (f"[{self.player_id1}, {self.score_p1}], [{self.player_id2}, {self.score_p2}]")

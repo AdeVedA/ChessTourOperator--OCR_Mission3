@@ -23,7 +23,7 @@ class MatchController:
         #on va faire nos matchs
         round_matches = []    
         for pair in pairs :
-            match_instance = MatchModel(pair[0],"None",pair[1],"None")
+            match_instance = MatchModel(pair[0].chess_id,"None",pair[1].chess_id,"None")
             round_matches.append(match_instance)
             #str(round for round in round_matches)
         return round_matches

@@ -19,6 +19,24 @@ class TournamentModel:
         #    self.rounds_tour.append
         self.finished_tour = finished_tour
 
+    def to_json(self):
+        """convertit un objet tournament en dictionnaire serialisable
+        """
+        my_tournament = {
+            "name": self.name,
+            "location": self.location,
+            "description": self.description,
+            "start_date": self.start_date,
+            "end_date": self.end_date,
+            "current_round": self.current_round,
+            "rounds_nbr": self.rounds_nbr,
+            "tournament_id": self.tournament_id,
+            "players_tour": self.players_tour,
+            "rounds_tour": self.rounds_tour,
+            "finished_tour": self.finished_tour
+        }
+        return my_tournament
+
     def __repr__(self):
         return f"Tournament{self.tournament_id} : {self.name}"
 

@@ -55,7 +55,7 @@ class TournamentCrud:
              json.dump(tournament.__dict__, file, ensure_ascii=False, indent=4)
 
     @classmethod
-    def update_tournament(cls, my_tournament):
+    def update_tournament_players(cls, my_tournament):
         """
         """
         i = my_tournament.tournament_id
@@ -63,4 +63,14 @@ class TournamentCrud:
              json.dump(my_tournament.__dict__, file, ensure_ascii=False, indent=4)
         UtilsView.input_return_prints("tournament_save", my_tournament.name)
         pass
-        
+
+    @classmethod
+    def update_tournament(cls, my_tournament):
+        """
+        """
+        i = my_tournament['tournament_id']
+        with open(os.path.join(tourdatas_path, f"tournament_{i}.json"), 'w', encoding='utf8') as file:
+             json_dumps_str = json.dumps(my_tournament, ensure_ascii=False, indent=4)
+             print(json_dumps_str, file=file)
+        UtilsView.input_return_prints("tournament_save", my_tournament['name'])
+        pass

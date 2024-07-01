@@ -4,6 +4,7 @@ from models.entity.tournamentmodel import TournamentModel
 from models.manager.tournamentmanager import TournamentCrud
 from models.entity.playermodel import PlayerModel
 from models.manager.playermanager import PlayerCrud
+from models.entity.roundmodel import Round
 from .roundctrl import RoundController
 from .reportsctrl import ReportController
 
@@ -49,7 +50,7 @@ class TournamentController:
                                           **selected_tournament)
             TournamentController.tournament_add_players(selected_tournament)
             my_tournament = TournamentModel(**selected_tournament)
-            TournamentCrud.update_tournament(my_tournament)
+            TournamentCrud.update_tournament_players(my_tournament)
         else :
             my_tournament = TournamentModel(**selected_tournament)
             UtilsView.input_return_prints("tournament_select", 
@@ -57,7 +58,9 @@ class TournamentController:
         tour_players_list = my_tournament.players_tour
         instantiated_players = TournamentController.instantiate_tournament_players(tour_players_list)
         round1 = RoundController.round_progress(my_tournament, instantiated_players)
-        my_tournament.rounds_tour = round1
+        rounds_tour_serial = Round.to_json(round1)
+        my_tournament.rounds_tour = rounds_tour_serial
+        my_tournament = my_tournament.to_json()
         TournamentCrud.update_tournament(my_tournament)
 
     @classmethod
