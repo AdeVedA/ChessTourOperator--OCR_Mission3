@@ -18,14 +18,11 @@ class RoundController:
         round1 = RoundController.make_round_one(my_tournament, instantiated_players)
         round_dict = round1.to_dict()
         RoundView.roundprint(my_tournament,round_dict)
-        return round1
-        ######### enlever les """""" pour continuer
-        """return_results = (f"{RoundView.round_winners_input(round_dict)}")
+        return_results = (f"{RoundView.round_winners_input(round_dict)}")
         if return_results!=None:
             RoundController.round_results(round1, return_results)
         else:
             return round1
-        """
         
     @classmethod
     def make_round_one(cls, my_tournament, instantiated_players):
@@ -59,12 +56,11 @@ class RoundController:
         """permet de recueillir et traduire les résultats des matchs pour
         finaliser un round (avec calcul des points)
         """
-        selected_winners = []
-        while not selected_winners:
+        while True:
             try:
-                for index, _match in enumerate(round1['matches']):
-                    winner = [int(index) for index in return_results.split(',')]
-                    score_p1, score_p2 = _match.set_result(winner)
+                for index, _match in enumerate(round1.matches):
+                    winner = [int(x) for x in return_results.split(',')[index]]
+                    _match.score_p1, _match.score_p2 = _match.set_result(winner)
                     
 
                 #for number in numbers:
@@ -72,9 +68,9 @@ class RoundController:
                 #    winner_chess_id = round1['matches'][number]
                 #    winners_sel.append
                 #append dans already_played_players ou questionner à la volée dans make_next_round?
-                #selected_winners = sdf
-                print(selected_winners) 
-            except (ValueError, TypeError):
+                #selected_winners = sdf           
+            except (ValueError, TypeError) as e:
+                print(e)
                 UtilsView.input_return_prints("choice_error")
         return round1
 
