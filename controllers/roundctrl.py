@@ -59,19 +59,15 @@ class RoundController:
         while True:
             try:
                 for index, _match in enumerate(round1.matches):
-                    winner = [int(x) for x in return_results.split(',')[index]]
-                    _match.score_p1, _match.score_p2 = _match.set_result(winner)
-                    
-
-                #for number in numbers:
-                    #à préciser/indexer
-                #    winner_chess_id = round1['matches'][number]
-                #    winners_sel.append
-                #append dans already_played_players ou questionner à la volée dans make_next_round?
-                #selected_winners = sdf           
+                    if _match.player_id2 != None:
+                        winner = [int(x) for x in return_results.split(',')[index]]
+                        _match.score_p1, _match.score_p2 = _match.set_result(winner)
+                    else:
+                        winner = 1
+            #append dans already_played_players ou questionner à la volée dans make_next_round?
             except (ValueError, TypeError) as e:
                 print(e)
-                UtilsView.input_return_prints("choice_error")
+                #UtilsView.input_return_prints("choice_error")
         return round1
 
     @classmethod
