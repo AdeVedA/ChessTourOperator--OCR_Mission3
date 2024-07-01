@@ -42,8 +42,8 @@ class ReportView:
         "affiche le un tableau des tournois en utilisant une methode d'UtilsView pour mise en page"
         UtilsView.clear_screen()
         UtilsView.style_print(content=f"{tabulate(rows, header, 
-            maxheadercolwidths=[10, 30, 26, 35, 10, 10, 7, 6, 12, 8],
-            maxcolwidths=[10, 30, 26, 35, 10, 10, 5, 6, 11, 8],
+            maxheadercolwidths=[10, 30, 26, 35, 10, 11, 7, 6, 12, 8],
+            maxcolwidths=[10, 30, 26, 35, 10, 11, 5, 6, 11, 8],
             tablefmt='rounded_grid', numalign="left")}")
         print('\n')
         UtilsView.input_return_prints("continue")
@@ -58,6 +58,7 @@ class ReportView:
             #maxcolwidths=[10, 30, 26, 35, 10, 10, 5, 6, 11, 8],
             tablefmt='rounded_grid', numalign="left")}")
         print('\n')
+        UtilsView.input_return_prints("continue")
     """
     @classmethod
     def display_tournament(tournament):

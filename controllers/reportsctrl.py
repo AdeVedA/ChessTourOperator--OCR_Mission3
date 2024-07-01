@@ -50,10 +50,12 @@ class ReportController:
     @classmethod
     def display_alltournaments(cls):
         '''permet l'affichage de tous les joueurs inscrits dans le fichier json'''
-        tournaments_list_dict = TournamentCrud().get_all_tournaments()
+        tournaments_list_dict = TournamentCrud.get_all_tournaments()
         tournaments_list = []
         for tournament in tournaments_list_dict:
             tournament = {'tournament_id': tournament.pop('tournament_id'), **tournament}
+            del tournament['rounds_tour']
+            tournament['players_tour'] = len(tournament['players_tour'])
             tournaments_list.append(tournament)
         sorted_tournaments_list = sorted(tournaments_list,
                                          key=lambda d: d['tournament_id'])

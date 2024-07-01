@@ -1,0 +1,55 @@
+{
+    "name": "Le Mouton Noir à 5 pattes",
+    "location": "Stonehenge",
+    "description": "un tournoi bancal pour tester",
+    "start_date": "10/07/2024",
+    "end_date": "à terminer",
+    "current_round": 1,
+    "rounds_nbr": "3",
+    "tournament_id": 5,
+    "players_tour": [
+        "PM66100",
+        "DB61100",
+        "EL02830",
+        "AA00000",
+        "AA00001"
+    ],
+    "rounds_tour": {
+        "name": "Round 1",
+        "start_date": "10/07/2024",
+        "end_date": null,
+        "matches": [
+            [
+                [
+                    "AA00000",
+                    "0"
+                ],
+                [
+                    "PM66100",
+                    "0"
+                ]
+            ],
+            [
+                [
+                    "DB61100",
+                    "0"
+                ],
+                [
+                    "AA00001",
+                    "0"
+                ]
+            ],
+            [
+                [
+                    "EL02830",
+                    "0"
+                ],
+                [
+                    "None",
+                    "0"
+                ]
+            ]
+        ]
+    },
+    "finished_tour": false
+}

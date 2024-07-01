@@ -18,12 +18,12 @@ class MatchController:
             if i + 1 < len(players):
                 pairs.append([players[i], players[i + 1]])
             else:
-                pairs.append([players[i]], None)
+                pairs.append([players[i], None])
         #on a nos paires (si nombre de joueurs impair, un joueur seul qui gagnera +1 point)
         #on va faire nos matchs
         round_matches = []    
         for pair in pairs :
-            match_instance = MatchModel(pair[0].chess_id,"None",pair[1].chess_id,"None")
+            match_instance = MatchModel(pair[0].chess_id,"None",pair[1].chess_id if pair[1] else None,"None")
             round_matches.append(match_instance)
             #str(round for round in round_matches)
         return round_matches

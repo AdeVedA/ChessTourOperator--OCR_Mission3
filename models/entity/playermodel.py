@@ -10,7 +10,6 @@ class PlayerModel:
         self.firstname = firstname
         self.birth_date = birth_date
         self.chess_id = chess_id
-        #self.elo_rank = elo_rank
         self.points = points
 
     def __repr__(self):

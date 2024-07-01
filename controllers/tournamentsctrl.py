@@ -65,7 +65,7 @@ class TournamentController:
 
     @classmethod
     def choose_tournament(cls):
-        '''permet de choisir un tournoi dans la liste des tournois
+        '''permet d'afficher les tournois et de choisir un tournoi dans cette liste de tournois
         '''
         ReportController.display_alltournaments()
         tournaments_list = TournamentCrud.get_all_tournaments()
