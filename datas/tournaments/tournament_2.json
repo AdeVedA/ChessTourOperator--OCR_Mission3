@@ -4,7 +4,7 @@
     "description": "Le puits, la musique, les échecs ! Lalal n'dor ba aldiana. une partie ?",
     "start_date": "25/09/2024",
     "end_date": "à terminer",
-    "current_round": 2,
+    "current_round": 1,
     "rounds_nbr": 5,
     "tournament_id": 2,
     "players_tour": [
@@ -13,32 +13,6 @@
         "MK12000",
         "MK88888"
     ],
-    "rounds_tour": {
-        "name": "Round 1",
-        "start_date": "25/09/2024",
-        "end_date": null,
-        "matches": [
-            [
-                [
-                    "AS95159",
-                    "1"
-                ],
-                [
-                    "MK12000",
-                    "0"
-                ]
-            ],
-            [
-                [
-                    "AI13579",
-                    "1"
-                ],
-                [
-                    "MK88888",
-                    "0"
-                ]
-            ]
-        ]
-    },
+    "rounds_tour": [],
     "finished_tour": false
 }

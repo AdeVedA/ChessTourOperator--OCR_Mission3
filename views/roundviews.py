@@ -20,17 +20,17 @@ class RoundView:
     def round_winners_input(cls, round_dict):
         '''choix des joueurs que l'on souhaite inscire à un tournoi
         '''
-        if input("voulez-vous inscrire les résultats des matchs de ce round ?"
-                " O pour Oui / N pour Non :  ") == "O" or "o":
-            while True:
-                round_results = UtilsView.valid_input(
-                    "inscrivez les vainqueurs des matchs dans l'ordre avec 1 "
-                    "pour joueur1, 2 pour joueur2, 0 pour match nul, séparés "
-                    "par des virgules (ex : 1,2,1,0,1,2) et appuyez sur 'entrée'): ", 
-                    "comma_integer_list")
-                return round_results
+        choice = UtilsView.valid_input("voulez-vous inscrire les résultats "
+            "des matchs du round ?\n1) pour Oui / 2) pour Non : ", "choice")
+        if choice == 1:
+            round_results = UtilsView.valid_input(
+                "\ninscrivez les vainqueurs des matchs dans l'ordre des matchs"
+                " avec :\n1 pour joueur1, 2 pour joueur2, 0 pour match nul, "
+                "séparés par des virgules (ex : 1,2,0,2)\net appuyez sur "
+                "'entrée'): ", "comma_integer_list")
+            return round_results
         else:
-            return
+            return None
 
     @classmethod
     def display(cls):

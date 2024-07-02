@@ -21,9 +21,10 @@ class RoundController:
         return_results = (f"{RoundView.round_winners_input(round_dict)}")
         if return_results!=None:
             RoundController.round_results(round1, return_results)
+            my_tournament.next_round()
+            return round1, my_tournament
         else:
-            return round1
-        return round1
+            return round1, my_tournament
 
     @classmethod
     def make_round_one(cls, my_tournament, instantiated_players):
@@ -58,16 +59,17 @@ class RoundController:
         finaliser un round (avec calcul des points)
         """
         try:
-            matches_tuples = []
+            matches_list = []
             for _match in round1.matches:
-                matches_tuples.append(_match)
+                matches_list.append(_match)
             results_list = [int(x) for x in return_results.split(',')]
-            for index, _match in enumerate(matches_tuples):
+            for index, _match in enumerate(matches_list):
                 if _match.player_id2 != None:
                     winner = results_list[index]
                     _match.score_p1, _match.score_p2 = _match.set_result(winner)
                 else:
-                    winner = 1 
+                    winner = 1
+                    _match.score_p1, _match.score_p2 = _match.set_result(winner)
         #append dans un already_played_players ou questionner à la volée dans make_next_round
         #pour la question des joueurs deja joués
         except (ValueError, TypeError) as e:

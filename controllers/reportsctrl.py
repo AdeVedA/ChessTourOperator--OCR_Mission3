@@ -42,10 +42,23 @@ class ReportController:
         UtilsView.input_return_prints("continue")
 
     @classmethod
-    def display_tour_players(cls, tournament):
+    def display_tour_players(cls):
         '''permet l'affichage des joueurs inscrits à un tournoi donné'''
-        print("implémentation en cours")
-        pass
+        ReportController.display_alltournaments()
+        tournaments_list = TournamentCrud.get_all_tournaments()
+        tournament = UtilsView.valid_input("inscrivez le numéro du tournoi "
+                        "dont vous souhaitez voir les joueurs (et appuyez sur"
+                        " 'entrée'): ","integer")
+        tournament = tournaments_list[tournament -1]
+        players = tournament['players_tour']
+        header = ['lastname', 'firstname', 'birth_date', 'chess_id']
+        rows = []
+        for player in players:
+            play_inf = PlayerCrud.get_player_inf_from__chess_id(player)
+            rows.append(play_inf)
+        sorted_rows = sorted(rows, key=lambda d: d[0])
+        ReportView.display_players_list(sorted_rows, header)
+        UtilsView.input_return_prints("continue")
 
     @classmethod
     def display_alltournaments(cls):

@@ -57,10 +57,9 @@ class TournamentController:
                                           **selected_tournament)
         tour_players_list = my_tournament.players_tour
         instantiated_players = TournamentController.instantiate_tournament_players(tour_players_list)
-        round1 = RoundController.round_progress(my_tournament, instantiated_players)
+        round1, my_tournament = RoundController.round_progress(my_tournament, instantiated_players)
         rounds_tour_serial = Round.to_json(round1)
-        my_tournament.rounds_tour = rounds_tour_serial
-        my_tournament.next_round()
+        my_tournament.rounds_tour = rounds_tour_serial        
         my_tournament = my_tournament.to_json()
         TournamentCrud.update_tournament(my_tournament)
 

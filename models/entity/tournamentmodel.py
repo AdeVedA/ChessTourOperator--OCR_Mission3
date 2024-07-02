@@ -47,8 +47,7 @@ class TournamentModel:
             player (_type_): _description_
         """
         self.players_tour.append(player)
-        
- 
+
     def next_round(self):
         """_summary_
 
@@ -60,3 +59,8 @@ class TournamentModel:
             self.current_round += 1
         else:
             self.finished_tour = True
+
+    def tour_players(self):
+        """récupère les joueurs inscrits à ce tournoi
+        """
+        return self.players_tour

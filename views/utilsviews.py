@@ -112,19 +112,19 @@ class UtilsView:
                     #    continue
                     else:
                         return rep
+                case "choice":
+                    if rep is not rep or rep == "" \
+                           or re.match('^[1,2]{1}$', rep) is None:
+                        print(f"Veuillez inscrire une réponse valide")
+                        continue
+                    else:
+                        return int(rep)
                 case "anything":
                     if rep is not rep or rep == "" :
                         print(f"Veuillez inscrire une réponse valide")
                         continue
                     else:
                         return rep
-                    """case "elo_rank":
-                    if rep is not rep or rep == "" \
-                            or re.match(r'^\d{3,4}$', rep) is None:
-                        print(f"Veuillez inscrire une réponse valide")
-                        continue
-                    else:
-                        return rep"""
 
     @classmethod
     def input_return_prints(cls, message, *args, **kwargs):

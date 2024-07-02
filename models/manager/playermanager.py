@@ -9,7 +9,7 @@ class PlayerCrud:
     #    self.datas_path = os.path.join(os.getcwd(),"datas", "players_data.json")
     
     @classmethod
-    def get_all_players(cls):
+    def get_all_players(cls,*args):
         """_summary_
 
         Returns:
@@ -66,3 +66,11 @@ class PlayerCrud:
         for player in players_list:
             if player["chess_id"] == chess_id:
                 return f"{player["lastname"]} {player['firstname']}"
+
+    @classmethod
+    def get_player_inf_from__chess_id(cls, chess_id):
+        players_list = PlayerCrud.get_all_players()
+        for player in players_list:
+            if player["chess_id"] == chess_id:
+                return [player["lastname"], player['firstname'], player['birth_date'],player['chess_id']]
+
