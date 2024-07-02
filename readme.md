@@ -1,6 +1,13 @@
 # <p align="center"><bold>Chess Tour Operator - OCR_Mission[3]</bold></p>
 <p align="center">=========================================================================</p>
-
+<p align="center">
+  <br/>
+  <picture> 
+    <img alt="ChessTourOP image" src="datas/Menu_ChessTourOP.png" width="491">
+  </picture>
+  <br/>
+  <br/>
+</p>
 ### <p align="center">- Logiciel de Gestion de Tournois d'Échecs -</p>
 
 ### <p align="center">(readme en construction)</p>
@@ -111,13 +118,13 @@ puis :
 les données de vos tournois et joueurs sont toutes sauvegardées en .json dans le répertoire "datas" et le sous-répertoire "tournaments"
 
 	racine_projet/
-				├─────datas/
-				├	   ├────players_data.json
-				├	   └────tournaments/
-				├			   ├─────tournament_1.json
-				├			   └─────tournament_2.json...
-				└─────main.py
-				etc...
+		├─────datas/
+		├	   ├────players_data.json
+		├	   └────tournaments/
+		├			   ├─────tournament_1.json
+		├			   └─────tournament_2.json...
+		└─────main.py
+		etc...
 
 # <p align="center">Annexe 1 - installation de Python & Git</p>
 =======================================================================
