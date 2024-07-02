@@ -31,7 +31,7 @@ class RoundView:
             return round_results
         else:
             return None
-
+    """
     @classmethod
     def display(cls):
         header = "Gestion des rounds d'un tournoi"
@@ -42,3 +42,4 @@ class RoundView:
                         "",
                         "0. Retour au menu principal"]
         UtilsView.menu(header, menu_options)
+    """

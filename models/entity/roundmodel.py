@@ -50,8 +50,7 @@ class Round:
             matches_list_dict.append(one_match)
         return matches_list_dict
     
-        '''sauvegarde du round au propre dans le json avec résultat None = pas joué
-        enregistrement résultats / calcul des points
+        '''
         nouveau round ?:
         appairement des joueurs selon points + requête "déjà joué"/sauvegarde
         affichage des matchs

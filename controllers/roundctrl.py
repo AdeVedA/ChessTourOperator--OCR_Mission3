@@ -35,13 +35,12 @@ class RoundController:
         if int(my_tournament.current_round) == 1:
             #self.round_number = int(my_tournament.current_round)
             matches = MatchController.make_round_one_matchs(instantiated_players)
-            name = "Round 1"
-            start_date = my_tournament.start_date
-            end_date = None
+            #name = "Round 1"
+            #start_date = my_tournament.start_date
+            #end_date = None
             round1 = Round("Round 1", my_tournament.start_date, None, matches)
             return round1
 
-            #players = range(1,len(instantiated_players)+1)
             #pairs = [((i), (i + 1) % len(sorted_players_list)) for i in range(len(instantiated_players))]
             #if len(instantiated_players)%2
             #print(round_matches)
@@ -51,10 +50,21 @@ class RoundController:
             #ReportView.display_matches_list(rows, header)
         else:
             round_next = RoundController.make_next_round(my_tournament, instantiated_players)
+            return round_next
+
+    @classmethod
+    def make_next_round(cls, my_tournament, instantiated_players):
+        '''permet de créer les rounds (n+1) avec classement par points'''
+        if 1 < int(my_tournament.current_round) <= int(my_tournament.rounds_nbr):
+            matches = MatchController.make_next_round_matchs(instantiated_players, my_tournament)
+            name = f"Round {my_tournament.current_round}"
+            start_date = datetime.today().strftime('%d-%m-%Y %H:%M')
+            end_date = None
+            round_next = Round(name, start_date, end_date, matches)
+            return round_next
 
     @classmethod
     def round_results(cls, round1, return_results):
-        #en cours d'implémentation
         """permet de recueillir et traduire les résultats des matchs pour
         finaliser un round (avec calcul des points)
         """
@@ -70,22 +80,7 @@ class RoundController:
                 else:
                     winner = 1
                     _match.score_p1, _match.score_p2 = _match.set_result(winner)
-        #append dans un already_played_players ou questionner à la volée dans make_next_round
-        #pour la question des joueurs deja joués
         except (ValueError, TypeError) as e:
-            print(e)
-            #UtilsView.input_return_prints("choice_error")
+            UtilsView.input_return_prints("choice_error")
         return round1
-
-    @classmethod
-    def make_next_round(cls, my_tournament, instantiated_players):
-        '''permet de créer les rounds (n+1) avec classement par points'''
-        matchs = MatchController.make_next_round_matchs(instantiated_players)
-
-
-    @classmethod   
-    def make_round_one_pairs(cls):
-        """Permet d'appairer les joueurs au hasard lors du premier round
-        """
-        
         

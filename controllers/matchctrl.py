@@ -25,10 +25,15 @@ class MatchController:
         for pair in pairs :
             match_instance = MatchModel(pair[0].chess_id,"None",pair[1].chess_id if pair[1] else None,"None")
             round_matches.append(match_instance)
-            #str(round for round in round_matches)
         return round_matches
 
     @classmethod
-    def make_next_round_matchs(cls, instantiated_players):
-        '''permet de créer les matchs des rounds n+1
+    def make_next_round_matchs(cls, instantiated_players, my_tournament):
+        '''permet de créer les matchs des rounds n+1 avec appairage selon les points
         '''
+        players_list = []
+        sorted_players = sorted(instantiated_players, key=lambda d: d.points, reverse=True)
+        for player in sorted_players:
+            players_list.append(player)
+        input("continue")
+

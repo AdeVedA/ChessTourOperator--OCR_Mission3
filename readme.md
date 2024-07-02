@@ -112,10 +112,10 @@ les données de vos tournois et joueurs sont toutes sauvegardées en .json dans 
 
 	racine_projet/
 				├────────datas/
-				├			├────players_data.json
-				├			└────tournaments/
-				├							 ├─────tournament_1.json
-				├							 └─────tournament_2.json...
+				├		├────players_data.json
+				├		└────tournaments/
+				├					 ├─────tournament_1.json
+				├					 └─────tournament_2.json...
 				└─────main.py
 				etc...
 

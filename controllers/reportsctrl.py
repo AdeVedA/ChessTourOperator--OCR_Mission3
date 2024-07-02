@@ -43,7 +43,9 @@ class ReportController:
 
     @classmethod
     def display_tour_players(cls):
-        '''permet l'affichage des joueurs inscrits à un tournoi donné'''
+        '''permet l'affichage des joueurs inscrits à un tournoi donné
+        par ordre alphabétique(nom de famille)
+        '''
         ReportController.display_alltournaments()
         tournaments_list = TournamentCrud.get_all_tournaments()
         tournament = UtilsView.valid_input("inscrivez le numéro du tournoi "
