@@ -58,7 +58,7 @@ class ReportView:
             #maxcolwidths=[10, 30, 26, 35, 10, 10, 5, 6, 11, 8],
             tablefmt='rounded_grid', numalign="left")}")
         print('\n')
-        UtilsView.input_return_prints("continue")
+        #UtilsView.input_return_prints("continue")
     """
     @classmethod
     def display_tournament(tournament):

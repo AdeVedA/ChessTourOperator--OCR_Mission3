@@ -85,7 +85,7 @@ class UtilsView:
                         print(f"Veuillez inscrire une réponse valide")
                         continue
                     else:
-                        return rep
+                        return int(rep)
                 case "date":
                     if rep is not rep or rep == "" \
                         or re.match('(\d{2})[/.-](\d{2})[/.-](\d{4})$',

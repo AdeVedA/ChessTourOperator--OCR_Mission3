@@ -51,10 +51,7 @@ class Round:
         return matches_list_dict
     
         '''sauvegarde du round au propre dans le json avec résultat None = pas joué
-        affichage des matchs au propre (UtilsView...)
-        affichage menu d'input des résultats avec (1,2,0) (UtilsV)
-        enregistrement résultats
-        calcul des points
+        enregistrement résultats / calcul des points
         nouveau round ?:
         appairement des joueurs selon points + requête "déjà joué"/sauvegarde
         affichage des matchs

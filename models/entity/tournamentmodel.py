@@ -49,7 +49,7 @@ class TournamentModel:
         self.players_tour.append(player)
         
  
-    def next_round(self, current_round, rounds_nbr):
+    def next_round(self):
         """_summary_
 
         Args:

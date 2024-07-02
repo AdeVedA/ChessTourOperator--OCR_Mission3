@@ -25,23 +25,23 @@ class MatchModel:
             return f"Match : {self.player_id1} et {self.player_id2} ont fait match nul"
 
     def __repr__(self):
-        return f"[{self.player_id1}, {self.score_p1}],[{self.player_id2}, {self.score_p2}]"
+        return f"[[{self.player_id1}, {self.score_p1}],[{self.player_id2}, {self.score_p2}]]"
 
     def set_result(self, winner):
         """établir le résultat du match et mettre à jour les points des joueurs.
         Args:
             winner (str): '1' for player_id1 wins, '2' for player_id2 wins, '0' for a draw.
         """
-        if winner == [1]:
+        if winner == 1:
             self.score_p1 = 1
             self.score_p2 = 0
-        elif winner == [2]:
+        elif winner == 2:
             self.score_p1 = 0
             self.score_p2 = 1
-        elif winner == [0]:
+        elif winner == 0:
             self.score_p1 = 0.5
             self.score_p2 = 0.5
-            return self.score_p1, self.score_p2
+        return self.score_p1, self.score_p2
                 
     def to_tuple(self):
         """créer un tuple à partir des attributs de la class match

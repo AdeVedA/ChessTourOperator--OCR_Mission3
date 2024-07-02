@@ -23,7 +23,8 @@ class RoundController:
             RoundController.round_results(round1, return_results)
         else:
             return round1
-        
+        return round1
+
     @classmethod
     def make_round_one(cls, my_tournament, instantiated_players):
         '''permet de créer le premier round
@@ -56,18 +57,22 @@ class RoundController:
         """permet de recueillir et traduire les résultats des matchs pour
         finaliser un round (avec calcul des points)
         """
-        while True:
-            try:
-                for index, _match in enumerate(round1.matches):
-                    if _match.player_id2 != None:
-                        winner = [int(x) for x in return_results.split(',')[index]]
-                        _match.score_p1, _match.score_p2 = _match.set_result(winner)
-                    else:
-                        winner = 1
-            #append dans already_played_players ou questionner à la volée dans make_next_round?
-            except (ValueError, TypeError) as e:
-                print(e)
-                #UtilsView.input_return_prints("choice_error")
+        try:
+            matches_tuples = []
+            for _match in round1.matches:
+                matches_tuples.append(_match)
+            results_list = [int(x) for x in return_results.split(',')]
+            for index, _match in enumerate(matches_tuples):
+                if _match.player_id2 != None:
+                    winner = results_list[index]
+                    _match.score_p1, _match.score_p2 = _match.set_result(winner)
+                else:
+                    winner = 1 
+        #append dans un already_played_players ou questionner à la volée dans make_next_round
+        #pour la question des joueurs deja joués
+        except (ValueError, TypeError) as e:
+            print(e)
+            #UtilsView.input_return_prints("choice_error")
         return round1
 
     @classmethod
