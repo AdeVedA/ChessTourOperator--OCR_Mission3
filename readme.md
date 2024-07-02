@@ -1,14 +1,14 @@
-# <p style="text-align: center;">Chess Tour Operator - OCR_Mission[3]</p>
-<p style="text-align: center;">=========================================================================</p>
+# <p align="center"><bold>Chess Tour Operator - OCR_Mission[3]</bold></p>
+<p align="center">=========================================================================</p>
 
-### <p style="text-align: center;">- Logiciel de Gestion de Tournois d'Échecs -</p>
+### <p align="center">- Logiciel de Gestion de Tournois d'Échecs -</p>
 
-### <p style="text-align: center;">(readme en construction)</p>
+### <p align="center">(readme en construction)</p>
 
 
 ------------------------------------------
 
-## <p style="text-align: center;">I - Setup windows</p>
+## <p align="center">I - Setup windows</p>
 
 #### ( si [Git](https://github.com/git-for-windows/git/releases/download/v2.45.0.windows.1/Git-2.45.0-64-bit.exe) et [python 3.6+](https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe) ne sont pas installés, commencez par l'annexe 1 !)
 ------------------------------------------
@@ -55,7 +55,7 @@ puis :
 -------------------------
 -------------------------
 
-## <p style="text-align: center;">II - Setup Linux/Mac</p>
+## <p align="center">II - Setup Linux/Mac</p>
 
 #### ( si **[Git](https://sourceforge.net/projects/git-osx-installer/files/git-2.23.0-intel-universal-mavericks.dmg/download?use_mirror=autoselect)** et **[python](https://www.python.org/ftp/python/3.12.3/python-3.12.3-macos11.pkg)** ne sont pas installés, commencez par l'annexe 1 !)
 
@@ -106,20 +106,20 @@ puis :
 	deactivate
  
 
-## <p style="text-align: center;">III - informations sur la structure de données</p>
+## <p align="center">III - informations sur la structure de données</p>
 
 les données de vos tournois et joueurs sont toutes sauvegardées en .json dans le répertoire "datas" et le sous-répertoire "tournaments"
 
 	racine_projet/
-				├──────datas/
-				├	├────players_data.json
-				├	└────tournaments/
-				├			├─────tournament_1.json
-				├			└─────tournament_2.json...
+				├─────datas/
+				├	   ├────players_data.json
+				├	   └────tournaments/
+				├			   ├─────tournament_1.json
+				├			   └─────tournament_2.json...
 				└─────main.py
 				etc...
 
-# <p style="text-align: center;">Annexe 1 - installation de Python & Git</p>
+# <p align="center">Annexe 1 - installation de Python & Git</p>
 =======================================================================
 
 pour Windows 64bits :
