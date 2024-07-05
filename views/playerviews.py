@@ -33,11 +33,9 @@ class PlayerView:
                     "le prénom du joueur : ", "string_name").capitalize()
         player_infos["birth_date"] = UtilsView.valid_input("Veuillez rentrer"
                     " la date de naissance du joueur au format JJ/MM/AAAA : ",
-                     "date")
+                    "date")
         player_infos["chess_id"] = UtilsView.valid_input("Veuillez rentrer "
                     "l'identité nationale d'échec du joueur : ", "id_chess")
-        #player_infos["elo_rank"] = UtilsView.valid_input("Veuillez rentrer "
-        #            "le classement Elo du joueur : ", "elo_rank")
         #player_infos["points"] = UtilsView.valid_input("Veuillez rentrer "
         #            "le score du joueur : ", "integer")
         return player_infos

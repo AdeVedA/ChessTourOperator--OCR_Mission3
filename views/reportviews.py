@@ -31,7 +31,9 @@ class ReportView:
 
     @classmethod
     def display_players_list(cls, rows, header):
-        "affiche le un tableau des joueurs en utilisant une methode d'UtilsView pour mise en page"
+        """affiche un tableau `tabulate` des joueurs 
+        avec une methode d'UtilsView
+        """
         UtilsView.clear_screen()
         UtilsView.style_print(content=f"{tabulate(rows, header,
                               maxheadercolwidths=[9, None, None, 10, 8, 6],
@@ -39,26 +41,41 @@ class ReportView:
 
     @classmethod    
     def display_tournaments_list(cls, rows, header):
-        "affiche le un tableau des tournois en utilisant une methode d'UtilsView pour mise en page"
+        """affiche un tableau `tabulate` des tournois
+        avec une methode d'UtilsView 
+        """
         UtilsView.clear_screen()
         UtilsView.style_print(content=f"{tabulate(rows, header, 
-            maxheadercolwidths=[10, 30, 26, 35, 10, 11, 7, 6, 12, 8],
-            maxcolwidths=[10, 30, 26, 35, 10, 11, 5, 6, 11, 8],
+            maxheadercolwidths=[10, 30, 26, 35, 10, 10, 9, 9, 11, 8],
+            maxcolwidths=[10, 30, 26, 35, 10, 10, 9, 9, 11, 8],
             tablefmt='rounded_grid', numalign="left")}")
         print('\n')
         UtilsView.input_return_prints("continue")
 
     @classmethod    
     def display_matches_list(cls, rows, header, round_nbr, tournament_name):
-        "affiche le un tableau des tournois en utilisant une methode d'UtilsView pour mise en page"
-        UtilsView.style_print(content=f'le round{round_nbr} du tournoi "{tournament_name}" '
+        """affiche le un tableau `tabulate` des matchs
+        avec une methode d'UtilsView
+        """
+        UtilsView.style_print(content=f'le round {round_nbr} du tournoi "{tournament_name}" '
         f"sera composé des matchs suivants : \n")
         UtilsView.style_print(content=f"{tabulate(rows, header, 
-            #maxheadercolwidths=[10, 30, 26, 35, 10, 10, 7, 6, 12, 8],
-            #maxcolwidths=[10, 30, 26, 35, 10, 10, 5, 6, 11, 8],
             tablefmt='rounded_grid', numalign="left")}")
         print('\n')
         #UtilsView.input_return_prints("continue")
+
+    @classmethod    
+    def display_finished_tournament_players_list(cls, rows, header, round_nbr, tournament_name, end_date, location):
+        """affiche le un tableau `tabulate` des résultats finaux d'un tournoi
+        avec une methode d'UtilsView
+        """
+        UtilsView.style_print(content=f'le tournoi "{tournament_name}" de '
+                              f"{round_nbr} rounds s'achève en ce {end_date}"
+                              f"sur ces résultats : \n")
+        UtilsView.style_print(content=f"{tabulate(rows, header, 
+            tablefmt='rounded_grid', numalign="left")}")
+        print(f'\n bonne fête à {location} pour tout le monde !!!')
+    
     """
     @classmethod
     def display_tournament(tournament):

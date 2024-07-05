@@ -41,12 +41,13 @@ class MainMenuView:
    |  |       |  |     |  |     |  |      |  |     |  |     |  |       |  |  
   /    \     /    \   /    \   /    \    /    \   /    \   /    \     /    \ 
  |______|   |______| |______| |______|  |______| |______| |______|   |______|
-                                                                   
+    
                                                 _   _              
          _/_  /        /  / _       _        /.' ).' )             
       °  /      ,     /  / / )_/ / / )      /   /   /  _       _   
      /  /\     / )   (__/ (_/ (_/\/ (__    /   /   /  / )_/ /_/_)  
   __/\_/  \_  /_/    __/                  /   /   (__(_/ (_/ (__  () () ()
                     (_/"""
+        #ce dessin a été copié du site asciiart (auteur anomnyme) puis légèrement modifié
         UtilsView.style_print(content=f"{Chesscreen}")
         UtilsView.input_return_prints("bienvenue")

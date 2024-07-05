@@ -4,7 +4,7 @@ class TournamentModel:
         self, name, location, description, start_date, end_date="", 
         current_round=1, rounds_nbr=4, tournament_id=1,  
         players_tour=[], rounds_tour=[] ,finished_tour=False
-                 ):
+                ):
         self.name = name
         self.location = location
         self.description = description
@@ -44,7 +44,7 @@ class TournamentModel:
         self.players_tour.append(player)
 
     def next_round(self):
-        """
+        """ méthode pour incrémenter le numéro du round en cours du tournoi
         """
         if self.current_round < self.rounds_nbr:
             self.current_round += 1

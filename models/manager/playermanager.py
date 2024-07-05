@@ -5,8 +5,6 @@ from views.utilsviews import UtilsView
 datas_path = os.path.join(os.getcwd(),"datas", "players_data.json")
 
 class PlayerCrud:
-    #def __init__(datas_path):
-    #    self.datas_path = os.path.join(os.getcwd(),"datas", "players_data.json")
     
     @classmethod
     def get_all_players(cls,*args):
@@ -31,19 +29,7 @@ class PlayerCrud:
     def save_new_player(cls, players_list, player):
         players_list.append(player.__dict__)
         with open(datas_path, 'w', encoding='utf8') as file:
-             json.dump(players_list, file, ensure_ascii=False, indent=4)
-
-    @classmethod
-    def add(cls, player_dict_inf):
-        players.append(PlayerModel(player_dict_inf))
-
-    @classmethod
-    def get_by_name(cls, lastname, players_list):
-        players = []
-        for player in players_list.get_all_players():
-            if player.lastname == lastname:
-                return player
-        return None
+            json.dump(players_list, file, ensure_ascii=False, indent=4)
 
     @classmethod
     def get_max_player_id(cls):
@@ -64,7 +50,7 @@ class PlayerCrud:
     def get_player_name(cls, chess_id):
         players_list = PlayerCrud.get_all_players()
         for player in players_list:
-            if player["chess_id"] == chess_id:
+            if player['chess_id'] == str(chess_id):
                 return f"{player["lastname"]} {player['firstname']}"
 
     @classmethod

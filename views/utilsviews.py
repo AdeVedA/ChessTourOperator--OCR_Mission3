@@ -6,7 +6,9 @@ from colorama import Fore, Style
 
 spc = ' '
 class UtilsView:
-
+    """Vue utile à toutes les vues/contrôleurs pour les messages types,
+    les print stylisés/colorés, les header en ascii art, menus
+    """
     @classmethod
     def menu(cls,header, menu_options):
         """Affiche un menu type avec infos en paramètres"""
@@ -47,17 +49,15 @@ class UtilsView:
         for letter in content:
             sys.stdout.flush()
             print(f"{color}{BOLD}{letter}{CLReset}", end='', flush=True)
-            time.sleep(0.00000001)
+            time.sleep(0.000001)
 
     @classmethod
     def valid_input(cls, question, valid_format, *args):
         """valide le format de la réponse utilisateur pour assurer la qualité
-           de la base de données et prévenir les erreurs de saisie
-
+        de la base de données et prévenir des erreurs de saisie
         Args:
             question (string): la question
             valid_format (string): le format attendu de la réponse utilisateur
-
         Returns:
             rep (various formats): la réponse au format valide
         """
@@ -114,7 +114,7 @@ class UtilsView:
                         return rep
                 case "choice":
                     if rep is not rep or rep == "" \
-                           or re.match('^[1,2]{1}$', rep) is None:
+                        or re.match('^[1,2]{1}$', rep) is None:
                         print(f"Veuillez inscrire une réponse valide")
                         continue
                     else:
@@ -128,6 +128,13 @@ class UtilsView:
 
     @classmethod
     def input_return_prints(cls, message, *args, **kwargs):
+        """permet d'afficher des messages en retour des entrées
+        ou pour notification des sauvegardes etc
+        Args:
+            message est le "case" pour référrencer le message
+            *args & **kwargs : Arguments optionnels pour messages
+                personnalisés
+        """
         while True:
             match message:
                 case "continue":
@@ -176,7 +183,7 @@ class UtilsView:
                     return
                 case "notournament":
                     print(f"{Fore.RED}Veuillez d'abord inscrire un premier "
-                          "tournoi")
+                          "tournoi ou avancer un tournoi au prochain round")
                     return
                 case "noplayer":
                     print(f"{Fore.RED}Veuillez d'abord inscrire un "

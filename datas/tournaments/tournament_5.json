@@ -14,42 +14,6 @@
         "AA00000",
         "AA00001"
     ],
-    "rounds_tour": {
-        "name": "Round 1",
-        "start_date": "10/07/2024",
-        "end_date": null,
-        "matches": [
-            [
-                [
-                    "AA00001",
-                    "0"
-                ],
-                [
-                    "EL02830",
-                    "0"
-                ]
-            ],
-            [
-                [
-                    "AA00000",
-                    "0"
-                ],
-                [
-                    "DB61100",
-                    "0"
-                ]
-            ],
-            [
-                [
-                    "PM66100",
-                    "0"
-                ],
-                [
-                    "None",
-                    "0"
-                ]
-            ]
-        ]
-    },
+    "rounds_tour": [],
     "finished_tour": false
 }

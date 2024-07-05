@@ -62,13 +62,20 @@ class TournamentView:
 
     @classmethod
     def start_tournament_view(cls):
-        #
-        #BORDEL: scinder en fonctions réutilisables, déplacer vers tournamentviews ou ce qui touche à la vue
-        #
-        '''Permet de démarrer un tournoi en choisissant le tournoi et en sélectionnant les joueurs
+        """Permet de démarrer un tournoi en choisissant le tournoi et en sélectionnant les joueurs
         instancie le tournoi et le sauvegarde en l'état.
-        '''
+        """
         header = "@ Sélection du Tournoi et des Joueurs @"
+        menu_options = []
+        UtilsView.menu(header, menu_options)
+        pass
+
+    @classmethod
+    def resume_tournament_view(cls):
+        """Permet de reprendre un tournoi en choisissant le tournoi et en sélectionnant les joueurs
+        instancie le tournoi et le sauvegarde en l'état.
+        """
+        header = "@ Sélection du Tournoi pour reprise @"
         menu_options = []
         UtilsView.menu(header, menu_options)
         pass

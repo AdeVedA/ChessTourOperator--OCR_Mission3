@@ -1,7 +1,7 @@
 import os
 import json
 from views.utilsviews import UtilsView
-
+from models.entity.roundmodel import Round
 tourdatas_path = os.path.join(os.getcwd(), "datas", "tournaments")
 
 class TournamentCrud:
@@ -28,18 +28,6 @@ class TournamentCrud:
             UtilsView.input_return_prints("notournament")
         return tournaments_infos
     
-        """
-        numbers = []
-        for f in tournament_files:
-            num_str = ''
-            for char in f[11:-5]:
-                if char.isdigit():
-                    num_str += char
-        numbers.append(int(num_str))
-        max_nbr_tournament = max(numbers)
-        return max_nbr_tournament
-        """
-
     @classmethod
     def save_new_tournament(cls, tournament):
         """_summary_
@@ -65,12 +53,18 @@ class TournamentCrud:
         pass
 
     @classmethod
-    def update_tournament(cls, my_tournament):
+    def update_tournament(cls, my_tournament, _round):
+        """sérialise le tournoi sauvegarde le tournoi en l'état
         """
-        """
-        i = my_tournament['tournament_id']
+        if my_tournament.rounds_tour==[] or _round.name!=my_tournament.rounds_tour[-1]['name']:
+            my_tournament.rounds_tour.append(Round.to_json(_round))
+        elif my_tournament.rounds_tour!=[] and _round.name==my_tournament.rounds_tour[-1]['name']:
+            del my_tournament.rounds_tour[-1]
+            my_tournament.rounds_tour.append(Round.to_json(_round))
+        my_tournament_dict = my_tournament.to_json()
+        i = my_tournament_dict['tournament_id']
         with open(os.path.join(tourdatas_path, f"tournament_{i}.json"), 'w', encoding='utf8') as file:
-             json_dumps_str = json.dumps(my_tournament, ensure_ascii=False, indent=4)
+             json_dumps_str = json.dumps(my_tournament_dict, ensure_ascii=False, indent=4)
              print(json_dumps_str, file=file)
-        UtilsView.input_return_prints("tournament_save", my_tournament['name'])
-        pass
+        UtilsView.input_return_prints("tournament_save", my_tournament_dict['name'])
+        return my_tournament

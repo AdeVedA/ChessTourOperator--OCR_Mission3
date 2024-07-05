@@ -1,4 +1,3 @@
-from models.manager.playermanager import PlayerCrud
 
 
 class PlayerModel:
@@ -21,9 +20,6 @@ class PlayerModel:
     def tie_point(self):
         self.points += 0.5
 
-    def __str__(self):
-        return f"{self.firstname} {self.lastname} ({self.chess_id})"
-
-    #def get_dico(self):
-    #    player_dic = self...
+    #def __str__(self):
+    #    return f"{self.firstname} {self.lastname} ({self.chess_id})"
 

@@ -5,23 +5,28 @@ class RoundView:
 
     @classmethod
     def roundheader(cls):
+        """affiche le header Ascii art du logiciel avec titre
+        """
         header = "@  Rounds de votre Tournoi  @"
         menu_options = []
         UtilsView.menu(header, menu_options)
 
     @classmethod
     def roundprint(cls,my_tournament,round_dict):
-        matches_list_dict = round_dict
-        header = matches_list_dict[0].keys()
-        rows = [game.values() for game in matches_list_dict]
+        """mettre le dictionnaire du round en header/rows 
+        pour printer avec une fonction de rapport de round de reportview
+        """
+        header = round_dict[0].keys()
+        rows = [game.values() for game in round_dict]
         ReportView.display_matches_list(rows,header,my_tournament.current_round,my_tournament.name)
-
+        
     @classmethod
-    def round_winners_input(cls, round_dict):
-        '''choix des joueurs que l'on souhaite inscire à un tournoi
-        '''
+    def round_winners_input(cls):
+        """inscription des résultats des matchs d'un round
+        """
         choice = UtilsView.valid_input("voulez-vous inscrire les résultats "
-            "des matchs du round ?\n1) pour Oui / 2) pour Non : ", "choice")
+            "des matchs du round maintenant ?"
+            "\n1) pour Oui / 2) pour Non : ", "choice")
         if choice == 1:
             round_results = UtilsView.valid_input(
                 "\ninscrivez les vainqueurs des matchs dans l'ordre des matchs"

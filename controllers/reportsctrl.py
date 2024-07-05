@@ -63,20 +63,30 @@ class ReportController:
         UtilsView.input_return_prints("continue")
 
     @classmethod
-    def display_alltournaments(cls):
+    def display_alltournaments(cls, *args):
         '''permet l'affichage de tous les joueurs inscrits dans le fichier json'''
         tournaments_list_dict = TournamentCrud.get_all_tournaments()
-        tournaments_list = []
-        for tournament in tournaments_list_dict:
-            tournament = {'tournament_id': tournament.pop('tournament_id'), **tournament}
-            del tournament['rounds_tour']
-            tournament['players_tour'] = len(tournament['players_tour'])
-            tournaments_list.append(tournament)
-        sorted_tournaments_list = sorted(tournaments_list,
-                                         key=lambda d: d['tournament_id'])
-        header = sorted_tournaments_list[0].keys()
-        rows = [infos.values() for infos in sorted_tournaments_list]
-        ReportView.display_tournaments_list(rows, header)
+        try:
+            if args:
+                tournaments_list_dict = [tour for tour in tournaments_list_dict if int(tour['current_round']) >= 2]            
+            else:
+                tournaments_list_dict = [tour for tour in tournaments_list_dict if int(tour['current_round']) == 1]
+            tournaments_list = []
+            for tournament in tournaments_list_dict:
+                tournament = {'tournament_id': tournament.pop('tournament_id'), **tournament}
+                del tournament['rounds_tour']
+                tournament['players_tour'] = len(tournament['players_tour'])
+                tournaments_list.append(tournament)
+            sorted_tournaments_list = sorted(tournaments_list,
+                                             key=lambda d: d['tournament_id'])
+            #header = sorted_tournaments_list[0].keys()
+            header = ['numéro du tournoi', 'nom', 'lieu', 'description', 'date de '
+                    'début', 'date de fin', 'round en cours', 'nombre de rounds',
+                    'nombre de joueurs', 'tour fini ?']
+            rows = [infos.values() for infos in sorted_tournaments_list]
+            ReportView.display_tournaments_list(rows, header)
+        except (IndexError, ValueError, TypeError) as e:
+            UtilsView.input_return_prints("notournament")
 
     @classmethod
     def display_tournament_name_dates(cls):
@@ -90,3 +100,11 @@ class ReportController:
         print("implémentation en cours")
         pass
 
+    @classmethod
+    def display_finished_tournament(cls, my_tournament):
+        """permet d'afficher les résultats d'un tournoi terminé
+        """
+        header = "tata"
+        rows = "toto"
+        # à revoir bien sûr
+        ReportView.display_finished_tournament_players_list(rows, header, round_nbr, tournament_name, end_date, location)
