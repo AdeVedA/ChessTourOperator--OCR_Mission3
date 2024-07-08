@@ -1,37 +1,60 @@
 import os
+import re
 import sys
 import time
-import re
 from colorama import Fore, Style
 
 spc = ' '
+
+
 class UtilsView:
     """Vue utile à toutes les vues/contrôleurs pour les messages types,
-    les print stylisés/colorés, les header en ascii art, menus
+    les print stylisés/colorés, le header menu/titre (mon 1er ascii art),
+    menus
     """
     @classmethod
-    def menu(cls,header, menu_options):
+    def menu(cls, header, menu_options):
         """Affiche un menu type avec infos en paramètres"""
-        UtilsView.clear_screen()
-        echec1 = f"███   ███   ███   ███   ███"
-        echec2 = f"▀▀▀   ▀▀▀   ▀▀▀   ▀▀▀   ▀▀▀"
-        echec3 = f"▄▄▄   ▄▄▄   ▄▄▄   ▄▄▄   ▄▄▄"
-        UtilsView.style_print(content=f"{spc*9}#################################################\n")
-        UtilsView.style_print(content=f"{spc*9}░▒░▒░▒░▒  {echec1[3:].center(30)}  ▒░▒░▒░▒\n", color=Fore.RED)
-        UtilsView.style_print(content=f"{spc*9}░▒▀▄░▒░▒  {echec1[:-3].center(30)}  ▒░▒▄▀░▒\n")
-        UtilsView.style_print(content=f"{spc*9}░▒░▒░▒░▒  {echec1[3:].center(30)}  ▒░▒░▒░▒\n", color=Fore.RED)
-        UtilsView.style_print(content=f"{spc*9}░▒░       {echec2[:-3].center(30)}      ▒░▒\n", color=Fore.YELLOW)
-        UtilsView.style_print(content=f"{spc*9}░▒░ {header.center(41)} ▒░▒\n", color=Fore.YELLOW)
-        UtilsView.style_print(content=f"{spc*9}░▒░       {echec3[3:].center(30)}      ▒░▒\n", color=Fore.YELLOW)
-        UtilsView.style_print(content=f"{spc*9}░▒░▒░▒░▒  {echec1[:-3].center(30)}  ▒░▒░▒░▒\n", color=Fore.RED)
-        UtilsView.style_print(content=f"{spc*9}░▒▄▀░▒░▒  {echec1[3:].center(30)}  ▒░▒▀▄░▒\n")
-        UtilsView.style_print(content=f"{spc*9}░▒░▒░▒░▒  {echec1[:-3].center(30)}  ▒░▒░▒░▒\n", color=Fore.RED)
-        UtilsView.style_print(content=f"{spc*9}#################################################\n\n")
-        if menu_options != []: #si menu_options=[] je n'affiche sur la page que l'ascii art du dessus
-            UtilsView.style_print(content="Menu :\n\n")
+        cls.clear_screen()
+        echec1 = "███   ███   ███   ███   ███"
+        echec2 = "▀▀▀   ▀▀▀   ▀▀▀   ▀▀▀   ▀▀▀"
+        echec3 = "▄▄▄   ▄▄▄   ▄▄▄   ▄▄▄   ▄▄▄"
+        cls.style_print(
+            content=f"{spc*9}######################"
+            "###########################\n")
+        cls.style_print(
+            content=f"{spc*9}░▒░▒░▒░▒  {echec1[3:].center(30)}  ▒░▒░▒░▒\n",
+            color=Fore.RED)
+        cls.style_print(
+            content=f"{spc*9}░▒▀▄░▒░▒  {echec1[:-3].center(30)}  ▒░▒▄▀░▒\n")
+        cls.style_print(
+            content=f"{spc*9}░▒░▒░▒░▒  {echec1[3:].center(30)}  ▒░▒░▒░▒\n",
+            color=Fore.RED)
+        cls.style_print(
+            content=f"{spc*9}░▒░       {echec2[:-3].center(30)}      ▒░▒\n",
+            color=Fore.YELLOW)
+        cls.style_print(
+            content=f"{spc*9}░▒░ {header.center(41)} ▒░▒\n", color=Fore.YELLOW)
+        cls.style_print(
+            content=f"{spc*9}░▒░       {echec3[3:].center(30)}      ▒░▒\n",
+            color=Fore.YELLOW)
+        cls.style_print(
+            content=f"{spc*9}░▒░▒░▒░▒  {echec1[:-3].center(30)}  ▒░▒░▒░▒\n",
+            color=Fore.RED)
+        cls.style_print(
+            content=f"{spc*9}░▒▄▀░▒░▒  {echec1[3:].center(30)}  ▒░▒▀▄░▒\n")
+        cls.style_print(
+            content=f"{spc*9}░▒░▒░▒░▒  {echec1[:-3].center(30)}  ▒░▒░▒░▒\n",
+            color=Fore.RED)
+        cls.style_print(
+            content=f"{spc*9}######################"
+            "###########################\n\n")
+        if menu_options != []:
+            # si menu_options=[], affiche l'AsciiArt du dessus sans options
+            cls.style_print(content="Menu :\n\n")
             options = "\n".join(f"{spc*21}{option}" for option in menu_options)
-            UtilsView.style_print(content=options, color=Fore.YELLOW)
-            UtilsView.style_print(content="\n\nChoisissez une option : ")
+            cls.style_print(content=options, color=Fore.YELLOW)
+            cls.style_print(content="\n\nChoisissez une option : ")
         else:
             return
 
@@ -67,30 +90,40 @@ class UtilsView:
             match valid_format:
                 case "string":
                     if rep is not rep or rep == "" \
-                        or not rep.isalpha():
-                        print(f"Veuillez inscrire une réponse valide")
+                            or not rep.isalpha():
+                        print(f"{Fore.RED}Veuillez inscrire "
+                              "une réponse valide")
                         continue
                     else:
                         return rep
                 case "string_name":
                     if rep is not rep or rep == "" \
-                        or re.match("^[-'a-zA-ZÀ-ÿ]+$", rep) is None:
-                        print(f"Veuillez inscrire une réponse valide")
+                            or re.match("^[-'a-zA-ZÀ-ÿ]+$", rep) is None:
+                        print(f"{Fore.RED}Veuillez inscrire "
+                              "une réponse valide")
                         continue
                     else:
                         return rep
                 case "integer":
+                    if args:
+                        if int(rep) > int(args[0]):
+                            print(f"{Fore.RED}Veuillez rentrer un numéro de "
+                                  "tournoi valide")
+                            continue
+                        else:
+                            pass
                     if rep is not rep or rep == "" \
-                        or not rep.isdigit():
-                        print(f"Veuillez inscrire une réponse valide")
+                            or not rep.isdigit():
+                        print(f"{Fore.RED}Veuillez inscrire "
+                              "une réponse valide")
                         continue
                     else:
                         return int(rep)
                 case "date":
                     if rep is not rep or rep == "" \
-                        or re.match('(\d{2})[/.-](\d{2})[/.-](\d{4})$',
+                            or re.match('(\d{2})[/.-](\d{2})[/.-](\d{4})$',
                                         rep) is None:
-                        print(f"Veuillez inscrire une date valide")
+                        print(f"{Fore.RED}Veuillez inscrire une date valide")
                         continue
                     else:
                         return rep
@@ -98,30 +131,39 @@ class UtilsView:
                     if rep is not rep or rep == "" \
                             or re.match('^[A-Z]{2}[0-9]{5}$',
                                         rep) is None:
-                        print(f"Veuillez rentrer une id valide, ex : AB12345")
+                        print(f"{Fore.RED}Veuillez rentrer une "
+                              "id valide, ex : AB12345")
                         continue
                     else:
                         return rep
                 case "comma_integer_list":
-                    if rep is not rep or rep == "" \
-                        or re.match('^(\d+)(,\s*\d+)*', rep) is None:
-                        print(f"Veuillez inscrire une réponse valide")
+                    if args:
+                        for r in list(map(int, rep.split(','))):
+                            if r > int(args[0]):
+                                print(f"{Fore.RED}Veuillez inscrire une "
+                                      "réponse valide")
+                                continue
+                            else:
+                                pass
+                    if rep is not rep or rep == "" or re.match(
+                            '^(\d+)(,\s*\d+)*', rep) is None:
+                        print(f"{Fore.RED}Veuillez inscrire une "
+                              "réponse valide")
                         continue
-                    #elif r for r in rep, r > int(args):
-                    #    print("certains joueurs n'existent pas encore")
-                    #    continue
                     else:
                         return rep
                 case "choice":
                     if rep is not rep or rep == "" \
-                        or re.match('^[1,2]{1}$', rep) is None:
-                        print(f"Veuillez inscrire une réponse valide")
+                            or re.match('^[1,2]{1}$', rep) is None:
+                        print(f"{Fore.RED}Veuillez inscrire une "
+                              "réponse valide")
                         continue
                     else:
                         return int(rep)
                 case "anything":
-                    if rep is not rep or rep == "" :
-                        print(f"Veuillez inscrire une réponse valide")
+                    if rep is not rep or rep == "":
+                        print(f"{Fore.RED}Veuillez inscrire une "
+                              "réponse valide")
                         continue
                     else:
                         return rep
@@ -162,8 +204,8 @@ class UtilsView:
                     time.sleep(1)
                     return
                 case "tournament_select":
-                    print(f"\n{Fore.YELLOW}{spc*26}le tournoi '{kwargs['name']}'"
-                          " a bien été sélectionné")
+                    print(f"\n{Fore.YELLOW}{spc*26}le tournoi "
+                          f"'{kwargs['name']}' a bien été sélectionné")
                     time.sleep(1)
                     return
                 case "bienvenue":
@@ -172,9 +214,9 @@ class UtilsView:
                           f"\n\n{spc*24} Appuyez sur la touche entrée")
                     return
                 case "quit":
-                    print(f"{Fore.MAGENTA}\n\n\n######## Au "
-                    "revoir les échecs !!! Belles réussites à vous\n"
-                    f"\n{Fore.GREEN}")
+                    print(f"{Fore.MAGENTA}\n\n\n######## Au revoir "
+                          "les échecs !!! Belles réussites à vous\n"
+                          f"\n{Fore.GREEN}")
                     break
                 case "invalid_tournament":
                     print(f"{Fore.RED}Il semble que le fichier soit corrompu."
@@ -182,10 +224,10 @@ class UtilsView:
                     time.sleep(1)
                     return
                 case "notournament":
-                    print(f"{Fore.RED}Veuillez d'abord inscrire un premier "
+                    input(f"{Fore.RED}Veuillez d'abord inscrire un premier "
                           "tournoi ou avancer un tournoi au prochain round")
                     return
                 case "noplayer":
-                    print(f"{Fore.RED}Veuillez d'abord inscrire un "
+                    input(f"{Fore.RED}Veuillez d'abord inscrire un "
                           "premier joueur")
                     return

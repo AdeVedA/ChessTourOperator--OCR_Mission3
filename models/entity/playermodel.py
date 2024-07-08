@@ -19,7 +19,3 @@ class PlayerModel:
 
     def tie_point(self):
         self.points += 0.5
-
-    #def __str__(self):
-    #    return f"{self.firstname} {self.lastname} ({self.chess_id})"
-

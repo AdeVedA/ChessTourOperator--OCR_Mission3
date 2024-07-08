@@ -4,7 +4,7 @@
     "description": "étalage de fric, guerre d'égos, hubris éhontée et échecs systémiques rapides",
     "start_date": "31/12/3031",
     "end_date": "à terminer",
-    "current_round": 2,
+    "current_round": 3,
     "rounds_nbr": 6,
     "tournament_id": 4,
     "players_tour": [
@@ -43,8 +43,8 @@
         },
         {
             "name": "Round 2",
-            "start_date": "05/07/2024",
-            "end_date": null,
+            "start_date": "31/12/3031",
+            "end_date": "08/07/2024",
             "matches": [
                 [
                     [
@@ -53,7 +53,7 @@
                     ],
                     [
                         "AS95159",
-                        0
+                        1
                     ]
                 ],
                 [
@@ -63,7 +63,7 @@
                     ],
                     [
                         "MM71777",
-                        0
+                        1
                     ]
                 ]
             ]

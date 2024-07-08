@@ -1,9 +1,9 @@
 class TournamentModel:
 
     def __init__(
-        self, name, location, description, start_date, end_date="", 
-        current_round=1, rounds_nbr=4, tournament_id=1,  
-        players_tour=[], rounds_tour=[] ,finished_tour=False
+        self, name, location, description, start_date, end_date="",
+        current_round=1, rounds_nbr=4, tournament_id=1,
+        players_tour=[], rounds_tour=[], finished_tour=False
                 ):
         self.name = name
         self.location = location

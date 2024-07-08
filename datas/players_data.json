@@ -107,8 +107,8 @@
         "player_id": 14,
         "lastname": "SERIAL-CHESSER",
         "firstname": "Ganesh",
-        "birth_date": "00/00/0000",
-        "chess_id": "AA00000",
+        "birth_date": "01/01/0001",
+        "chess_id": "AA00001",
         "points": 0
     },
     {
@@ -124,7 +124,15 @@
         "lastname": "NANA",
         "firstname": "Nani",
         "birth_date": "01/07/2023",
-        "chess_id": "AA00001",
+        "chess_id": "AA00011",
+        "points": 0
+    },
+    {
+        "player_id": 17,
+        "lastname": "TILEKE",
+        "firstname": "Marc",
+        "birth_date": "17/05/1980",
+        "chess_id": "TM19805",
         "points": 0
     }
 ]

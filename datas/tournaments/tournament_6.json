@@ -1,0 +1,46 @@
+{
+    "name": "Allez les gris !",
+    "location": "Dubai",
+    "description": "Tout en carton 18k, glaçons importés par avion",
+    "start_date": "17/02/2023",
+    "end_date": "à terminer",
+    "current_round": 2,
+    "rounds_nbr": 3,
+    "tournament_id": 6,
+    "players_tour": [
+        "TM19805",
+        "ZY94365",
+        "AV13579",
+        "GK88888"
+    ],
+    "rounds_tour": [
+        {
+            "name": "Round 1",
+            "start_date": "17/02/2023",
+            "end_date": "08/07/2024",
+            "matches": [
+                [
+                    [
+                        "ZY94365",
+                        1
+                    ],
+                    [
+                        "AV13579",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "TM19805",
+                        1
+                    ],
+                    [
+                        "GK88888",
+                        0
+                    ]
+                ]
+            ]
+        }
+    ],
+    "finished_tour": false
+}

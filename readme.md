@@ -11,7 +11,27 @@
 
 ### <p align="center">- Logiciel de Gestion de Tournois d'Échecs -</p>
 
-### <p align="center">(readme en construction)</p>
+# <p align="center"> I. Description du Projet</p>
+
+Ce gestionnaire de tournois d'échecs est une application Python autonome et hors ligne conçue pour la gestion des joueurs, des tournois et des résultats. L'application utilise des fichiers JSON pour la persistance des données et propose divers rapports et fonctionnalités.
+
+# <p align="center"> II. Fonctionnalités Principales</p>
+
+**Gestion des Joueurs**: Ajoutez, affichez et gérez les données des joueurs tels que le nom, le prénom, la date de naissance et l'identifiant national d’échecs.
+
+**Tournois**: Créez, gérez et suivez plusieurs tournois avec un nombre spécifié de tours. Chaque tour est une liste de matchs entre les joueurs inscrits, générés dynamiquement en fonction des résultats précédents.
+
+**Génération de Paires**: Le système d'appairage, aléatoire pour les premiers rounds et selon les points gagnés lors du tournoi pour les rounds suivants, garantit que chaque tour est équilibré et permet d'éviter au maximum qu'un joueur ne rencontre deux fois le même adversaire.
+
+**Rapports**: Affichez des rapports détaillés, tels que la liste de tous les joueurs par ordre alphabétique, la liste des joueurs d'un tournoi donné par ordre alphabétique, la liste de tous les tournois, la liste des noms et dates des tournois, la liste des rounds et matchs d'un tournoi spécifique.
+
+**Sauvegarde/Chargement des Données**: Les modifications apportées aux données (joueurs et tournois) sont automatiquement sauvegardées dans des fichiers JSON pour éviter toute perte de données. Le programme charge toutes les données à partir des fichiers JSON et peut restaurer son état entre les exécutions.
+
+**Vues**: L'interface utilisateur conviviale, colorée et mise en page permet aux utilisateurs d'effectuer facilement des actions telles que l'ajout de joueurs, la création de tournois, etc., à travers un menu principal et des sous-menus catégoriels.
+
+
+# <p align="center"> III. Structure du Code</p>
+Le code est structuré selon le modèle **MVC** (Modèle-Vue-Contrôleur) pour une meilleure organisation et maintenance. Le programme est divisé en trois packages principaux: modèles, vues et contrôleurs. Les instances de classe modèles ont été privilégiées plutôt que la manipulation de dictionnaires pour assurer la conformité avec le modèle MVC.
 
 
 ------------------------------------------

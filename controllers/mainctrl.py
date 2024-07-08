@@ -2,8 +2,7 @@ from views.mainview import MainMenuView
 from controllers.playerctrl import PlayerController
 from controllers.tournamentsctrl import TournamentController
 from controllers.reportsctrl import ReportController
-from views.utilsviews import UtilsView
-from colorama import Fore
+from views.utilsviews import UtilsView as UV
 
 
 class MainController:
@@ -21,7 +20,7 @@ class MainController:
                 case "3":
                     ReportController.report_menu()
                 case "0":
-                    UtilsView.input_return_prints("quit")
+                    UV.input_return_prints("quit")
                     break
                 case _:
-                    UtilsView.input_return_prints("choice_error")
+                    UV.input_return_prints("choice_error")

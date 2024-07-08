@@ -1,5 +1,6 @@
-from views.utilsviews import UtilsView
+from views.utilsviews import UtilsView as UV
 from views.reportviews import ReportView
+
 
 class RoundView:
 
@@ -9,30 +10,36 @@ class RoundView:
         """
         header = "@  Rounds de votre Tournoi  @"
         menu_options = []
-        UtilsView.menu(header, menu_options)
+        UV.menu(header, menu_options)
 
     @classmethod
-    def roundprint(cls,my_tournament,round_dict):
-        """mettre le dictionnaire du round en header/rows 
+    def roundprint(cls, my_tournament, round_dict):
+        """mettre le dictionnaire du round en header/rows
         pour printer avec une fonction de rapport de round de reportview
         """
         header = round_dict[0].keys()
         rows = [game.values() for game in round_dict]
-        ReportView.display_matches_list(rows,header,my_tournament.current_round,my_tournament.name)
-        
+        ReportView.display_matches_list(
+            rows, header, my_tournament.current_round,
+            my_tournament.name)
+
     @classmethod
     def round_winners_input(cls):
         """inscription des résultats des matchs d'un round
         """
-        choice = UtilsView.valid_input("voulez-vous inscrire les résultats "
-            "des matchs du round maintenant ?"
-            "\n1) pour Oui / 2) pour Non : ", "choice")
+        choice = UV.valid_input("voulez-vous inscrire les résultats "
+                                "des matchs du round maintenant ?"
+                                "\n1) pour Oui / 2) pour Non : ",
+                                "choice")
+        cursor_up = '\x1b[1A'
+        erase_line = '\x1b[2K'
+        print((cursor_up + erase_line)*3 + cursor_up)
         if choice == 1:
-            round_results = UtilsView.valid_input(
-                "\ninscrivez les vainqueurs des matchs dans l'ordre des matchs"
-                " avec :\n1 pour joueur1, 2 pour joueur2, 0 pour match nul, "
-                "séparés par des virgules (ex : 1,2,0,2)\net appuyez sur "
-                "'entrée'): ", "comma_integer_list")
+            round_results = UV.valid_input(
+                "\ninscrivez les vainqueurs des matchs en cours dans l'"
+                "ordre des matchs avec :\n1 pour joueur1, 2 pour joueur2, "
+                "0 pour match nul, séparés par des virgules (ex : 1,2,0,2)\n"
+                "et appuyez sur 'entrée'): ", "comma_integer_list", "2")
             return round_results
         else:
             return None
@@ -46,5 +53,5 @@ class RoundView:
                         "",
                         "",
                         "0. Retour au menu principal"]
-        UtilsView.menu(header, menu_options)
+        UV.menu(header, menu_options)
     """
