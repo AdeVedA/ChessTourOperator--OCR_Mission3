@@ -1,4 +1,5 @@
 from views.utilsviews import UtilsView as UV
+from colorama import Fore
 from tabulate import tabulate
 tabulate.MIN_PADDING = 0
 
@@ -36,9 +37,9 @@ class ReportView:
         et valide la réponse avec le nombre de tournoi en argument
         """
         choice = UV.valid_input(
-            "inscrivez le numéro du tournoi "
-            "dont vous souhaitez voir les joueurs (et appuyez sur"
-            " 'entrée'): ", "integer", args)
+            "Inscrivez le numéro du tournoi "
+            "qui vous intéresse (et appuyez sur 'entrée'): ",
+            "integer_tour_choice", args)
         return choice
 
     @classmethod
@@ -71,8 +72,8 @@ class ReportView:
         avec une methode d'UtilsView (UV)
         """
         UV.style_print(
-            content=f'le round {round_nbr} du tournoi "{tournament_name}" '
-            f"comporte les matchs suivants : \n")
+            content=f'Le round {round_nbr} du tournoi "{tournament_name}" '
+            f"comporte les matchs suivants : \n", color=Fore.YELLOW)
         UV.style_print(
             content=f"{tabulate(
                 rows, header, tablefmt='rounded_grid', numalign="left")}")
@@ -81,26 +82,16 @@ class ReportView:
 
     @classmethod
     def display_finished_tournament_players_list(cls, rows, header,
-                                                 round_nbr, tournament_name,
+                                                 rounds_nbr, tournament_name,
                                                  end_date, location):
-        """affiche le un tableau `tabulate` des résultats finaux d'un tournoi
+        """affiche un tableau `tabulate` des résultats finaux d'un tournoi
         avec une methode d'UtilsView (UV)
         """
-        UV.style_print(content=f'le tournoi "{tournament_name}" de '
-                               f"{round_nbr} rounds s'achève en ce {end_date}"
-                               f"sur ces résultats : \n")
+        UV.style_print(content=f'Le tournoi "{tournament_name}" de '
+                               f"{rounds_nbr} rounds s'achève en ce {end_date}"
+                               f" sur ces résultats : \n", color=Fore.YELLOW)
         UV.style_print(content=f"{tabulate(rows, header,
                        tablefmt='rounded_grid', numalign="left")}")
-        print(f'\n bonne fête à {location} pour tout le monde !!!')
-
-    """
-    @classmethod
-    def display_tournament(tournament):
-        '''affichage des données d'un tournoi'''
-        print("Nom du tournoi : ", tournament.name)
-        print("Lieu du tournoi : ", tournament.location)
-        print("Description du tournoi : ", tournament.description)
-        print("dates du tournoi : ", tournament.start_date, "-",
-        tournament.end_date)
-        print("rounds : ", tournament.rounds_nbr)
-    """
+        UV.style_print(content=f"\n Bonne fête à {location} pour "
+                               f"tout le monde !!!\n", color=Fore.MAGENTA)
+        UV.input_return_prints("continue")

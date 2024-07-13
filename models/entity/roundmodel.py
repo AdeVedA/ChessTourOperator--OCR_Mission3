@@ -3,7 +3,8 @@ from models.manager.playermanager import PlayerCrud
 
 class Round:
     """Représente un tournoi
-    avec un nom, des matchs et des dates de début et de fin."""
+    avec un nom, des matchs et des dates de début et de fin
+    """
     def __init__(self, name, start_date, end_date=None, matches=[]):
         """Initialise une nouvelle instance de la classe Round.
         Args:
@@ -34,12 +35,12 @@ class Round:
             _round['matches'].append(_match.to_json())
         return _round
 
-    def to_dict(self):
-        """Prépare les données du round pour un affichage avec résultat
-        dans un rapport.
+    def to_dict_results(self):
+        """Prépare les données du round pour un affichage des matchs avec
+        résultat dans un rapport ("tabulate", qui admet des dictionnaires)
         Returns:
-            list: Une liste de dictionnaires contenant les informations des
-                matchs et les noms des joueurs.
+            matches_list_dict: Une liste de dictionnaires contenant les
+             infos des matchs avec noms des joueurs (et gagnant si instruit)
         """
         matches_list_dict = []
         for _match in self.matches:
@@ -47,7 +48,7 @@ class Round:
             ply1 = _match.player_id1
             ply2 = _match.player_id2
             one_match['joueur 1'] = PlayerCrud.get_player_name(ply1)
-            if _match.score_p1 is None:
+            if _match.score_p1 == 'None' or _match.score_p1 is None:
                 one_match['winner'] = "en cours"
             elif _match.score_p1 == 1:
                 one_match['winner'] = PlayerCrud.get_player_name(ply1)

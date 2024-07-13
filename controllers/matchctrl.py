@@ -32,6 +32,14 @@ class MatchController:
     @classmethod
     def instantiate_round_matchs_from_json(cls, round_matches,
                                            instantiated_players):
+        """Créer des instances de "MatchModel" à partir d'une liste de matches
+        et de joueurs. Si aucun adversaire n'est trouvé, l'adversaire est None
+        Args:
+            round_matches : liste de matches pour un round particulier
+            instantiated_players : liste d'instances PlayerModel
+        Returns:
+            liste d'instances de "MatchModel"
+        """
         instantiated_matchs_list = []
         for _match in round_matches:
             for player in instantiated_players:
@@ -48,9 +56,14 @@ class MatchController:
 
     @classmethod
     def make_next_round_matchs(cls, instantiated_players, my_tournament):
-        """permet de créer les matchs des rounds n+1 avec appairage
-        selon les points (classement) et joueurs précédemment
-        rencontrés (à éviter au maximum)
+        """permet de retourner les matchs des rounds n+1 avec appairage
+        selon les points (classement sorted_players), selon les joueurs
+        précédemment rencontrés (à éviter au maximum), selon si joueur seul
+        Args:
+            my_tournament : Instance du tournoi en cours
+            instantiated_players : Liste des joueurs instanciés du tournoi
+        returns:
+            liste des matchs instanciés du prochain round
         """
         sorted_players = sorted(
             instantiated_players,
@@ -64,6 +77,7 @@ class MatchController:
             opponent = None
             # Trouver un "opponent"
             if len(sorted_players) > 1:
+                sorted_players.remove(player)
                 for potential_opponent in sorted_players:
                     potential_opponent_id = potential_opponent.chess_id
                     # Trouver un "opponent" non joué pour le joueur "player"
@@ -72,35 +86,36 @@ class MatchController:
                             played_against[player_id]:
                         opponent = potential_opponent
                         break
-                    # sinon rejouer un match existant.
-                    elif potential_opponent_id in played_against[player_id]:
-                        next_round_matches.append(
-                            MatchModel(player, "None",
-                                       sorted_players[1], "None"))
-                        sorted_players.remove(player)
-                        sorted_players.remove(sorted_players[0])
-                        break
                 # Si un adversaire est trouvé, on crée le match et
                 # on enlève ces joueurs de la liste
-            if opponent:
+                if opponent:
+                    next_round_matches.append(
+                        MatchModel(player, None, opponent, None))
+                    # sorted_players.remove(player)
+                    sorted_players.remove(opponent)
+                    opponent = None
+                # sinon rejouer un match existant.
+                elif potential_opponent_id != player_id and \
+                        potential_opponent_id in played_against[player_id]:
+                    next_round_matches.append(
+                        MatchModel(player, "None",
+                                   sorted_players[0], "None"))
+                    # sorted_players.remove(player)
+                    sorted_players.remove(sorted_players[0])
+                # Si aucun nouvel adversaire valide n'est trouvé,
+                # s'il est tout seul=>match factice
+            elif len(sorted_players) == 1:
                 next_round_matches.append(
-                    MatchModel(player, None, opponent, None))
-                sorted_players.remove(player)
-                sorted_players.remove(opponent)
-                opponent = None
-            # Si aucun nouvel adversaire valide n'est trouvé,
-            # s'il est tout seul=>match factice
-        if len(sorted_players) == 1:
-            next_round_matches.append(
-                    MatchModel(sorted_players[0], "None", None, 0))
-            sorted_players.remove(sorted_players[0])
+                        MatchModel(sorted_players[0], "None", None, 0))
+                sorted_players.remove(sorted_players[0])
         return next_round_matches
 
     @classmethod
     def get_played_against(cls, my_tournament):
-        """crée un dictionnaire played_against avec
+        """retourne un dictionnaire played_against avec
         pour clé : chess_id des joueurs
         pour valeurs : liste des chess_ids que chaque clé-joueur a déjà joués
+        à partir de l'instance tournoi my_tournament
         """
         played_against = {}
         # Parcourir tous les tours terminés pour remplir

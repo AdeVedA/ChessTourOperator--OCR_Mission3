@@ -1,11 +1,11 @@
 {
     "name": "Battle Royale",
-    "location": "Tombouctou",
-    "description": "Yéééah !!! first tournoi à venir",
+    "location": "bande de Gaza",
+    "description": "pluie de bombes royales sur fourmillière de pions sans voix",
     "start_date": "12/06/2024",
     "end_date": "à terminer",
     "current_round": 3,
-    "rounds_nbr": 4,
+    "rounds_nbr": 3,
     "tournament_id": 1,
     "players_tour": [
         "MM71777",
@@ -17,16 +17,16 @@
         {
             "name": "Round 1",
             "start_date": "12/06/2024",
-            "end_date": "04/07/2024",
+            "end_date": "13/07/2024",
             "matches": [
                 [
                     [
-                        "AM42315",
-                        1
+                        "AI13579",
+                        0
                     ],
                     [
-                        "AS95159",
-                        0
+                        "AM42315",
+                        1
                     ]
                 ],
                 [
@@ -35,7 +35,7 @@
                         1
                     ],
                     [
-                        "AI13579",
+                        "AS95159",
                         0
                     ]
                 ]
@@ -43,8 +43,8 @@
         },
         {
             "name": "Round 2",
-            "start_date": "05/07/2024",
-            "end_date": "05/07/2024",
+            "start_date": "13/07/2024",
+            "end_date": "13/07/2024",
             "matches": [
                 [
                     [
@@ -59,11 +59,11 @@
                 [
                     [
                         "AI13579",
-                        0
+                        1
                     ],
                     [
                         "AS95159",
-                        1
+                        0
                     ]
                 ]
             ]

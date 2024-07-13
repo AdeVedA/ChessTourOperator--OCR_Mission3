@@ -2,9 +2,9 @@
     "name": "Fête du bégué-beauté",
     "location": "Saly Velingara au village des artistes",
     "description": "Le puits, la musique, les échecs ! Lalal n'dor ba aldiana. une partie ?",
-    "start_date": "25/09/2024",
+    "start_date": "25/06/2024",
     "end_date": "à terminer",
-    "current_round": 1,
+    "current_round": 3,
     "rounds_nbr": 5,
     "tournament_id": 2,
     "players_tour": [
@@ -16,26 +16,53 @@
     "rounds_tour": [
         {
             "name": "Round 1",
-            "start_date": "25/09/2024",
-            "end_date": null,
+            "start_date": "25/06/2024",
+            "end_date": "10/07/2024",
             "matches": [
                 [
                     [
-                        "MK12000",
-                        0
+                        "AI13579",
+                        1
                     ],
                     [
-                        "AI13579",
+                        "MK88888",
                         0
                     ]
                 ],
                 [
                     [
                         "AS95159",
+                        1
+                    ],
+                    [
+                        "MK12000",
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 2",
+            "start_date": "12/07/2024",
+            "end_date": "12/07/2024",
+            "matches": [
+                [
+                    [
+                        "AS95159",
                         0
                     ],
                     [
+                        "AI13579",
+                        1
+                    ]
+                ],
+                [
+                    [
                         "MK88888",
+                        1
+                    ],
+                    [
+                        "MK12000",
                         0
                     ]
                 ]

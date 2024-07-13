@@ -2,72 +2,12 @@
     "name": "DallasBlitz",
     "location": "Dallas",
     "description": "étalage de fric, guerre d'égos, hubris éhontée et échecs systémiques rapides",
-    "start_date": "31/12/3031",
+    "start_date": "31/12/2021",
     "end_date": "à terminer",
-    "current_round": 3,
+    "current_round": 1,
     "rounds_nbr": 6,
     "tournament_id": 4,
-    "players_tour": [
-        "MM71777",
-        "PM66100",
-        "DB61100",
-        "AS95159"
-    ],
-    "rounds_tour": [
-        {
-            "name": "Round 1",
-            "start_date": "31/12/3031",
-            "end_date": "05/07/2024",
-            "matches": [
-                [
-                    [
-                        "PM66100",
-                        1
-                    ],
-                    [
-                        "DB61100",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "MM71777",
-                        0
-                    ],
-                    [
-                        "AS95159",
-                        1
-                    ]
-                ]
-            ]
-        },
-        {
-            "name": "Round 2",
-            "start_date": "31/12/3031",
-            "end_date": "08/07/2024",
-            "matches": [
-                [
-                    [
-                        "PM66100",
-                        0
-                    ],
-                    [
-                        "AS95159",
-                        1
-                    ]
-                ],
-                [
-                    [
-                        "DB61100",
-                        0
-                    ],
-                    [
-                        "MM71777",
-                        1
-                    ]
-                ]
-            ]
-        }
-    ],
+    "players_tour": [],
+    "rounds_tour": [],
     "finished_tour": false
 }

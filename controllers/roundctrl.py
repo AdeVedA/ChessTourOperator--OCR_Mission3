@@ -13,7 +13,7 @@ class RoundController:
         sauvegarder
         Args:
             my_tournament (Tournament): Instance du tournoi en cours.
-            instantiated_players (list of Player): Liste des joueurs
+            instantiated_players : Liste des joueurs instanciés du tournoi
             instanciés prêts à concourir.
         Returns:
             le tournoi mis à jour et le round créé.
@@ -26,7 +26,7 @@ class RoundController:
                 instantiated_players)
             round1 = Round("Round 1", my_tournament.start_date, None, matches)
             # on va printer le round
-            RoundView.roundprint(my_tournament, round1.to_dict())
+            RoundView.roundprint(my_tournament, round1.to_dict_results())
             cls.round_get_results(my_tournament, round1)
         # 1er round avec round créé
         elif int(my_tournament.current_round) == 1 \
@@ -34,7 +34,7 @@ class RoundController:
             matches = MatchController.instantiate_round_matchs_from_json(
                 my_tournament.rounds_tour[0]['matches'], instantiated_players)
             round1 = Round("Round 1", my_tournament.start_date, None, matches)
-            RoundView.roundprint(my_tournament, round1.to_dict())
+            RoundView.roundprint(my_tournament, round1.to_dict_results())
             my_tournament, round1 = cls.round_get_results(
                 my_tournament, round1)
         else:
@@ -53,7 +53,7 @@ class RoundController:
             le tournoi et le round mis à jour avec les résultats.
         """
         return_results = (f"{RoundView.round_winners_input()}")
-        if return_results != 'None':
+        if return_results is not None:
             cls.round_results(_round, return_results)
             my_tournament.next_round()
             return my_tournament, _round
@@ -117,7 +117,8 @@ class RoundController:
                 start_date = datetime.today().strftime('%d/%m/%Y')
                 end_date = None
                 round_next = Round(name, start_date, end_date, matches)
-                RoundView.roundprint(my_tournament, round_next.to_dict())
+                RoundView.roundprint(my_tournament,
+                                     round_next.to_dict_results())
                 pass
             elif my_tournament.rounds_tour[
                     int(my_tournament.current_round) - 1]:
@@ -127,7 +128,8 @@ class RoundController:
                 round_next = Round(
                     my_tournament.rounds_tour[-1]['name'],
                     my_tournament.start_date, None, matches)
-                RoundView.roundprint(my_tournament, round_next.to_dict())
+                RoundView.roundprint(my_tournament,
+                                     round_next.to_dict_results())
                 pass
             my_tournament, round_next = cls.round_get_results(
                     my_tournament, round_next)
@@ -135,14 +137,14 @@ class RoundController:
 
     @classmethod
     def create_points_mapping(cls, my_tournament):
-        """créer un dictionnaire mappant les chess_id des joueurs à leurs
+        """crée un dictionnaire mappant les chess_id des joueurs à leurs
         points accumulés au fil des rounds
         Args:
             mytournament (Tournament): Instance du tournoi pour laquelle on
                     souhaite créer le mapping de points.
         Returns:
-            points_mapping : Dictionnaire mappant les chess_id aux points
-            accumulés.
+            points_mapping : Dictionnaire mappant les chess_id des joueurs
+            aux points accumulés.
         """
         points_mapping = {}
         for _round in my_tournament.rounds_tour:

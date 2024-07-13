@@ -1,5 +1,6 @@
-
 class MatchModel:
+    """Représente un match
+    avec un joueur, son score, un adversaire et le score de l'adversaire"""
     def __init__(self, player_id1, score_p1, player_id2, score_p2):
         """Initialise une instance de la classe MatchModel
         avec les identifiants des joueurs et leurs scores.
@@ -10,12 +11,14 @@ class MatchModel:
             score_p2 (float/None): Score du second joueur, initialisé à None.
         """
         self.player_id1 = player_id1
-        self.score_p1 = None
+        self.score_p1 = score_p1
         self.player_id2 = player_id2
-        self.score_p2 = None
+        self.score_p2 = score_p2
 
     def to_json(self):
-        """convertit un objet match pour serialisation
+        """convertit un objet match pour serialisation en JSON
+        returns:
+            _match : liste contenant 2 listes type [joueur, points du joueur]
         """
         _match = [[f"{self.player_id1}", int(self.score_p1)
                    if self.score_p1 is not None else 0],

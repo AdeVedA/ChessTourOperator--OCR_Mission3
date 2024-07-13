@@ -1,0 +1,18 @@
+{
+    "name": "Chess Or well",
+    "location": "Srinagar",
+    "description": "Chill Tour in dystopic Cachemire",
+    "start_date": "18/05/2024",
+    "end_date": "à terminer",
+    "current_round": 1,
+    "rounds_nbr": 4,
+    "tournament_id": 7,
+    "players_tour": [
+        "GA77777",
+        "AI13579",
+        "MK12000",
+        "GR00800"
+    ],
+    "rounds_tour": [],
+    "finished_tour": false
+}

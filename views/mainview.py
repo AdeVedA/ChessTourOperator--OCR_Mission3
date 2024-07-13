@@ -2,7 +2,9 @@ from views.utilsviews import UtilsView
 
 
 class MainMenuView:
-
+    """Contrôleur pour gérer les vues de l'accueil
+    et du menu principal
+    """
     @classmethod
     def display(cls):
         header = "Logiciel de Gestion de Tournois d'Échecs"

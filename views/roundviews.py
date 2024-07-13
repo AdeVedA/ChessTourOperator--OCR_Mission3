@@ -6,7 +6,7 @@ class RoundView:
 
     @classmethod
     def roundheader(cls):
-        """affiche le header Ascii art du logiciel avec titre
+        """affiche le header Ascii-art du logiciel avec titre
         """
         header = "@  Rounds de votre Tournoi  @"
         menu_options = []
@@ -25,9 +25,10 @@ class RoundView:
 
     @classmethod
     def round_winners_input(cls):
-        """inscription des résultats des matchs d'un round
+        """inscription des résultats des matchs d'un round avec technique
+        d'effacement/remplacement du message précédent pour affichage propre
         """
-        choice = UV.valid_input("voulez-vous inscrire les résultats "
+        choice = UV.valid_input("Voulez-vous inscrire les résultats "
                                 "des matchs du round maintenant ?"
                                 "\n1) pour Oui / 2) pour Non : ",
                                 "choice")
@@ -36,22 +37,11 @@ class RoundView:
         print((cursor_up + erase_line)*3 + cursor_up)
         if choice == 1:
             round_results = UV.valid_input(
-                "\ninscrivez les vainqueurs des matchs en cours dans l'"
+                "\nInscrivez les vainqueurs des matchs en cours dans l'"
                 "ordre des matchs avec :\n1 pour joueur1, 2 pour joueur2, "
                 "0 pour match nul, séparés par des virgules (ex : 1,2,0,2)\n"
                 "et appuyez sur 'entrée'): ", "comma_integer_list", "2")
+            print((cursor_up + erase_line)*3 + cursor_up)
             return round_results
         else:
             return None
-    """
-    @classmethod
-    def display(cls):
-        header = "Gestion des rounds d'un tournoi"
-        menu_options = ["1. Inscrire les résultats d'un round d'un tournoi",
-                        "",
-                        "2. Afficher les matchs d'un round",
-                        "",
-                        "",
-                        "0. Retour au menu principal"]
-        UV.menu(header, menu_options)
-    """

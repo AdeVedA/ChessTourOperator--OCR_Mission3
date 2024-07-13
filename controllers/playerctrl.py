@@ -34,7 +34,9 @@ class PlayerController:
                 PlayerCrud.get_player_id(player_infos["chess_id"]))}")
         player = PlayerModel(**player_infos)
         players_list = PlayerCrud.get_all_players()
+        # sauvegarde
         PlayerCrud.save_new_player(players_list, player)
+        # notification d'enregistrement du nouveau joueur
         UV.input_return_prints("player_reg",
                                player_infos["firstname"],
                                player_infos["lastname"])

@@ -5,12 +5,15 @@ import time
 from colorama import Fore, Style
 
 spc = ' '
+cursor_up = '\x1b[1A'
+erase_line = '\x1b[2K'
 
 
 class UtilsView:
-    """Vue utile à toutes les vues/contrôleurs pour les messages types,
+    """Vue utile à toutes les vues/contrôleurs pour les messages types de
+    retours de choix utilisateurs et de notification d'étape (sauvegarde),
     les print stylisés/colorés, le header menu/titre (mon 1er ascii art),
-    menus
+    les validations des données issues des saisies de l'utilisateur
     """
     @classmethod
     def menu(cls, header, menu_options):
@@ -66,8 +69,7 @@ class UtilsView:
     @classmethod
     def style_print(cls, content, color=Fore.GREEN):
         """styliser l'impression des contenus"""
-        # WARNING = Fore.YELLOW
-        BOLD = Style.BRIGHT
+        BOLD = Style.BRIGHT  # between color & letter : {BOLD}
         CLReset = Style.RESET_ALL
         for letter in content:
             sys.stdout.flush()
@@ -81,6 +83,8 @@ class UtilsView:
         Args:
             question (string): la question
             valid_format (string): le format attendu de la réponse utilisateur
+            *args : argument optionnel permettant de recueillir les valeurs
+                    contextuelles autorisées ou d'ajouter des validations
         Returns:
             rep (various formats): la réponse au format valide
         """
@@ -106,7 +110,7 @@ class UtilsView:
                         return rep
                 case "integer":
                     if args:
-                        if int(rep) > int(args[0]):
+                        if int(rep) not in [ids for ids in args[0]]:
                             print(f"{Fore.RED}Veuillez rentrer un numéro de "
                                   "tournoi valide")
                             continue
@@ -121,7 +125,8 @@ class UtilsView:
                         return int(rep)
                 case "date":
                     if rep is not rep or rep == "" \
-                            or re.match('(\d{2})[/.-](\d{2})[/.-](\d{4})$',
+                            or re.match(r"^(3[01]|[12][0-9]|0?[1-9])(\/|\-|\.)"
+                                        r"(1[0-2]|0?[1-9])\2([12][0-9]{3})$",
                                         rep) is None:
                         print(f"{Fore.RED}Veuillez inscrire une date valide")
                         continue
@@ -145,8 +150,8 @@ class UtilsView:
                                 continue
                             else:
                                 pass
-                    if rep is not rep or rep == "" or re.match(
-                            '^(\d+)(,\s*\d+)*', rep) is None:
+                    if rep is not rep or rep == "" or \
+                            re.match(r"^(\d+)(,\s*\d+)*", rep) is None:
                         print(f"{Fore.RED}Veuillez inscrire une "
                               "réponse valide")
                         continue
@@ -167,6 +172,21 @@ class UtilsView:
                         continue
                     else:
                         return rep
+                case "integer_tour_choice":
+                    if rep is not rep or rep == "" \
+                            or not rep.isdigit():
+                        print(f"{Fore.RED}Veuillez inscrire "
+                              "une réponse valide")
+                        continue
+                    if args:
+                        if int(rep) not in range(1, int(args[0]) + 1):
+                            print(f"{Fore.RED}Veuillez rentrer un "
+                                  "numéro de tournoi valide")
+                            continue
+                        else:
+                            return int(rep)
+                    else:
+                        return int(rep)
 
     @classmethod
     def input_return_prints(cls, message, *args, **kwargs):
@@ -180,33 +200,35 @@ class UtilsView:
         while True:
             match message:
                 case "continue":
-                    input(f"\n{Fore.YELLOW}{spc*26}appuyez sur une touche "
-                          "pour continuer")
+                    input(f"\n{Fore.YELLOW}{spc*26}Appuyez sur la touche "
+                          "'entrée' pour continuer")
+                    print(cursor_up + erase_line + cursor_up)
                     return
                 case "choice_error":
                     input(f"\n\n{Fore.RED}{spc*12}Veuillez choisir une des "
                           f"options proposées.\n{spc*19}{Fore.GREEN}"
                           f"Appuyez sur la touche entrée")
+                    print((cursor_up + erase_line)*2 + cursor_up)
                     return
                 case "player_reg":
                     print(f"\n{Fore.YELLOW}{spc*19}{args[0]} "
                           f"{args[1]} a bien été enregistré")
-                    time.sleep(1)
+                    time.sleep(3)
                     return
                 case "tournament_reg":
-                    print(f"\n{Fore.YELLOW}{spc*18}le tournoi a bien été "
+                    print(f"\n{Fore.YELLOW}{spc*18}Le tournoi a bien été "
                           "enregistré")
-                    time.sleep(1)
+                    time.sleep(3)
                     return
                 case "tournament_save":
-                    print(f"\n{Fore.YELLOW}{spc*18}le tournoi '{args[0]}'"
+                    print(f"\n{Fore.YELLOW}{spc*18}Le tournoi '{args[0]}'"
                           " vient d'être sauvegardé")
-                    time.sleep(1)
+                    time.sleep(3)
                     return
                 case "tournament_select":
-                    print(f"\n{Fore.YELLOW}{spc*26}le tournoi "
+                    print(f"\n{Fore.YELLOW}{spc*26}Le tournoi "
                           f"'{kwargs['name']}' a bien été sélectionné")
-                    time.sleep(1)
+                    time.sleep(2)
                     return
                 case "bienvenue":
                     input(f"\n\n{Fore.YELLOW}{spc*10}Bienvenue dans le centre "
@@ -225,9 +247,20 @@ class UtilsView:
                     return
                 case "notournament":
                     input(f"{Fore.RED}Veuillez d'abord inscrire un premier "
-                          "tournoi ou avancer un tournoi au prochain round")
+                          "tournoi si vous tentez d'en démarrer un, ou "
+                          "avancer un tournoi au prochain round sinon.\n"
+                          "appuyez sur la touche 'entrée' pour continuer")
+                    print((cursor_up + erase_line)*2 + cursor_up)
                     return
                 case "noplayer":
                     input(f"{Fore.RED}Veuillez d'abord inscrire un "
-                          "premier joueur")
+                          "premier joueur pour ce tournoi. "
+                          "Appuyez sur la touche 'entrée'")
+                    print(cursor_up + erase_line + cursor_up)
+                    return
+                case "noround":
+                    input(f"{Fore.RED}Veuillez d'abord avancer ce tournoi "
+                          "au prochain round avant de demander ce rapport.\n"
+                          "appuyez sur la touche 'entrée' pour continuer")
+                    print((cursor_up + erase_line)*2 + cursor_up)
                     return

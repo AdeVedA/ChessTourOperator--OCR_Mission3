@@ -1,5 +1,16 @@
 class TournamentModel:
-
+    """représente un tournoi avec ses attributs
+    précisions:
+    current_round = soit le numéro du futur round à créer,
+                    soit le numéro du round déjà crée
+                    mais dont les résultats n'ont pas été renseignés
+    rounds_nbr = le nombre de rounds du tournoi
+    tournament_id = l'identifiant numérique unique d'un tournoi
+    players_tour = liste des chess_id des joueurs inscrits au tournoi
+    rounds_tour = liste de dictionnaire des rounds déjà enregistrés
+                  avec pour clés (nom, dates de début, de fin, liste de matchs)
+    finished_tour (bool) = état "fini ou non" du tournoi
+    """
     def __init__(
         self, name, location, description, start_date, end_date="",
         current_round=1, rounds_nbr=4, tournament_id=1,
@@ -11,10 +22,10 @@ class TournamentModel:
         self.start_date = start_date
         self.end_date = end_date if end_date else "à terminer"
         self.current_round = current_round
-        self.rounds_nbr = rounds_nbr  # nbr de round d'un tournoi(def = 4)
+        self.rounds_nbr = rounds_nbr
         self.tournament_id = tournament_id
-        self.players_tour = players_tour if players_tour else []
-        self.rounds_tour = rounds_tour if rounds_tour else []
+        self.players_tour = players_tour
+        self.rounds_tour = rounds_tour
         self.finished_tour = finished_tour
 
     def to_json(self):

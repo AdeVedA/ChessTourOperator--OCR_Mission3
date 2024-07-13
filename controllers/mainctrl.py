@@ -6,7 +6,7 @@ from views.utilsviews import UtilsView as UV
 
 
 class MainController:
-
+    """Contrôleur pour gérer le menu principal"""
     @classmethod
     def run(cls):
         MainMenuView.firstscreen()

@@ -40,6 +40,4 @@ class PlayerView:
         player_infos["chess_id"] = UV.valid_input(
             "Veuillez rentrer l'identité nationale d'échec du joueur : ",
             "id_chess")
-        # player_infos["points"] = UV.valid_input("Veuillez rentrer "
-        #            "le score du joueur : ", "integer")
         return player_infos

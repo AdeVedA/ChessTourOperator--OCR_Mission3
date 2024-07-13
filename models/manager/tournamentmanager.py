@@ -7,8 +7,7 @@ tourdatas_path = os.path.join(os.getcwd(), "datas", "tournaments")
 
 
 class TournamentCrud:
-    # def __init__(self):
-    #    os.makedirs(tourdatas_path, exist_ok=True)
+
     @classmethod
     def get_all_tournaments(cls):
         tournaments_files = []
@@ -56,7 +55,6 @@ class TournamentCrud:
             json.dump(my_tournament.__dict__, file,
                       ensure_ascii=False, indent=4)
         UV.input_return_prints("tournament_save", my_tournament.name)
-        pass
 
     @classmethod
     def update_tournament(cls, my_tournament, _round):

@@ -3,8 +3,8 @@
     "location": "Dubai",
     "description": "Tout en carton 18k, glaçons importés par avion",
     "start_date": "17/02/2023",
-    "end_date": "à terminer",
-    "current_round": 2,
+    "end_date": "12/07/2024",
+    "current_round": 3,
     "rounds_nbr": 3,
     "tournament_id": 6,
     "players_tour": [
@@ -40,7 +40,61 @@
                     ]
                 ]
             ]
+        },
+        {
+            "name": "Round 2",
+            "start_date": "12/07/2024",
+            "end_date": "12/07/2024",
+            "matches": [
+                [
+                    [
+                        "TM19805",
+                        1
+                    ],
+                    [
+                        "ZY94365",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "GK88888",
+                        1
+                    ],
+                    [
+                        "AV13579",
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 3",
+            "start_date": "17/02/2023",
+            "end_date": "12/07/2024",
+            "matches": [
+                [
+                    [
+                        "TM19805",
+                        1
+                    ],
+                    [
+                        "AV13579",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "GK88888",
+                        0
+                    ],
+                    [
+                        "ZY94365",
+                        1
+                    ]
+                ]
+            ]
         }
     ],
-    "finished_tour": false
+    "finished_tour": true
 }

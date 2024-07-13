@@ -1,7 +1,5 @@
-# Importation de la classe TournamentView
-# depuis le module tournamentviews du package views
 from views.tournamentviews import TournamentView
-from views.utilsviews import UtilsView
+from views.utilsviews import UtilsView as UV
 from models.entity.tournamentmodel import TournamentModel
 from models.manager.tournamentmanager import TournamentCrud
 from models.entity.playermodel import PlayerModel
@@ -31,13 +29,17 @@ class TournamentController:
                     case "0":
                         break
                     case _:
-                        UtilsView.input_return_prints("choice_error")
-            except (IndexError, ValueError, TypeError) as e:
-                input(f"veuillez reprendre, erreur... {e} ")
+                        UV.input_return_prints("choice_error")
+            except (IndexError):
+                input("Veuillez reprendre, vous avez probablement demandé"
+                      " à commencer un tournoi alors qu'aucun de vos "
+                      "tournois n'en est au round 1...")
+            except (ValueError, TypeError) as e:
+                input(f"Veuillez reprendre, erreur... {e}")
 
     @classmethod
     def create_tournament(cls):
-        """Permet de créer une matrice de tournoi (infos sans joueurs)
+        """Permet de créer une matrice de tournoi (sans joueurs)
         Collecte les informations du tournoi via TournamentView,
         crée un objet TournamentModel avec ces infos
         et sauvegarde le nouveau tournoi.
@@ -45,22 +47,21 @@ class TournamentController:
         tour_infos = TournamentView.tournament_infos()
         tournament = TournamentModel(**tour_infos)
         TournamentCrud.save_new_tournament(tournament)
-        UtilsView.input_return_prints("tournament_reg")
-        return
+        UV.input_return_prints("tournament_reg")
 
     @classmethod
     def start_tournament_menu(cls):
         """Permet de démarrer un tournoi en choisissant le tournoi
-        et en sélectionnant les joueurs.
-        instancie les joueurs sélectionnés, le tournoi,
+        et en sélectionnant les joueurs qui y joueront.
+        instancie les joueurs sélectionnés, le tournoi, crée le 1er round,
+        vérifie si le tournoi est terminé (tournoi avec un seul round)
         et sauvegarde le tournoi en l'état.
         """
         # selection du tournoi
         TournamentView.start_tournament_view()
-        args = "dummy switch rounds 1"
-        selected_tournament = cls.choose_tournament(args)
-        UtilsView.input_return_prints("tournament_select",
-                                      **selected_tournament)
+        selected_tournament = cls.choose_tournament(firstrounds=True)
+        UV.input_return_prints("tournament_select",
+                               **selected_tournament)
         # si aucun joueur enregistré, inscription des joueurs au tournoi,
         # on instancie et on sauve
         if selected_tournament['players_tour'] == []:
@@ -78,22 +79,22 @@ class TournamentController:
         my_tournament, round1 = RoundController.round_one_matches(
                                 my_tournament, instantiated_players)
         # on sauvegarde
+        cls.check_if_tourn_finished(my_tournament, instantiated_players)
         my_tournament = TournamentCrud.update_tournament(my_tournament, round1)
-        cls.check_if_tourn_finished(my_tournament)
 
     @classmethod
     def resume_tournament_menu(cls):
-        """Permet de reprendre un tournoi inachevé, instancie les joueurs
-        et le prochain round et sauvegarde l'état actuel du tournoi.
+        """Procédure permettant de reprendre un tournoi inachevé (sélection/
+        instanciation) et d'instancier les joueurs et envoie ceux-ci
+        à une méthode qui propose de faire avancer le tournoi
         """
         # selection du tournoi
         TournamentView.resume_tournament_view()
-        args = "dummy switch rounds 2+"
-        selected_tournament = cls.choose_tournament(args)
+        selected_tournament = cls.choose_tournament()
         # instanciation du tournoi
         my_tournament = TournamentModel(**selected_tournament)
-        UtilsView.input_return_prints("tournament_select",
-                                      **selected_tournament)
+        UV.input_return_prints("tournament_select",
+                               **selected_tournament)
         # on instancie les joueurs du tournoi
         instantiated_players = cls.instantiate_tournament_players(
                                 my_tournament.players_tour)
@@ -101,21 +102,25 @@ class TournamentController:
 
     @classmethod
     def progress_tournament(cls, my_tournament, instantiated_players):
+        """méthode qui lance la création du prochain round, vérifie si le
+        tournoi est terminé, sauvegarde l'état actuel du tournoi et propose
+        de continuer les rounds immédiatement, ou pas
+        """
         while True:
             round_next, my_tournament = RoundController.make_next_round(
                                 my_tournament, instantiated_players)
+            cls.check_if_tourn_finished(my_tournament, instantiated_players)
             my_tournament = TournamentCrud.update_tournament(
                                 my_tournament, round_next)
-            cls.check_if_tourn_finished(my_tournament)
-            if my_tournament.finished_tour is not False:
-                choice = TournamentView.continue_tour(my_tournament)
+            if my_tournament.finished_tour is not True:
+                choice = TournamentView.continue_tour()
                 if choice == 2:
                     break
-                else:
-                    pass
+            else:
+                break
 
     @classmethod
-    def choose_tournament(cls, *args):
+    def choose_tournament(cls, firstrounds=False):
         """permet de demander l'affichage d'une liste des tournois
         Args:
             *args: Argument optionnel pour l'affichage des tournois
@@ -123,16 +128,14 @@ class TournamentController:
         Returns:
             dict: Le dictionnaire représentant le tournoi sélectionné
         """
-        if args:
-            ReportController.display_alltournaments(args[0])
-        else:
-            ReportController.display_alltournaments()
         tournaments_list = TournamentCrud.get_all_tournaments()
-        selected_tournament = cls.select_tournament(tournaments_list)
+        ReportController.display_tournaments_if(firstrounds)
+        selected_tournament = cls.select_tournament(tournaments_list,
+                                                    firstrounds)
         return selected_tournament
 
     @classmethod
-    def select_tournament(cls, tournaments_list):
+    def select_tournament(cls, tournaments_list, firstrounds):
         """Permet de sélectionner un tournoi parmi une liste de tournois.
         Args:
             tournaments_list : Liste des dictionnaires représentant
@@ -141,16 +144,12 @@ class TournamentController:
             dict: Le dictionnaire représentant le tournoi sélectionné
         """
         selected_tournament = None
+        tourn_ids_list = [tour['tournament_id'] for tour in tournaments_list]
         while not selected_tournament:
-            try:
-                tournament_id_inpt = int(
-                    TournamentView.tournament_choice()) - 1
-                if 0 <= tournament_id_inpt < len(tournaments_list):
-                    selected_tournament = tournaments_list[tournament_id_inpt]
-                else:
-                    raise ValueError("Invalid selection")
-            except (ValueError, TypeError):
-                UtilsView.input_return_prints("choice_error")
+            tournament_id_inpt = int(
+                TournamentView.tournament_choice(tourn_ids_list,
+                                                 firstrounds)) - 1
+            selected_tournament = tournaments_list[tournament_id_inpt]
         return selected_tournament
 
     @classmethod
@@ -176,7 +175,7 @@ class TournamentController:
                 selected_players = selected_tournament['players_tour']
                 print(selected_players)
             except (ValueError, TypeError):
-                UtilsView.input_return_prints("choice_error")
+                UV.input_return_prints("choice_error")
 
     @classmethod
     def instantiate_tournament_players(cls, tour_players_list):
@@ -198,11 +197,31 @@ class TournamentController:
         return instantiated_players
 
     @classmethod
-    def check_if_tourn_finished(cls, my_tournament):
-        if my_tournament.current_round == my_tournament.rounds_nbr and \
-                my_tournament.rounds_tour[-1].end_date is not None:
+    def check_if_tourn_finished(cls, my_tournament, instantiated_players):
+        """
+        Vérifie si le tournoi est terminé et met à jour l'état final (end_date,
+        finished_tour), calcule et affiche les résultats finaux (classement des
+        joueurs par points descendants)
+
+        Args :
+         my_tournament (Tournament) : une instance d'une classe Tournament.
+         instantiated_players (list[Player]) : une liste des instances de
+         Player participant au tournoi.
+        """
+        end_round = int(my_tournament.rounds_nbr)
+        if my_tournament.current_round == end_round and \
+                len(my_tournament.rounds_tour) == end_round and \
+                my_tournament.rounds_tour[-1]['end_date'] is not None:
             my_tournament.finished_tour = True
             my_tournament.end_date = datetime.today().strftime('%d/%m/%Y')
-            ReportController.display_finished_tournament(my_tournament)
+            points_mapping = RoundController.create_points_mapping(
+                    my_tournament)
+            # calcul des points finaux des instances de joueurs
+            for player in instantiated_players:
+                total_points = sum(
+                        points for points in points_mapping[player.chess_id])
+                player.points = int(total_points)
+            ReportController.display_finished_tournament(my_tournament,
+                                                         instantiated_players)
         else:
             pass
