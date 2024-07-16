@@ -16,7 +16,7 @@ class MatchController:
         players = list(my_players)
         # on prépare nos paires
         pairs = []
-        # on prend les joueurs par 2, 1&2 3&4 etc 
+        # on prend les joueurs par 2, 1&2 3&4 etc
         for i in range(0, len(players), 2):
             if i + 1 < len(players):
                 pairs.append([players[i], players[i + 1]])
