@@ -166,7 +166,7 @@ class ReportController:
             pass
         else:
             return UV.input_return_prints("noround")
-        instantiated_players = []
+        my_players = []
         players_list = PlayerCrud.get_all_players()
         for chess_id in tournament['players_tour']:
             player = next((player for player in players_list
@@ -175,12 +175,12 @@ class ReportController:
                 # Création de l'instance du joueur
                 player_instance = PlayerModel(**player)
                 # Ajout de l'instance dans la liste à renvoyer
-                instantiated_players.append(player_instance)
+                my_players.append(player_instance)
         points_mapping = {}
         for index, _round in enumerate(tournament['rounds_tour']):
             matches = []
             for _match in _round['matches']:
-                for player in instantiated_players:
+                for player in my_players:
                     if player.chess_id == _match[0][0]:
                         player1 = player
                     if player.chess_id == _match[1][0]:
@@ -188,12 +188,12 @@ class ReportController:
                     if _match[1][0] == 'None':
                         player2 = None
                 match_instance = MatchModel(
-                    player1, int(_match[0][1]), player2, int(_match[1][1]))
+                    player1, _match[0][1], player2, _match[1][1])
                 matches.append(match_instance)
                 # calcul des points au passage
                 # de la boucle des matchs des rounds
                 for player_inf in _match:
-                    chess_id, points = player_inf[0], int(player_inf[1])
+                    chess_id, points = player_inf[0], player_inf[1]
                     if chess_id not in points_mapping:
                         points_mapping[chess_id] = []
                     points_mapping[chess_id].append(points)
@@ -207,23 +207,24 @@ class ReportController:
                rows, header, round_obj.name[6],
                tournament['name'])
         # calcul des points
-        for player in instantiated_players:
+        for player in my_players:
             total_points = sum(points for
                                points in points_mapping[player.chess_id])
-            player.points = int(total_points)
+            player.points = total_points
         # Affichage du tableau de classement des joueurs pour le tournoi
-        ReportController.display_finished_tournament(tournament,
-                                                     instantiated_players,
-                                                     report_menu=True)
+        if tournament['finished_tour'] is not False:
+            ReportController.display_finished_tournament(tournament,
+                                                         my_players,
+                                                         report_menu=True)
         UV.input_return_prints("continue")
 
     @classmethod
-    def display_finished_tournament(cls, my_tournament, instantiated_players,
+    def display_finished_tournament(cls, my_tournament, my_players,
                                     report_menu=False):
         """permet d'afficher les résultats d'un tournoi terminé
         """
         sorted_players = sorted(
-            instantiated_players,
+            my_players,
             key=lambda d: d.points, reverse=True)
         rows = []
         for player in sorted_players:

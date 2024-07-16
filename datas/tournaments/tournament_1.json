@@ -1,73 +1,127 @@
 {
     "name": "Battle Royale",
-    "location": "bande de Gaza",
-    "description": "pluie de bombes royales sur fourmillière de pions sans voix",
-    "start_date": "12/06/2024",
-    "end_date": "à terminer",
-    "current_round": 3,
-    "rounds_nbr": 3,
+    "location": "Gaza",
+    "description": "pluie de bombes royales sur fourmilière de pions sans voix au chapitre",
+    "start_date": "16/07/2024 13:22:05",
+    "end_date": "16/07/2024 18:09:54",
+    "current_round": 4,
+    "rounds_nbr": 4,
     "tournament_id": 1,
     "players_tour": [
         "MM71777",
-        "AS95159",
-        "AI13579",
-        "AM42315"
+        "PM66100",
+        "DB61100",
+        "AS95159"
     ],
     "rounds_tour": [
         {
             "name": "Round 1",
-            "start_date": "12/06/2024",
-            "end_date": "13/07/2024",
+            "start_date": "16/07/2024 13:52:00",
+            "end_date": "16/07/2024 13:52:16",
             "matches": [
-                [
-                    [
-                        "AI13579",
-                        0
-                    ],
-                    [
-                        "AM42315",
-                        1
-                    ]
-                ],
                 [
                     [
                         "MM71777",
                         1
                     ],
                     [
-                        "AS95159",
+                        "PM66100",
                         0
+                    ]
+                ],
+                [
+                    [
+                        "AS95159",
+                        0.5
+                    ],
+                    [
+                        "DB61100",
+                        0.5
                     ]
                 ]
             ]
         },
         {
             "name": "Round 2",
-            "start_date": "13/07/2024",
-            "end_date": "13/07/2024",
+            "start_date": "16/07/2024 13:52:27",
+            "end_date": "16/07/2024 13:53:00",
             "matches": [
                 [
                     [
                         "MM71777",
-                        0
+                        1
                     ],
                     [
-                        "AM42315",
-                        1
+                        "DB61100",
+                        0
                     ]
                 ],
                 [
                     [
-                        "AI13579",
-                        1
+                        "AS95159",
+                        0.5
+                    ],
+                    [
+                        "PM66100",
+                        0.5
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 3",
+            "start_date": "16/07/2024 13:53:05",
+            "end_date": "16/07/2024 13:53:28",
+            "matches": [
+                [
+                    [
+                        "MM71777",
+                        0.5
                     ],
                     [
                         "AS95159",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "PM66100",
+                        0
+                    ],
+                    [
+                        "DB61100",
+                        1
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 4",
+            "start_date": "16/07/2024 18:09:24",
+            "end_date": "16/07/2024 18:09:29",
+            "matches": [
+                [
+                    [
+                        "MM71777",
+                        1
+                    ],
+                    [
+                        "DB61100",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "AS95159",
+                        1
+                    ],
+                    [
+                        "PM66100",
                         0
                     ]
                 ]
             ]
         }
     ],
-    "finished_tour": false
+    "finished_tour": true
 }

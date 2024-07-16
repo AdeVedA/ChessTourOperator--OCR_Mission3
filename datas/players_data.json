@@ -150,5 +150,13 @@
         "birth_date": "11/02/2011",
         "chess_id": "AV18013",
         "points": 0
+    },
+    {
+        "player_id": 20,
+        "lastname": "BADICHE",
+        "firstname": "Mohammed",
+        "birth_date": "18/02/1967",
+        "chess_id": "MB21967",
+        "points": 0
     }
 ]

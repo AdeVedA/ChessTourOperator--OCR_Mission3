@@ -25,6 +25,10 @@ class MainMenuView:
 
     @classmethod
     def firstscreen(cls):
+        """écran de bienvenue/lancement du programme
+        """
+        # ce dessin a été copié du site asciiart (auteur anomnyme)
+        # puis légèrement modifié/personnalisé
         UtilsView.clear_screen()
         Chesscreen = r"""                                          _/\_
                          o   |\ _()_ /||\ \''/ /|    o
@@ -49,7 +53,5 @@ class MainMenuView:
      /  /\     / )   (__/ (_/ (_/\/ (__    /   /   /  / )_/ /_/_)
   __/\_/  \_  /_/    __/                  /   /   (__(_/ (_/ (__  () () ()
                     (_/"""
-        # ce dessin a été copié du site asciiart (auteur anomnyme)
-        # puis légèrement modifié
         UtilsView.style_print(content=f"{Chesscreen}")
         UtilsView.input_return_prints("bienvenue")

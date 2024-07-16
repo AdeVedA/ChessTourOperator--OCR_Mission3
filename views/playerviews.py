@@ -22,7 +22,9 @@ class PlayerView:
 
     @classmethod
     def player_infos(cls):
-        """suite d'inputs-utilisateur fournissant les données d'un joueur"""
+        """suite d'inputs-utilisateur fournissant les données d'un joueur
+        que l'on valide à l'aide des match-case d'UtilsView
+        """
         player_infos = {}
         header = "@  INSCRIPTION D'UN JOUEUR  @"
         menu_options = []
@@ -36,7 +38,7 @@ class PlayerView:
         player_infos["birth_date"] = UV.valid_input(
             "Veuillez rentrer la date de naissance "
             "du joueur au format JJ/MM/AAAA : ",
-            "date")
+            "birthdate")
         player_infos["chess_id"] = UV.valid_input(
             "Veuillez rentrer l'identité nationale d'échec du joueur : ",
             "id_chess")

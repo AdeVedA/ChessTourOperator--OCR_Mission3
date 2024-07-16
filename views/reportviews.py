@@ -20,9 +20,10 @@ class ReportView:
             "",
             "3. Liste de tous les tournois",
             "",
-            "4. Nom et dates d'un tournoi donné",
+            "4. Noms & dates des tournois",
             "",
-            "5. Liste des rounds et matches d'un tournoi",
+            "5. Listes des rounds & matchs d'un tournoi",
+            "   (classement & résultats des joueurs si tournoi fini)",
             "",
             "",
             "0. Retour au menu principal"
@@ -63,7 +64,7 @@ class ReportView:
                  maxcolwidths=[10, 30, 26, 35, 10, 10, 9, 9, 11, 8],
                  tablefmt='rounded_grid', numalign="left")}"
         UV.style_print(content=tab)
-        print('\n')
+        # print('\n')
         UV.input_return_prints("continue")
 
     @classmethod

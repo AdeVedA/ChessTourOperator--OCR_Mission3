@@ -54,7 +54,7 @@ class Round:
                 one_match['winner'] = PlayerCrud.get_player_name(ply1)
             elif _match.score_p2 == 1:
                 one_match['winner'] = PlayerCrud.get_player_name(ply2)
-            else:
+            elif _match.score_p1 == 0.5:
                 one_match['winner'] = "match nul"
             if _match.player_id2 is not None:
                 one_match['joueur 2'] = PlayerCrud.get_player_name(ply2)

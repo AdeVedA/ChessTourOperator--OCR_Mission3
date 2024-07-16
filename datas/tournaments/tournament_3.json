@@ -1,20 +1,13 @@
 {
     "name": "BlitzFest",
     "location": "Gandiole",
-    "description": "petit festival de blitz zebré des beautés de la plage du Nord",
-    "start_date": "25/08/2024",
+    "description": "Petit festival de blitz zebré des beautés de la plage du Nord",
+    "start_date": "16/07/2024 13:42:47",
     "end_date": "à terminer",
     "current_round": 1,
     "rounds_nbr": 3,
     "tournament_id": 3,
-    "players_tour": [
-        "PM66100",
-        "DB61100",
-        "GK88888",
-        "MK88888",
-        "ZY94365",
-        "AA00001"
-    ],
+    "players_tour": [],
     "rounds_tour": [],
     "finished_tour": false
 }

@@ -20,9 +20,9 @@ class MatchModel:
         returns:
             _match : liste contenant 2 listes type [joueur, points du joueur]
         """
-        _match = [[f"{self.player_id1}", int(self.score_p1)
+        _match = [[f"{self.player_id1}", self.score_p1
                    if self.score_p1 is not None else 0],
-                  [f"{self.player_id2}", int(self.score_p2)
+                  [f"{self.player_id2}", self.score_p2
                    if self.score_p2 is not None else 0]]
         return _match
 

@@ -14,10 +14,11 @@
 # <p align="center"> I. Description du Projet</p>
 
 Ce gestionnaire de tournois d'échecs est une application Python autonome et hors ligne conçue pour la gestion des joueurs, des tournois et des résultats. L'application utilise des fichiers JSON pour la persistance des données et propose divers rapports et fonctionnalités.
+Elle est mon premier programme en Programmation Orientée Objet, et mon premier programme aussi qui utilise un design pattern (MVC). 
 
 # <p align="center"> II. Fonctionnalités Principales</p>
 
-**Gestion des Joueurs**: Ajoutez, affichez et gérez les données des joueurs tels que le nom, le prénom, la date de naissance et l'identifiant national d’échecs.
+**Gestion des Joueurs**: Ajoutez de nouveaux joueurs et affichez les données des joueurs tels que le nom, le prénom, la date de naissance et l'identifiant national d’échecs.
 
 **Tournois**: Créez, gérez et suivez plusieurs tournois avec un nombre spécifié de tours. Chaque tour est une liste de matchs entre les joueurs inscrits, générés dynamiquement en fonction des résultats précédents.
 
@@ -25,13 +26,15 @@ Ce gestionnaire de tournois d'échecs est une application Python autonome et hor
 
 **Rapports**: Affichez des rapports détaillés, tels que la liste de tous les joueurs par ordre alphabétique, la liste des joueurs d'un tournoi donné par ordre alphabétique, la liste de tous les tournois, la liste des noms et dates des tournois, la liste des rounds et matchs d'un tournoi spécifique.
 
-**Sauvegarde/Chargement des Données**: Les modifications apportées aux données (joueurs et tournois) sont automatiquement sauvegardées dans des fichiers JSON pour éviter toute perte de données. Le programme charge toutes les données à partir des fichiers JSON et peut restaurer son état entre les exécutions.
+**Sauvegarde/Chargement des Données**: Les modifications apportées aux données (joueurs et tournois) sont automatiquement sauvegardées dans des fichiers JSON pour éviter toute perte de données. Le programme charge toutes les données à partir des fichiers JSON et peut restaurer son état entre les exécutions. il sauvegarde un tour appairé avec ou sans ses résultats et vous permet de reprendre où vous en êtes.
 
-**Vues**: L'interface utilisateur conviviale, colorée et mise en page permet aux utilisateurs d'effectuer facilement des actions telles que l'ajout de joueurs, la création de tournois, etc., à travers un menu principal et des sous-menus catégoriels.
+**Vues**: L'interface utilisateur conviviale, colorée et mise en page permet aux utilisateurs d'effectuer facilement des actions telles que l'ajout de joueurs, la création de tournois, etc., à travers un menu principal et des sous-menus catégoriels .
 
 
 # <p align="center"> III. Structure du Code</p>
-Le code est structuré selon le modèle **MVC** (Modèle-Vue-Contrôleur) pour une meilleure organisation et maintenance. Le programme est divisé en trois packages principaux: modèles, vues et contrôleurs. Les instances de classe modèles ont été privilégiées plutôt que la manipulation de dictionnaires pour assurer la conformité avec le modèle MVC.
+Le code est structuré selon le modèle **MVC** (Modèle-Vue-Contrôleur) pour une meilleure organisation et maintenance. Le programme est divisé en trois packages principaux: modèles (entités & managers), vues et contrôleurs. Les instances de classe modèles ont été privilégiées plutôt que la manipulation de dictionnaires pour assurer la conformité avec le modèle MVC.
+
+Ce programme aura aussi été mon premier programme en Programmation Orientée Objet. La souplesse et l'abstraction liée aux classes et objets, mêlées au partage de responsabilités des packages en MVC, auront été une épreuve d'architecture logicielle très pédagogique (sur les bonnes pratiques en MVC, le scope des rôles de "ModelManagers", sur les erreurs à ne pas faire en POO, le "Keep It Simple, Stupid", l'importance de la séparation modulaire, simple et sciemment typée des méthodes, le codage d'algoritme... tout comme m'ont apporté aussi les solutions "mains dans le cabouis" pour faire fonctionner l'ensemble du logiciel malgré quelques mauvais choix de départ, les conséquences d'une vision globale sans architecture précise, ni découpage en tâches/scrum master).
 
 
 ------------------------------------------
@@ -77,7 +80,11 @@ puis :
 
 	python main.py
 
-  #### H - Désactivez l'environnement virtuel
+  #### H - Créez un rapport pour vérifier la conformité du code à flake8
+
+	flake8 --format=html --htmldir=flake8_rapport
+
+  #### I - Désactivez l'environnement virtuel
 
 	deactivate
 -------------------------

@@ -31,12 +31,13 @@ class TournamentView:
         tournament_infos["name"] = UV.valid_input(
             "Veuillez saisir le nom du tournoi : ", "anything")
         tournament_infos["location"] = UV.valid_input(
-            "Veuillez saisir le lieu du tournoi : ", "string")
+            "Veuillez saisir le lieu du tournoi : ", "string_name")
         tournament_infos["description"] = UV.valid_input(
             "Veuillez saisir la description du tournoi : ", "anything")
         tournament_infos["start_date"] = UV.valid_input(
-            "Veuillez saisir la date de début du tournoi au format "
-            "JJ/MM/AAAA : ", "date")
+            "Veuillez saisir la date et l'heure de début du tournoi"
+            " au format 'JJ/MM/AAAA HH:MM:SS' ou appuyez juste sur 'entrée' "
+            " pour inscrire la date et l'heure actuelle : ", "date")
         tournament_infos["rounds_nbr"] = UV.valid_input(
             "Veuillez saisir le nombre de rounds du tournoi : ", "integer")
         return tournament_infos
@@ -56,7 +57,7 @@ class TournamentView:
         return tournoi
 
     @classmethod
-    def start_tournament_view(cls):
+    def start_tournament_header(cls):
         """Affiche le logo de démarrage d'un tournoi et de
         sélection des joueurs.
         """
@@ -68,16 +69,19 @@ class TournamentView:
     def players_choice(cls, max_player_id):
         '''choix des joueurs que l'on souhaite inscire à un tournoi
         '''
+        cursor_up = '\x1b[1A'
+        erase_line = '\x1b[2K'
         while True:
             players_tourn = UV.valid_input(
                 "Inscrivez les numéros des joueurs 'players_id' que vous "
                 "souhaitez inscrire \nséparés par des virgules (ex : 1,3,8,10,"
                 "13,15) et appuyez sur 'entrée'): ",
                 "comma_integer_list", max_player_id)
+            print((cursor_up + erase_line)*2 + cursor_up)
             return players_tourn
 
     @classmethod
-    def resume_tournament_view(cls):
+    def resume_tournament_header(cls):
         """Affiche le logo de reprise d'un tournoi.
         """
         header = "@ Sélection du Tournoi pour reprise @"

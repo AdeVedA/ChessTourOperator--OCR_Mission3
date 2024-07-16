@@ -13,15 +13,20 @@ class RoundView:
         UV.menu(header, menu_options)
 
     @classmethod
-    def roundprint(cls, my_tournament, round_dict):
+    def roundprint(cls, my_tournament, round_dict, previous=False):
         """mettre le dictionnaire du round en header/rows
         pour printer avec une fonction de rapport de round de reportview
         """
         header = round_dict[0].keys()
         rows = [game.values() for game in round_dict]
-        ReportView.display_matches_list(
-            rows, header, my_tournament.current_round,
-            my_tournament.name)
+        if previous is True:
+            ReportView.display_matches_list(
+                rows, header, my_tournament.current_round - 1,
+                my_tournament.name)
+        else:
+            ReportView.display_matches_list(
+                rows, header, my_tournament.current_round,
+                my_tournament.name)
 
     @classmethod
     def round_winners_input(cls):

@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import time
+from datetime import datetime
 from colorama import Fore, Style
 
 spc = ' '
@@ -69,7 +70,7 @@ class UtilsView:
     @classmethod
     def style_print(cls, content, color=Fore.GREEN):
         """styliser l'impression des contenus"""
-        BOLD = Style.BRIGHT  # between color & letter : {BOLD}
+        BOLD = Style.BRIGHT
         CLReset = Style.RESET_ALL
         for letter in content:
             sys.stdout.flush()
@@ -94,7 +95,7 @@ class UtilsView:
             match valid_format:
                 case "string":
                     if rep is not rep or rep == "" \
-                            or not rep.isalpha():
+                            or not rep.isaplha():
                         print(f"{Fore.RED}Veuillez inscrire "
                               "une réponse valide")
                         continue
@@ -102,7 +103,7 @@ class UtilsView:
                         return rep
                 case "string_name":
                     if rep is not rep or rep == "" \
-                            or re.match("^[-'a-zA-ZÀ-ÿ]+$", rep) is None:
+                            or re.match("^[-' a-zA-ZÀ-ÿ]+$", rep) is None:
                         print(f"{Fore.RED}Veuillez inscrire "
                               "une réponse valide")
                         continue
@@ -124,6 +125,19 @@ class UtilsView:
                     else:
                         return int(rep)
                 case "date":
+                    if rep is not rep or rep == "":
+                        rep = datetime.today().strftime('%d/%m/%Y %H:%M:%S')
+                        return rep
+                    elif re.match(r"^(3[01]|[12][0-9]|0?[1-9])(\/|\-|\.)"
+                                  r"(1[0-2]|0?[1-9])\2([12][0-9]{3}) "
+                                  r"((2[0-3]|[01][0-9])(:)[0-5]?[0-9]"
+                                  r"(:)[0-5]?[0-9])$",
+                                  rep) is None:
+                        print(f"{Fore.RED}Veuillez inscrire une date valide")
+                        continue
+                    else:
+                        return rep
+                case "birthdate":
                     if rep is not rep or rep == "" \
                             or re.match(r"^(3[01]|[12][0-9]|0?[1-9])(\/|\-|\.)"
                                         r"(1[0-2]|0?[1-9])\2([12][0-9]{3})$",
@@ -190,8 +204,9 @@ class UtilsView:
 
     @classmethod
     def input_return_prints(cls, message, *args, **kwargs):
-        """permet d'afficher des messages en retour des entrées
-        ou pour notification des sauvegardes etc
+        """permet d'afficher des messages à l'utilisateur
+        en retour de ses entrées de saisies
+        ou pour notification des sauvegardes
         Args:
             message est le "case" pour référrencer le message
             *args & **kwargs : Arguments optionnels pour messages
@@ -200,7 +215,7 @@ class UtilsView:
         while True:
             match message:
                 case "continue":
-                    input(f"\n{Fore.YELLOW}{spc*26}Appuyez sur la touche "
+                    input(f"\n{Fore.YELLOW}{spc*12}Appuyez sur la touche "
                           "'entrée' pour continuer")
                     print(cursor_up + erase_line + cursor_up)
                     return
@@ -224,6 +239,7 @@ class UtilsView:
                     print(f"\n{Fore.YELLOW}{spc*18}Le tournoi '{args[0]}'"
                           " vient d'être sauvegardé")
                     time.sleep(3)
+                    print((cursor_up + erase_line)*2 + cursor_up)
                     return
                 case "tournament_select":
                     print(f"\n{Fore.YELLOW}{spc*26}Le tournoi "

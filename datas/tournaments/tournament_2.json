@@ -2,72 +2,153 @@
     "name": "Fête du bégué-beauté",
     "location": "Saly Velingara au village des artistes",
     "description": "Le puits, la musique, les échecs ! Lalal n'dor ba aldiana. une partie ?",
-    "start_date": "25/06/2024",
-    "end_date": "à terminer",
-    "current_round": 3,
+    "start_date": "16/07/2024 13:41:46",
+    "end_date": "16/07/2024 18:04:35",
+    "current_round": 5,
     "rounds_nbr": 5,
     "tournament_id": 2,
     "players_tour": [
-        "AS95159",
         "AI13579",
+        "GR00800",
         "MK12000",
-        "MK88888"
+        "GK88888"
     ],
     "rounds_tour": [
         {
             "name": "Round 1",
-            "start_date": "25/06/2024",
-            "end_date": "10/07/2024",
+            "start_date": "16/07/2024 13:56:26",
+            "end_date": "16/07/2024 13:56:35",
             "matches": [
                 [
                     [
-                        "AI13579",
+                        "GK88888",
                         1
                     ],
                     [
-                        "MK88888",
+                        "AI13579",
                         0
                     ]
                 ],
                 [
                     [
-                        "AS95159",
-                        1
+                        "GR00800",
+                        0.5
                     ],
                     [
                         "MK12000",
-                        0
+                        0.5
                     ]
                 ]
             ]
         },
         {
             "name": "Round 2",
-            "start_date": "12/07/2024",
-            "end_date": "12/07/2024",
+            "start_date": "16/07/2024 13:56:46",
+            "end_date": "16/07/2024 13:57:07",
             "matches": [
                 [
                     [
-                        "AS95159",
+                        "GK88888",
+                        0
+                    ],
+                    [
+                        "GR00800",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "MK12000",
                         0
                     ],
                     [
                         "AI13579",
                         1
                     ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 3",
+            "start_date": "16/07/2024 13:57:43",
+            "end_date": "16/07/2024 13:57:52",
+            "matches": [
+                [
+                    [
+                        "GR00800",
+                        0.5
+                    ],
+                    [
+                        "AI13579",
+                        0.5
+                    ]
                 ],
                 [
                     [
-                        "MK88888",
+                        "GK88888",
+                        0
+                    ],
+                    [
+                        "MK12000",
+                        1
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 4",
+            "start_date": "16/07/2024 13:57:57",
+            "end_date": "16/07/2024 14:00:04",
+            "matches": [
+                [
+                    [
+                        "GR00800",
+                        1
+                    ],
+                    [
+                        "AI13579",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "MK12000",
+                        0.5
+                    ],
+                    [
+                        "GK88888",
+                        0.5
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 5",
+            "start_date": "16/07/2024 18:04:04",
+            "end_date": "16/07/2024 18:04:11",
+            "matches": [
+                [
+                    [
+                        "GR00800",
                         1
                     ],
                     [
                         "MK12000",
                         0
                     ]
+                ],
+                [
+                    [
+                        "AI13579",
+                        1
+                    ],
+                    [
+                        "GK88888",
+                        0
+                    ]
                 ]
             ]
         }
     ],
-    "finished_tour": false
+    "finished_tour": true
 }

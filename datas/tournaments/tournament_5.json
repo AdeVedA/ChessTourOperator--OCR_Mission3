@@ -1,19 +1,168 @@
 {
     "name": "Le Mouton Noir à 5 pattes",
-    "location": "Stonehenge",
-    "description": "un tournoi bancal pour tester",
-    "start_date": "10/07/2024",
-    "end_date": "à terminer",
-    "current_round": 1,
-    "rounds_nbr": 3,
+    "location": "Stonhenge",
+    "description": "un tournoi bancal (5 joueurs) pour tester",
+    "start_date": "16/07/2024 13:44:51",
+    "end_date": "16/07/2024 18:34:22",
+    "current_round": 4,
+    "rounds_nbr": 4,
     "tournament_id": 5,
     "players_tour": [
-        "PM66100",
-        "DB61100",
-        "EL02830",
-        "AA00001",
+        "AI13579",
+        "GR00800",
+        "AD87778",
+        "AM42315",
         "AA00011"
     ],
-    "rounds_tour": [],
-    "finished_tour": false
+    "rounds_tour": [
+        {
+            "name": "Round 1",
+            "start_date": "16/07/2024 18:19:44",
+            "end_date": "16/07/2024 18:19:59",
+            "matches": [
+                [
+                    [
+                        "AI13579",
+                        1
+                    ],
+                    [
+                        "AA00011",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "GR00800",
+                        1
+                    ],
+                    [
+                        "AD87778",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "AM42315",
+                        1
+                    ],
+                    [
+                        "None",
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 2",
+            "start_date": "16/07/2024 18:29:49",
+            "end_date": "16/07/2024 18:30:01",
+            "matches": [
+                [
+                    [
+                        "AI13579",
+                        1
+                    ],
+                    [
+                        "GR00800",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "AM42315",
+                        0
+                    ],
+                    [
+                        "AD87778",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "AA00011",
+                        1
+                    ],
+                    [
+                        "None",
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 3",
+            "start_date": "16/07/2024 18:32:11",
+            "end_date": "16/07/2024 18:32:26",
+            "matches": [
+                [
+                    [
+                        "AI13579",
+                        0.5
+                    ],
+                    [
+                        "AD87778",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "GR00800",
+                        0.5
+                    ],
+                    [
+                        "AM42315",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "AA00011",
+                        1
+                    ],
+                    [
+                        "None",
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 4",
+            "start_date": "16/07/2024 18:32:41",
+            "end_date": "16/07/2024 18:34:08",
+            "matches": [
+                [
+                    [
+                        "AI13579",
+                        1
+                    ],
+                    [
+                        "AM42315",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "AA00011",
+                        0
+                    ],
+                    [
+                        "GR00800",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "AD87778",
+                        1
+                    ],
+                    [
+                        "None",
+                        0
+                    ]
+                ]
+            ]
+        }
+    ],
+    "finished_tour": true
 }

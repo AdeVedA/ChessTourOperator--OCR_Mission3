@@ -58,7 +58,7 @@ class TournamentController:
         et sauvegarde le tournoi en l'état.
         """
         # selection du tournoi
-        TournamentView.start_tournament_view()
+        TournamentView.start_tournament_header()
         selected_tournament = cls.choose_tournament(firstrounds=True)
         UV.input_return_prints("tournament_select",
                                **selected_tournament)
@@ -72,14 +72,14 @@ class TournamentController:
         else:
             my_tournament = TournamentModel(**selected_tournament)
         # on instancie les joueurs du tournoi
-        instantiated_players = cls.instantiate_tournament_players(
+        my_players = cls.instantiate_tournament_players(
                                 my_tournament.players_tour)
         # on va créer le round 1 de ce tournoi et
         # inscrire les matchs ou les résultats aussi
         my_tournament, round1 = RoundController.round_one_matches(
-                                my_tournament, instantiated_players)
+                                my_tournament, my_players)
         # on sauvegarde
-        cls.check_if_tourn_finished(my_tournament, instantiated_players)
+        cls.check_if_tourn_finished(my_tournament, my_players)
         my_tournament = TournamentCrud.update_tournament(my_tournament, round1)
 
     @classmethod
@@ -89,34 +89,37 @@ class TournamentController:
         à une méthode qui propose de faire avancer le tournoi
         """
         # selection du tournoi
-        TournamentView.resume_tournament_view()
+        TournamentView.resume_tournament_header()
         selected_tournament = cls.choose_tournament()
         # instanciation du tournoi
         my_tournament = TournamentModel(**selected_tournament)
         UV.input_return_prints("tournament_select",
                                **selected_tournament)
         # on instancie les joueurs du tournoi
-        instantiated_players = cls.instantiate_tournament_players(
+        my_players = cls.instantiate_tournament_players(
                                 my_tournament.players_tour)
-        cls.progress_tournament(my_tournament, instantiated_players)
+        cls.progress_tournament(my_tournament, my_players)
 
     @classmethod
-    def progress_tournament(cls, my_tournament, instantiated_players):
+    def progress_tournament(cls, my_tournament, my_players):
         """méthode qui lance la création du prochain round, vérifie si le
         tournoi est terminé, sauvegarde l'état actuel du tournoi et propose
         de continuer les rounds immédiatement, ou pas
         """
         while True:
+
             round_next, my_tournament = RoundController.make_next_round(
-                                my_tournament, instantiated_players)
-            cls.check_if_tourn_finished(my_tournament, instantiated_players)
+                                my_tournament, my_players)
             my_tournament = TournamentCrud.update_tournament(
                                 my_tournament, round_next)
+            my_tournament = cls.check_if_tourn_finished(
+                my_tournament, my_players)
             if my_tournament.finished_tour is not True:
                 choice = TournamentView.continue_tour()
                 if choice == 2:
                     break
             else:
+                TournamentCrud.update_tournament(my_tournament, round_next)
                 break
 
     @classmethod
@@ -173,7 +176,10 @@ class TournamentController:
                     players_sel.append(player_chess_id)
                 selected_tournament['players_tour'] = players_sel
                 selected_players = selected_tournament['players_tour']
-                print(selected_players)
+                for player in selected_players:
+                    UV.style_print(
+                        PlayerCrud.get_player_name(player) + " - ")
+                UV.input_return_prints("continue")
             except (ValueError, TypeError):
                 UV.input_return_prints("choice_error")
 
@@ -184,7 +190,7 @@ class TournamentController:
             "my_tournament" (attribut .players_tour)
         Returns: Liste des instances PlayerModel des joueurs du tournoi.
         """
-        instantiated_players = []
+        my_players = []
         players_list = PlayerCrud.get_all_players()
         for chess_id in tour_players_list:
             player = next((player for player in players_list
@@ -193,11 +199,11 @@ class TournamentController:
                 # Création de l'instance du joueur
                 player_instance = PlayerModel(**player)
                 # Ajout de l'instance dans la liste à renvoyer
-                instantiated_players.append(player_instance)
-        return instantiated_players
+                my_players.append(player_instance)
+        return my_players
 
     @classmethod
-    def check_if_tourn_finished(cls, my_tournament, instantiated_players):
+    def check_if_tourn_finished(cls, my_tournament, my_players):
         """
         Vérifie si le tournoi est terminé et met à jour l'état final (end_date,
         finished_tour), calcule et affiche les résultats finaux (classement des
@@ -205,23 +211,27 @@ class TournamentController:
 
         Args :
          my_tournament (Tournament) : une instance d'une classe Tournament.
-         instantiated_players (list[Player]) : une liste des instances de
+         my_players (list[Player]) : une liste des instances de
          Player participant au tournoi.
+        Returns :
+         my_tournament (Tournament) : updaté de la date de fin si terminé
         """
         end_round = int(my_tournament.rounds_nbr)
         if my_tournament.current_round == end_round and \
                 len(my_tournament.rounds_tour) == end_round and \
                 my_tournament.rounds_tour[-1]['end_date'] is not None:
             my_tournament.finished_tour = True
-            my_tournament.end_date = datetime.today().strftime('%d/%m/%Y')
+            my_tournament.end_date = datetime.today().strftime(
+                '%d/%m/%Y %H:%M:%S')
             points_mapping = RoundController.create_points_mapping(
                     my_tournament)
             # calcul des points finaux des instances de joueurs
-            for player in instantiated_players:
+            for player in my_players:
                 total_points = sum(
                         points for points in points_mapping[player.chess_id])
-                player.points = int(total_points)
+                player.points = total_points
             ReportController.display_finished_tournament(my_tournament,
-                                                         instantiated_players)
+                                                         my_players)
+            return my_tournament
         else:
-            pass
+            return my_tournament
