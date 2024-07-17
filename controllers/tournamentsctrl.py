@@ -178,7 +178,7 @@ class TournamentController:
                 selected_players = selected_tournament['players_tour']
                 for player in selected_players:
                     UV.style_print(
-                        PlayerCrud.get_player_name(player) + " - ")
+                        " - " + PlayerCrud.get_player_name(player))
                 UV.input_return_prints("continue")
             except (ValueError, TypeError):
                 UV.input_return_prints("choice_error")

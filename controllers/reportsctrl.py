@@ -42,10 +42,13 @@ class ReportController:
         classés par nom de famille
         '''
         players_list = PlayerCrud.get_all_players()
+        for pl_dict in players_list:
+            pl_dict.pop('points', None)
+        # on classe la liste de dictionnaires de joueurs par Nom de famille
         sorted_players_list = sorted(players_list,
                                      key=lambda d: d['lastname'])
         header = sorted_players_list[0].keys()
-        rows = [infos.values() for infos in sorted_players_list]
+        rows = [player.values() for player in sorted_players_list]
         ReportView.display_players_list(rows, header)
         UV.input_return_prints("continue")
 

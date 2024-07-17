@@ -119,6 +119,7 @@ class RoundController:
                 total_points = sum(
                         points for points in points_mapping[player_id])
                 player.points = total_points
+            # si les matchs du current_round n'ont pas été créés :
             if len(my_tournament.rounds_tour) < int(
                         my_tournament.current_round):
                 matches = MatchController.make_next_round_matchs(
@@ -130,6 +131,7 @@ class RoundController:
                 RoundView.roundprint(my_tournament,
                                      round_next.to_dict_results())
                 pass
+            # si les matchs du current_round ont été créés, on instancie
             elif my_tournament.rounds_tour[
                     int(my_tournament.current_round) - 1]:
                 matches = MatchController.instantiate_round_matchs_from_json(
@@ -140,7 +142,7 @@ class RoundController:
                     my_tournament.rounds_tour[-1]['start_date'], None, matches)
                 RoundView.roundprint(my_tournament,
                                      round_next.to_dict_results())
-                pass
+            # propose d'inscrire les résultats du round. si oui, on les affiche
             my_tournament, round_next = cls.round_get_results(
                     my_tournament, round_next)
             RoundView.roundheader()

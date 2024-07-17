@@ -4,10 +4,54 @@
     "description": "Chill Tour in dystopic Cachemire",
     "start_date": "16/07/2024 13:46:32",
     "end_date": "à terminer",
-    "current_round": 1,
+    "current_round": 2,
     "rounds_nbr": 5,
     "tournament_id": 6,
-    "players_tour": [],
-    "rounds_tour": [],
+    "players_tour": [
+        "PM66100",
+        "MK12000",
+        "AA00001",
+        "GA77777",
+        "AV18013"
+    ],
+    "rounds_tour": [
+        {
+            "name": "Round 1",
+            "start_date": "17/07/2024 12:08:43",
+            "end_date": "17/07/2024 12:09:00",
+            "matches": [
+                [
+                    [
+                        "GA77777",
+                        0.5
+                    ],
+                    [
+                        "PM66100",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "AV18013",
+                        0
+                    ],
+                    [
+                        "MK12000",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "AA00001",
+                        1
+                    ],
+                    [
+                        "None",
+                        0
+                    ]
+                ]
+            ]
+        }
+    ],
     "finished_tour": false
 }

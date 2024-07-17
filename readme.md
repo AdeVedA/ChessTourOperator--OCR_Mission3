@@ -136,7 +136,11 @@ puis :
 
 	python3 main.py
 
-  #### H - Désactivez l'environnement virtuel
+  #### H - Créez un rapport pour vérifier la conformité du code à flake8
+
+	flake8 --format=html --htmldir=flake8_rapport
+
+  #### I - Désactivez l'environnement virtuel
 
 	deactivate
  

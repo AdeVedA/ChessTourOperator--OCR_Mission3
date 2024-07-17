@@ -51,7 +51,7 @@ class MatchController:
                     player1 = player
                 if player.chess_id == _match[1][0]:
                     player2 = player
-                if _match[1][0] == 'None':
+                if _match[1][0] == "None":
                     player2 = None
             match_instance = MatchModel(
                 player1, _match[0][1], player2, _match[1][1])

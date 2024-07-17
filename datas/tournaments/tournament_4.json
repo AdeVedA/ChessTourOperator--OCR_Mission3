@@ -4,10 +4,43 @@
     "description": "étalage de fric, guerre d'égos, hubris éhontée et échecs systémiques rapides",
     "start_date": "16/07/2024 13:43:34",
     "end_date": "à terminer",
-    "current_round": 1,
+    "current_round": 2,
     "rounds_nbr": 6,
     "tournament_id": 4,
-    "players_tour": [],
-    "rounds_tour": [],
+    "players_tour": [
+        "MM71777",
+        "GK88888",
+        "AD87778",
+        "AA00011"
+    ],
+    "rounds_tour": [
+        {
+            "name": "Round 1",
+            "start_date": "17/07/2024 12:01:33",
+            "end_date": "17/07/2024 12:01:44",
+            "matches": [
+                [
+                    [
+                        "AD87778",
+                        0.5
+                    ],
+                    [
+                        "MM71777",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "GK88888",
+                        0
+                    ],
+                    [
+                        "AA00011",
+                        1
+                    ]
+                ]
+            ]
+        }
+    ],
     "finished_tour": false
 }

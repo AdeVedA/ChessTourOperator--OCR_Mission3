@@ -12,7 +12,7 @@ class PlayerCrud:
         """récupère les informations de tous les joueurs présents
         en base de données json
         Returns:
-            players_list : liste des joueurs
+            players_list : liste de dictionnaires des joueurs
         """
         players_list = []
         if os.path.isfile(datas_path):

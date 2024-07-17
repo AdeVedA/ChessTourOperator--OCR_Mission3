@@ -48,7 +48,8 @@ class Round:
             ply1 = _match.player_id1
             ply2 = _match.player_id2
             one_match['joueur 1'] = PlayerCrud.get_player_name(ply1)
-            if _match.score_p1 == 'None' or _match.score_p1 is None:
+            if _match.score_p1 == 'None' or _match.score_p1 is None or \
+                    _match.score_p1 == 0 and _match.score_p2 == 0:
                 one_match['winner'] = "en cours"
             elif _match.score_p1 == 1:
                 one_match['winner'] = PlayerCrud.get_player_name(ply1)
