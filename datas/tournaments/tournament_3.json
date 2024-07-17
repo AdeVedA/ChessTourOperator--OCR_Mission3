@@ -3,8 +3,8 @@
     "location": "Gandiole",
     "description": "Petit festival de blitz zebré des beautés de la plage du Nord",
     "start_date": "16/07/2024 13:42:47",
-    "end_date": "17/07/2024 11:55:38",
-    "current_round": 3,
+    "end_date": "à terminer",
+    "current_round": 2,
     "rounds_nbr": 3,
     "tournament_id": 3,
     "players_tour": [
@@ -55,12 +55,12 @@
         {
             "name": "Round 2",
             "start_date": "17/07/2024 09:26:12",
-            "end_date": "17/07/2024 11:48:12",
+            "end_date": null,
             "matches": [
                 [
                     [
                         "PM66100",
-                        1
+                        0
                     ],
                     [
                         "AI13579",
@@ -74,50 +74,13 @@
                     ],
                     [
                         "MB21967",
-                        1
+                        0
                     ]
                 ],
                 [
                     [
                         "AV18013",
-                        1
-                    ],
-                    [
-                        "None",
                         0
-                    ]
-                ]
-            ]
-        },
-        {
-            "name": "Round 3",
-            "start_date": "17/07/2024 11:52:39",
-            "end_date": "17/07/2024 11:54:43",
-            "matches": [
-                [
-                    [
-                        "PM66100",
-                        1
-                    ],
-                    [
-                        "TM19805",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "AI13579",
-                        1
-                    ],
-                    [
-                        "AV18013",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "MB21967",
-                        1
                     ],
                     [
                         "None",
@@ -127,5 +90,5 @@
             ]
         }
     ],
-    "finished_tour": true
+    "finished_tour": false
 }

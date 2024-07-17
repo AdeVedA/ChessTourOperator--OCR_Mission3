@@ -232,6 +232,7 @@ class TournamentController:
                 player.points = total_points
             ReportController.display_finished_tournament(my_tournament,
                                                          my_players)
+            UV.input_return_prints("continue")
             return my_tournament
         else:
             return my_tournament

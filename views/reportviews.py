@@ -23,7 +23,7 @@ class ReportView:
             "4. Noms & dates des tournois",
             "",
             "5. Listes des rounds & matchs d'un tournoi",
-            "   (classement & résultats des joueurs si tournoi fini)",
+            "   (avec classement & résultats des joueurs, si tournoi fini)",
             "",
             "",
             "0. Retour au menu principal"
@@ -95,4 +95,3 @@ class ReportView:
                        tablefmt='rounded_grid', numalign="left")}")
         UV.style_print(content=f"\n Bonne fête à {location} pour "
                                f"tout le monde !!!\n", color=Fore.MAGENTA)
-        UV.input_return_prints("continue")

@@ -235,7 +235,6 @@ class ReportController:
                           player.chess_id, player.points]
             rows.append(player_inf)
         header = ['lastname', 'firstname', 'chess_id', 'points']
-        # à revoir bien sûr
         if report_menu is False:
             ReportView.display_finished_tournament_players_list(
                 rows, header, my_tournament.rounds_nbr, my_tournament.name,
