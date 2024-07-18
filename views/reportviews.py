@@ -1,6 +1,6 @@
-from views.utilsviews import UtilsView as UV
 from colorama import Fore
 from tabulate import tabulate
+from views.utilsviews import UtilsView as UV
 tabulate.MIN_PADDING = 0
 
 

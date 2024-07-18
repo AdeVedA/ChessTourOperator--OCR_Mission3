@@ -1,12 +1,12 @@
-from views.tournamentviews import TournamentView
-from views.utilsviews import UtilsView as UV
+from datetime import datetime
 from models.entity.tournamentmodel import TournamentModel
 from models.manager.tournamentmanager import TournamentCrud
 from models.entity.playermodel import PlayerModel
 from models.manager.playermanager import PlayerCrud
 from .roundctrl import RoundController
 from .reportsctrl import ReportController
-from datetime import datetime
+from views.tournamentviews import TournamentView
+from views.utilsviews import UtilsView as UV
 
 
 class TournamentController:

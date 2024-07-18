@@ -1,7 +1,7 @@
-from views.mainview import MainMenuView
 from controllers.playerctrl import PlayerController
 from controllers.tournamentsctrl import TournamentController
 from controllers.reportsctrl import ReportController
+from views.mainview import MainMenuView
 from views.utilsviews import UtilsView as UV
 
 

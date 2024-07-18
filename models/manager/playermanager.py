@@ -2,7 +2,7 @@ import os
 import json
 from views.utilsviews import UtilsView as UV
 
-datas_path = os.path.join(os.getcwd(), "datas", "players_data.json")
+DATAS_PATH = os.path.join(os.getcwd(), "datas", "players_data.json")
 
 
 class PlayerCrud:
@@ -15,15 +15,15 @@ class PlayerCrud:
             players_list : liste de dictionnaires des joueurs
         """
         players_list = []
-        if os.path.isfile(datas_path):
-            with open(datas_path, 'r', encoding='utf-8') as file:
+        if os.path.isfile(DATAS_PATH):
+            with open(DATAS_PATH, 'r', encoding='utf-8') as file:
                 try:
                     players_list = json.load(file)
                 except json.JSONDecodeError:
                     pass
         # s'il n'y a pas de fichier/répertoire, on le crée
         else:
-            os.makedirs(os.path.dirname(datas_path), exist_ok=True)
+            os.makedirs(os.path.dirname(DATAS_PATH), exist_ok=True)
             UV.input_return_prints("noplayer")
         return players_list
 
@@ -36,7 +36,7 @@ class PlayerCrud:
                 player :
         """
         players_list.append(player.__dict__)
-        with open(datas_path, 'w', encoding='utf8') as file:
+        with open(DATAS_PATH, 'w', encoding='utf8') as file:
             json.dump(players_list, file, ensure_ascii=False, indent=4)
 
     @classmethod

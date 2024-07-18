@@ -28,7 +28,7 @@ Elle est mon premier programme en Programmation Orientée Objet, et mon premier 
 
 **Sauvegarde/Chargement des Données**: Les modifications apportées aux données (joueurs et tournois) sont automatiquement sauvegardées dans des fichiers JSON pour éviter toute perte de données. Le programme charge toutes les données à partir des fichiers JSON et peut restaurer son état entre les exécutions. il sauvegarde un tour appairé avec ou sans ses résultats et vous permet de reprendre où vous en êtes.
 
-**Vues**: L'interface utilisateur conviviale, colorée et mise en page permet aux utilisateurs d'effectuer facilement des actions telles que l'ajout de joueurs, la création de tournois, etc., à travers un menu principal et des sous-menus catégoriels .
+**Vues**: L'interface utilisateur conviviale, colorée et mise en page permet aux utilisateurs d'effectuer facilement des actions telles que l'ajout de joueurs, la création de tournois, etc... à travers un menu principal catégoriel et des sous-menus fonctionnels.
 
 
 # <p align="center"> III. Structure du Code</p>

@@ -1,8 +1,8 @@
-from views.playerviews import PlayerView
-from views.utilsviews import UtilsView as UV
 from models.entity.playermodel import PlayerModel
 from models.manager.playermanager import PlayerCrud
 from .reportsctrl import ReportController
+from views.playerviews import PlayerView
+from views.utilsviews import UtilsView as UV
 
 
 class PlayerController:
